@@ -7,6 +7,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -16,16 +17,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:padding="20dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="20dp">
 
                 <EditText
                     android:id="@+id/et_ulr"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/botron_button2"
-                    android:textColor="#fff"
-                    android:hint="Enter URL...">
+                    android:hint="Enter URL..."
+                    android:textColor="#fff">
 
                 </EditText>
 
@@ -46,8 +47,8 @@
 
                     <Space
                         android:layout_width="10dp"
-                        android:layout_height="wrap_content">
-                    </Space>
+                        android:layout_height="wrap_content"></Space>
+
                     <Button
                         android:id="@+id/btn_submit"
                         android:layout_width="wrap_content"
@@ -175,6 +176,7 @@
                     </EditText>
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -210,27 +212,30 @@
 
                 </LinearLayout>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:orientation="horizontal">
+
                 <Button
+                    android:id="@+id/btnthemsp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/btnthemsp"
-                    android:text="Thêm"
-                    android:background="@drawable/botron_button2">
+                    android:background="@drawable/botron_button2"
+                    android:text="Thêm">
 
                 </Button>
+
                 <Button
-                    android:layout_marginLeft="70dp"
+                    android:id="@+id/btnHuysp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/btnHuysp"
-                    android:text="Hủy"
-                    android:background="@drawable/botron_button2">
+                    android:layout_marginLeft="70dp"
+                    android:background="@drawable/botron_button2"
+                    android:text="Hủy">
 
                 </Button>
             </LinearLayout>

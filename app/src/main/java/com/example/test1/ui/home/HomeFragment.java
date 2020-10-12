@@ -97,34 +97,8 @@ public class HomeFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getActivity(), ThemGiayActivity.class);
-                startActivity(intent);
-//                AlertDialog.Builder builder=new AlertDialog.Builder(getActivity());
-//                LayoutInflater inflater = getActivity().getLayoutInflater();
-//                View v = inflater.inflate(R.layout.dialof_them_giay, null);
-//                Ten = v.findViewById(R.id.tensp);
-//                Gia = v.findViewById(R.id.giasp);
-//                SoLuong = v.findViewById(R.id.soluongsp);
-//                builder.setView(v);
-//                builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialogInterface, int j) {
-//                        Toast.makeText(getActivity(), "Hủy", Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-//                builder.setPositiveButton("Thêm", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialogInterface, int i) {
-//                        Ten.getText().toString();
-//                        Gia.getText().toString();
-//                        SoLuong.getText().toString();
-//                        Toast.makeText(getActivity(), "Thêm thành công", Toast.LENGTH_SHORT).show();
-//                        databaseHelper.UpData("Insert into Sanpham Values(null,'"+Ten.getText().toString()+"','" + Gia.getText().toString() + "','" + SoLuong.getText().toString() + "')");
-//                        adapter.notifyDataSetChanged();
-//                        Toast.makeText(getActivity(), "OK! "+Ten.getText().toString(), Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-//                builder.create().show();
+                Toast.makeText(getActivity(), "abc", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getActivity(), ThemGiayActivity.class));
             }
         });
 
