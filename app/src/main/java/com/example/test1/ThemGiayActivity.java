@@ -22,7 +22,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 public class ThemGiayActivity extends AppCompatActivity {
-    public static DatabaseHelper databaseHelper;
+    private DatabaseHelper databaseHelper;
     private HomeViewModel homeViewModel;
     public static ArrayList<Giay> arrayDoVat;
     public static GiayAdapter adapter;
@@ -31,14 +31,10 @@ public class ThemGiayActivity extends AppCompatActivity {
     EditText etURL;
     Button btnClear, btnSubmit;
     ImageView ivResult;
-    Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_them_giay);
-        databaseHelper = new DatabaseHelper(ThemGiayActivity.this, "giaydep", null, 1);
-        databaseHelper.UpData("CREATE TABLE IF NOT EXISTS Sanpham(Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia VarChar(150), SoLuong VarChar(150))");
-
         btnClear=findViewById(R.id.btn_clear);
         btnSubmit=findViewById(R.id.btn_submit);
         etURL=findViewById(R.id.et_ulr);
@@ -75,10 +71,8 @@ public class ThemGiayActivity extends AppCompatActivity {
                 SoLuong.getText().toString();
                 Toast.makeText(ThemGiayActivity.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
                 databaseHelper.UpData("Insert into Sanpham Values(null,'"+Ten.getText().toString()+"','" + Gia.getText().toString() + "','" + SoLuong.getText().toString() + "')");
-//                adapter.notifyDataSetChanged();
+                adapter.notifyDataSetChanged();
                 Toast.makeText(ThemGiayActivity.this, "OK! "+Ten.getText().toString(), Toast.LENGTH_SHORT).show();
-                intent = new Intent(ThemGiayActivity.this, MainActivity.class);
-                startActivity(intent);
             }
         });
 //        btnhuy2.setOnClickListener(new View.OnClickListener() {
