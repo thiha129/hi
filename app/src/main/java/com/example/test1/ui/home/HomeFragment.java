@@ -30,7 +30,9 @@ import com.example.test1.DatabaseHelper;
 import com.example.test1.Giay;
 import com.example.test1.GiayAchapter;
 import com.example.test1.GiayAdapter;
+import com.example.test1.MainActivity;
 import com.example.test1.R;
+import com.example.test1.ThemGiayActivity;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -95,33 +97,34 @@ public class HomeFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-AlertDialog.Builder builder=new AlertDialog.Builder(getActivity());
-//                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                LayoutInflater inflater = getActivity().getLayoutInflater();
-                View v = inflater.inflate(R.layout.dialof_them_giay, null);
-                Ten = v.findViewById(R.id.tensp);
-                Gia = v.findViewById(R.id.giasp);
-                SoLuong = v.findViewById(R.id.soluongsp);
-                builder.setView(v);
-                builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int j) {
-                        Toast.makeText(getActivity(), "Hủy", Toast.LENGTH_SHORT).show();
-                    }
-                });
-                builder.setPositiveButton("Thêm", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Ten.getText().toString();
-                        Gia.getText().toString();
-                        SoLuong.getText().toString();
-                        Toast.makeText(getActivity(), "Thêm thành công", Toast.LENGTH_SHORT).show();
-                        databaseHelper.UpData("Insert into Sanpham Values(null,'"+Ten.getText().toString()+"','" + Gia.getText().toString() + "','" + SoLuong.getText().toString() + "')");
-                        adapter.notifyDataSetChanged();
-                        Toast.makeText(getActivity(), "OK! "+Ten.getText().toString(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-                builder.create().show();
+                Intent intent=new Intent(getActivity(), ThemGiayActivity.class);
+                startActivity(intent);
+//                AlertDialog.Builder builder=new AlertDialog.Builder(getActivity());
+//                LayoutInflater inflater = getActivity().getLayoutInflater();
+//                View v = inflater.inflate(R.layout.dialof_them_giay, null);
+//                Ten = v.findViewById(R.id.tensp);
+//                Gia = v.findViewById(R.id.giasp);
+//                SoLuong = v.findViewById(R.id.soluongsp);
+//                builder.setView(v);
+//                builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int j) {
+//                        Toast.makeText(getActivity(), "Hủy", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//                builder.setPositiveButton("Thêm", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//                        Ten.getText().toString();
+//                        Gia.getText().toString();
+//                        SoLuong.getText().toString();
+//                        Toast.makeText(getActivity(), "Thêm thành công", Toast.LENGTH_SHORT).show();
+//                        databaseHelper.UpData("Insert into Sanpham Values(null,'"+Ten.getText().toString()+"','" + Gia.getText().toString() + "','" + SoLuong.getText().toString() + "')");
+//                        adapter.notifyDataSetChanged();
+//                        Toast.makeText(getActivity(), "OK! "+Ten.getText().toString(), Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//                builder.create().show();
             }
         });
 
