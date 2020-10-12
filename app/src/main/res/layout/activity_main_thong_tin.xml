@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_info"
+    android:orientation="vertical"
+    tools:context=".MainActivityThongTin">
+
+    <ImageView
+        android:id="@+id/anhnguoidung"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/botron_button"
+        android:src="@drawable/icons8_admin_settings_male_100">
+
+    </ImageView>
+
+    <TextView
+        android:id="@+id/tennguoidung"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+
+        android:text="Admin"
+        android:textColor="#000000"
+        android:textSize="36sp"
+        android:textStyle="bold">
+
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="363dp"
+        android:layout_height="49dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/botron_button"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:text="Số điện thoại:"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:textStyle="bold">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:text="0911915743"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:textStyle="bold">
+
+        </TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+
+            android:layout_width="157dp"
+            android:layout_height="72dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/botron_button"
+            android:drawableTop="@drawable/ic_baseline_add_circle_24"
+            android:gravity="center"
+            android:text="Thêm Sản Phẩm"
+            android:textColor="#000000">
+
+        </Button>
+
+        <Button
+            android:layout_width="157dp"
+            android:layout_height="72dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/botron_button"
+            android:drawableTop="@drawable/ic_baseline_supervised_user_circle_24"
+            android:gravity="center"
+            android:text="Quản lý Tài Khoản"
+            android:textColor="#000000">
+
+        </Button>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+
+            android:layout_width="157dp"
+            android:layout_height="72dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/botron_button"
+            android:drawableTop="@drawable/ic_baseline_reorder_24"
+            android:gravity="center"
+            android:text="Quản lý hóa đơn"
+            android:textColor="#000000">
+
+        </Button>
+
+        <Button
+            android:layout_width="157dp"
+            android:layout_height="72dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/botron_button"
+            android:drawableTop="@drawable/ic_baseline_insert_chart_outlined_24"
+            android:gravity="center"
+            android:text="Thống kê"
+            android:textColor="#000000">
+
+        </Button>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnExit"
+            android:layout_width="157dp"
+            android:layout_height="72dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/botron_button"
+            android:drawableTop="@drawable/ic_baseline_exit_to_app_24"
+            android:gravity="center"
+            android:text="Thoát"
+            android:textColor="#000000">
+
+        </Button>
+
+    </LinearLayout>
+</LinearLayout>
