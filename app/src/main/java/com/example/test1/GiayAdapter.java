@@ -5,10 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -42,9 +39,7 @@ public class GiayAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(layout,null);
-        Context context= (Context) getItem(i);
-        ImageView image=view.findViewById(R.id.imageView);
-        Picasso.get().load("http://i.imgur.com/DvpvklR.png").into(image);
+
         Giay giay = giayList.get(i);
         TextView Gia = view.findViewById(R.id.tvGia);
         TextView Ten = view.findViewById(R.id.tvTen);

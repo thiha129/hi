@@ -2,8 +2,6 @@ package com.example.test1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -24,28 +22,19 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 public class ThemGiayActivity extends AppCompatActivity {
-
-
-    public static DatabaseHelper databaseHelper;
-
+    private DatabaseHelper databaseHelper;
+    private HomeViewModel homeViewModel;
     public static ArrayList<Giay> arrayDoVat;
     public static GiayAdapter adapter;
     Button btnthem2, btnhuy2;
-    EditText Ten, Gia,SoLuong, LinkAnh,Chitiet;
+    EditText Ten, Gia,SoLuong;
     EditText etURL;
     Button btnClear, btnSubmit;
     ImageView ivResult;
-
-    Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_them_giay);
-
-        databaseHelper = new DatabaseHelper(ThemGiayActivity.this, "giaydep", null, 1);
-        databaseHelper.UpData("CREATE TABLE IF NOT EXISTS Sanpham(Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia VarChar(150), SoLuong VarChar(150))");
-
-
         btnClear=findViewById(R.id.btn_clear);
         btnSubmit=findViewById(R.id.btn_submit);
         etURL=findViewById(R.id.et_ulr);
@@ -61,55 +50,29 @@ public class ThemGiayActivity extends AppCompatActivity {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    String urlLink=etURL.getText().toString();
-                    if (urlLink.isEmpty()){
-                        Toast.makeText(ThemGiayActivity.this, "Please enter url", Toast.LENGTH_SHORT).show();
-                    }else {
-                        LoadImage loadImages=new LoadImage(ivResult);
-                        loadImages.execute(urlLink);
-                    }
-
-
+                String urlLink=etURL.getText().toString();
+                if (urlLink.isEmpty()){
+                    Toast.makeText(ThemGiayActivity.this, "Please enter url", Toast.LENGTH_SHORT).show();
+                }else {
+                    LoadImage loadImages=new LoadImage(ivResult);
+                    loadImages.execute(urlLink);
+                }
             }
         });
         btnthem2=findViewById(R.id.btnthemsp);
         btnthem2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Ten = findViewById(R.id.tensp);
                 Gia = findViewById(R.id.giasp);
                 SoLuong =findViewById(R.id.soluongsp);
-                LinkAnh =findViewById(R.id.et_ulr);
-                Chitiet =findViewById(R.id.chitietsp);
                 Ten.getText().toString();
                 Gia.getText().toString();
                 SoLuong.getText().toString();
-                LinkAnh.getText().toString();
-                Chitiet.getText().toString();
-                final AlertDialog.Builder builder = new AlertDialog.Builder(ThemGiayActivity.this);
-                builder.setTitle("Thêm dữ liệu");
-                builder.setMessage("Bạn có thực sự muốn gửi không?");
-                builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(ThemGiayActivity.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
-                        databaseHelper.UpData("Insert into Sanpham1 Values(null,'"+Ten.getText().toString()+"','" + Gia.getText().toString() + "','" + SoLuong.getText().toString() + "', '"+LinkAnh.getText().toString()+"', '"+Chitiet.getText().toString()+"')");
-                        intent = new Intent(ThemGiayActivity.this, MainActivity.class);
-                        startActivity(intent);
-                    }
-
-                });
-                builder.setPositiveButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(ThemGiayActivity.this, "Hủy thành công", Toast.LENGTH_SHORT).show();
-
-                    }
-                });
-                builder.create().show();
-
-
+                Toast.makeText(ThemGiayActivity.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
+                databaseHelper.UpData("Insert into Sanpham Values(null,'"+Ten.getText().toString()+"','" + Gia.getText().toString() + "','" + SoLuong.getText().toString() + "')");
+                adapter.notifyDataSetChanged();
+                Toast.makeText(ThemGiayActivity.this, "OK! "+Ten.getText().toString(), Toast.LENGTH_SHORT).show();
             }
         });
 //        btnhuy2.setOnClickListener(new View.OnClickListener() {
