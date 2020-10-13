@@ -6,7 +6,13 @@
     android:background="#F3F9A7"
     android:orientation="vertical"
     tools:context=".ui.home.HomeFragment">
-
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageViewpicasso"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true">
+    </ImageView>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

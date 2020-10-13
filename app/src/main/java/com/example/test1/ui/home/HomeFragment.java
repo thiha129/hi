@@ -43,7 +43,7 @@ public class HomeFragment extends Fragment {
     EditText Ten, Gia, SoLuong;
     EditText etURL;
     Button btnClear, btnSubmit;
-    ImageView ivResult;
+    ImageView ivResult, giohang;
     View view;
     public static ArrayList<Giay> arrayDoVat;
     public static GiayAchapter adapter;
@@ -57,6 +57,15 @@ public class HomeFragment extends Fragment {
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         view = inflater.inflate(R.layout.fragment_home, container, false);
         View view2 = inflater.inflate(R.layout.dialof_them_giay, container, false);
+        View view3 = inflater.inflate(R.layout.list_item_abc, container, false);
+        giohang=view3.findViewById(R.id.imageView2);
+        giohang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getActivity(), "Oke nha", Toast.LENGTH_SHORT).show();
+            }
+        });
+        final String textLink = "^(http:\\/\\/www\\.|https:\\/\\/www\\.|http:\\/\\/|https:\\/\\/)?[a-z0-9]+([\\-\\.]{1}[a-z0-9]+)*\\.[a-z]{2,5}(:[0-9]{1,5})?(\\/.*)?$";
         btnClear = view2.findViewById(R.id.btn_clear);
         btnSubmit = view2.findViewById(R.id.btn_submit);
         etURL = view2.findViewById(R.id.et_ulr);
@@ -72,33 +81,30 @@ public class HomeFragment extends Fragment {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String urlLink = etURL.getText().toString();
-                if (urlLink.isEmpty()) {
-                    Toast.makeText(getActivity(), "Please enter url", Toast.LENGTH_SHORT).show();
-                } else {
-                    LoadImage loadImages = new LoadImage(ivResult);
-                    loadImages.execute(urlLink);
+                if (etURL.getText().toString().trim().matches(textLink)){
+                    String urlLink = etURL.getText().toString();
+                    if (urlLink.isEmpty()) {
+                        Toast.makeText(getActivity(), "Please enter url", Toast.LENGTH_SHORT).show();
+                    } else {
+                        LoadImage loadImages = new LoadImage(ivResult);
+                        loadImages.execute(urlLink);
+                    }
+                }else if (etURL.equals("")){
+                    etURL.setError("Không được để rỗng");
+                }else {
+                    etURL.setError("Sai địa chỉ liên kết vui lòng nhập lại !!!");
                 }
+
             }
         });
 
         gridView = view.findViewById(R.id.lv1);
-//        button = view.findViewById(R.id.btnthem);
-
-//        btnthem = dialog.findViewById(R.id.btnthem);
         databaseHelper = new DatabaseHelper(getActivity(), "giaydep", null, 1);
         databaseHelper.UpData("CREATE TABLE IF NOT EXISTS Sanpham1(Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia VarChar(150), SoLuong VarChar(150), LinkAnh VarChar(150),Chitiet VarChar(150))");
         arrayDoVat = new ArrayList<>();
         adapter = new GiayAchapter(getActivity(), R.layout.list_item_abc, arrayDoVat);
         abc02();
         abc03();
-//        button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Toast.makeText(getActivity(), "abc", Toast.LENGTH_SHORT).show();
-//                startActivity(new Intent(getActivity(), ThemGiayActivity.class));
-//            }
-//        });
         Xoa();
         return view;
 
@@ -151,41 +157,6 @@ public class HomeFragment extends Fragment {
         }
 
     }
-//    class ReadJSON extends AsyncTask<String ,Integer,String>{
-//
-//        @Override
-//        protected String doInBackground(String... strings) {
-//            StringBuilder content = new StringBuilder();
-//            return readURL(strings[0]);
-//        }
-//
-//        @Override
-//        protected void onPostExecute(String s) {
-//            try {
-//                JSONObject jsonObject=new JSONObject(s);
-////                JSONArray jsonArray=new jsonObject.getJSONArray("")
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//    }
-//    private static String readURL(String theURL){
-//        StringBuilder content = new StringBuilder();
-//        try {
-//            URL url=new URL(theURL);
-//            URLConnection urlConnection=url.openConnection();
-//            BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
-//            String line;
-//            while ((line=bufferedReader.readLine())!=null){
-//                content.append((line+"\n"));
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//
-//        return content.toString();
-//    }
-
-
     private class LoadImage extends AsyncTask<String, Void, Bitmap> {
         ImageView imageView;
 

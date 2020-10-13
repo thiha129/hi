@@ -7,6 +7,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -42,9 +44,11 @@ public class ThemGiayActivity extends AppCompatActivity {
         databaseHelper = new DatabaseHelper(ThemGiayActivity.this, "giaydep", null, 1);
         databaseHelper.UpData("CREATE TABLE IF NOT EXISTS Sanpham1(Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia VarChar(150), SoLuong VarChar(150), LinkAnh VarChar(150),Chitiet VarChar(150))");
         btnClear = findViewById(R.id.btn_clear);
+        btnhuy2 = findViewById(R.id.btnHuysp);
         btnSubmit = findViewById(R.id.btn_submit);
         etURL = findViewById(R.id.et_ulr);
         ivResult = findViewById(R.id.iv_result);
+        sua();
         btnClear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -82,44 +86,76 @@ public class ThemGiayActivity extends AppCompatActivity {
                 SoLuong.getText().toString();
                 LinkAnh.getText().toString();
                 Chitiet.getText().toString();
-                final AlertDialog.Builder builder = new AlertDialog.Builder(ThemGiayActivity.this);
-                builder.setTitle("Thêm dữ liệu");
-                builder.setMessage("Bạn có thực sự muốn gửi không?");
-                builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(ThemGiayActivity.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
-                        databaseHelper.UpData("Insert into Sanpham1 Values(null,'" + Ten.getText().toString() + "','" + Gia.getText().toString() + "','" + SoLuong.getText().toString() + "', '" + LinkAnh.getText().toString() + "', '" + Chitiet.getText().toString() + "')");
-                        Ten.setText("");
-                        Gia.setText("");
-                        SoLuong.setText("");
-                        LinkAnh.setText("");
-                        Chitiet.setText("");
+                if (Ten.equals("") && Gia.equals("")&&SoLuong.equals("") && LinkAnh.equals("")&&Chitiet.equals("")){
+                        Ten.setError("Không được để trống");
+                        Gia.setError("Không được để trống");
+                        SoLuong.setError("Không được để trống");
+                        LinkAnh.setError("Không được để trống");
+                        Chitiet.setError("Không được để trống");
+                }else if (Ten.equals("")){
+                    Ten.setError("Không được để trống");
+                }else if (Gia.equals("")){
+                    Gia.setError("Không được để trống");
+                }else if (SoLuong.equals("")){
+                    SoLuong.setError("Không được để trống");
+                }else if (LinkAnh.equals("")){
+                    LinkAnh.setError("Không được để trống");
+                }else if (Chitiet.equals("")){
+                    Chitiet.setError("Không được để trống");
+                }else if (Ten.length()>6 || Ten.length()<30){
+                    Ten.setError("Tên đăng nhập phải từ 6 đến 30 kí tự");
+                }else if (Gia.length()>1 || Gia.length()<5){
+                    Gia.setError("Tên đăng nhập phải từ 1 đến 5 số");
+                }else if (SoLuong.length()>0 || SoLuong.length()<3){
+                    SoLuong.setError("Tên đăng nhập phải từ 1 đến 2 số");
+                }else if (Chitiet.length()>0 || Chitiet.length()<150){
+                    Chitiet.setError("Tên đăng nhập phải từ 1 đến 2 số");
+                }else {
+                    final AlertDialog.Builder builder = new AlertDialog.Builder(ThemGiayActivity.this);
+                    builder.setTitle("Thêm dữ liệu");
+                    builder.setMessage("Bạn có thực sự muốn gửi không?");
+                    builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Toast.makeText(ThemGiayActivity.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
+                            databaseHelper.UpData("Insert into Sanpham1 Values(null,'" + Ten.getText().toString() + "','" + Gia.getText().toString() + "','" + SoLuong.getText().toString() + "', '" + LinkAnh.getText().toString() + "', '" + Chitiet.getText().toString() + "')");
+                            Ten.setText("");
+                            Gia.setText("");
+                            SoLuong.setText("");
+                            LinkAnh.setText("");
+                            Chitiet.setText("");
 //                        intent = new Intent(ThemGiayActivity.this, MainActivity.class);
 //                        startActivity(intent);
-                    }
+                        }
 
-                });
-                builder.setPositiveButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(ThemGiayActivity.this, "Hủy thành công", Toast.LENGTH_SHORT).show();
+                    });
+                    builder.setPositiveButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Toast.makeText(ThemGiayActivity.this, "Hủy thành công", Toast.LENGTH_SHORT).show();
 
-                    }
-                });
-                builder.create().show();
+                        }
+                    });
+                    builder.create().show();
+                }
+
 
 
             }
         });
-//        btnhuy2.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent=new Intent(ThemGiayActivity.this, MainActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+        btnhuy2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent = new Intent(ThemGiayActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
+
+    private void sua() {
+
+    }
+
 
     private class LoadImage extends AsyncTask<String, Void, Bitmap> {
         ImageView imageView;
