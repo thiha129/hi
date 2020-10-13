@@ -70,10 +70,10 @@ public class MainActivityDangNhap extends AppCompatActivity {
         boolean abc = mysharedPreferences.getBoolean("checked", false);
         String islogin = mysharedPreferences.getString("username", "");
 //        ----------------------------------------------------------------------------------------
-//        if (islogin != "") {
-//            Intent i = new Intent(MainActivityDangNhap.this, MainActivityThongTin.class);
-//            startActivity(i);
-//        }
+        if (islogin != "") {
+            Intent i = new Intent(MainActivityDangNhap.this, MainActivityThongTin.class);
+            startActivity(i);
+        }
         //        ----------------------------------------------------------------------------------------
 
 //        if (abc == true) {
