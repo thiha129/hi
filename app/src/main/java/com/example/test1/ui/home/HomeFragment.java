@@ -123,7 +123,6 @@ public class HomeFragment extends Fragment {
 
     }
 
-
     private void DialogThem() {
         final Dialog dialog = new Dialog(getActivity());
         dialog.setContentView(R.layout.dialof_them_giay);
@@ -131,7 +130,6 @@ public class HomeFragment extends Fragment {
 
 
     }
-
 
 
     private class LoadImage extends AsyncTask<String,Void, Bitmap> {
