@@ -5,13 +5,31 @@ public class Giay  {
     private String TenGiay;
     private String Gia;
     private String Soluong;
-
-
-    public Giay(int id, String giay, String s, String tenGiay, String gia, String soluong) {
+    private String LinkAnh;
+    private String Chitiet;
+    public Giay(int id, String tenGiay, String gia, String soluong,String linkAnh, String chitiet ) {
         Id = id;
         TenGiay = tenGiay;
         Gia = gia;
         Soluong = soluong;
+        LinkAnh = linkAnh;
+        Chitiet = chitiet;
+    }
+
+    public String getLinkAnh() {
+        return LinkAnh;
+    }
+
+    public void setLinkAnh(String linkAnh) {
+        LinkAnh = linkAnh;
+    }
+
+    public String getChitiet() {
+        return Chitiet;
+    }
+
+    public void setChitiet(String chitiet) {
+        Chitiet = chitiet;
     }
 
     public int getId() {

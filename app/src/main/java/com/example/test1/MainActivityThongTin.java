@@ -17,7 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivityThongTin extends AppCompatActivity {
     SharedPreferences mysharedPreferences;
-    Button btn, Exit;
+    Button btn, Exit,them;
     Intent intent;
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -31,14 +31,23 @@ public class MainActivityThongTin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_thong_tin);
-//         btn = findViewById(R.id.btndoimatkhau);
-//         btn.setOnClickListener(new View.OnClickListener() {
-//             @Override
-//             public void onClick(View view) {
-//                 intent = new Intent(MainActivityThongTin.this, MainActivityDoiMatKhau.class);
-//                 startActivity(intent);
-//             }
-//         });
+         btn = findViewById(R.id.btnDoiMatkhau);
+        them = findViewById(R.id.btnThem);
+        them.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent = new Intent(MainActivityThongTin.this, ThemGiayActivity.class);
+                startActivity(intent);
+            }
+        });
+         btn.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+                 intent = new Intent(MainActivityThongTin.this, MainActivityDoiMatKhau.class);
+                 startActivity(intent);
+             }
+         });
+
         Exit = findViewById(R.id.btnExit);
 //        SharedPreferences.Editor myeditor = mysharedPreferences.edit();
 //        myeditor.remove("username");

@@ -30,7 +30,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="297dp"
                 android:layout_gravity="center"
-                android:background="@drawable/giay"
                 android:contentDescription="anhsp" />
 
             <LinearLayout
@@ -100,7 +99,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginRight="5dp"
-                        android:src="@drawable/ic_menu_camera"/>
+                        android:src="@drawable/icons8_favorite_cart_20"/>
 
 
                 </LinearLayout>
