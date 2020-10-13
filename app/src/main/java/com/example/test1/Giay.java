@@ -7,7 +7,7 @@ public class Giay  {
     private String Soluong;
 
 
-    public Giay(int id, String tenGiay, String gia, String soluong ) {
+    public Giay(int id, String giay, String s, String tenGiay, String gia, String soluong) {
         Id = id;
         TenGiay = tenGiay;
         Gia = gia;
