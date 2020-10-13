@@ -123,9 +123,7 @@ public class HomeFragment extends Fragment {
 
     }
 
-<<<<<<< HEAD
 
-=======
     private void DialogThem() {
         final Dialog dialog = new Dialog(getActivity());
         dialog.setContentView(R.layout.dialof_them_giay);
@@ -133,7 +131,7 @@ public class HomeFragment extends Fragment {
 
 
     }
->>>>>>> parent of c23e173... abc
+
 
 
     private class LoadImage extends AsyncTask<String,Void, Bitmap> {
