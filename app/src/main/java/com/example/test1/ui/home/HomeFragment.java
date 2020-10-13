@@ -101,10 +101,10 @@ public class HomeFragment extends Fragment {
 //        });
         Xoa();
         return view;
-        
 
     }
-    private void abc03(){
+
+    private void abc03() {
         recyclerView = view.findViewById(R.id.recyclerview);
         Integer[] langLogo = {
                 R.drawable.adidas,
@@ -131,6 +131,7 @@ public class HomeFragment extends Fragment {
         mainAdapter = new MainAdapter(getActivity(), mainModels);
         recyclerView.setAdapter(mainAdapter);
     }
+
     private void abc02() {
         adapter = new GiayAchapter(getActivity(), R.layout.list_item_abc, arrayDoVat);
         Cursor cursor = databaseHelper.GetData("SELECT * FROM Sanpham1");

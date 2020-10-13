@@ -90,8 +90,13 @@ public class ThemGiayActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         Toast.makeText(ThemGiayActivity.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
                         databaseHelper.UpData("Insert into Sanpham1 Values(null,'" + Ten.getText().toString() + "','" + Gia.getText().toString() + "','" + SoLuong.getText().toString() + "', '" + LinkAnh.getText().toString() + "', '" + Chitiet.getText().toString() + "')");
-                        intent = new Intent(ThemGiayActivity.this, MainActivity.class);
-                        startActivity(intent);
+                        Ten.setText("");
+                        Gia.setText("");
+                        SoLuong.setText("");
+                        LinkAnh.setText("");
+                        Chitiet.setText("");
+//                        intent = new Intent(ThemGiayActivity.this, MainActivity.class);
+//                        startActivity(intent);
                     }
 
                 });
