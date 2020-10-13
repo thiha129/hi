@@ -25,7 +25,7 @@ public class ThemGiayActivity extends AppCompatActivity {
     public static DatabaseHelper databaseHelper;
 
     public static ArrayList<Giay> arrayDoVat;
-    public static GiayAdapter adapter;
+    public static GiayAchapter adapter;
     Button btnthem2, btnhuy2;
     EditText Ten, Gia, SoLuong, LinkAnh, Chitiet;
     EditText etURL;
@@ -40,7 +40,7 @@ public class ThemGiayActivity extends AppCompatActivity {
         setContentView(R.layout.activity_them_giay);
 
         databaseHelper = new DatabaseHelper(ThemGiayActivity.this, "giaydep", null, 1);
-        databaseHelper.UpData("CREATE TABLE IF NOT EXISTS Sanpham(Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia VarChar(150), SoLuong VarChar(150))");
+        databaseHelper.UpData("CREATE TABLE IF NOT EXISTS Sanpham1(Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia VarChar(150), SoLuong VarChar(150), LinkAnh VarChar(150),Chitiet VarChar(150))");
         btnClear = findViewById(R.id.btn_clear);
         btnSubmit = findViewById(R.id.btn_submit);
         etURL = findViewById(R.id.et_ulr);

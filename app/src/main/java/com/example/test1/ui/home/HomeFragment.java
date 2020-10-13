@@ -1,9 +1,7 @@
 package com.example.test1.ui.home;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -28,12 +26,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.test1.DatabaseHelper;
 import com.example.test1.Giay;
-import com.example.test1.GiayAdapter;
-import com.example.test1.MainActivity;
+import com.example.test1.GiayAchapter;
 import com.example.test1.MainAdapter;
 import com.example.test1.MainModel;
 import com.example.test1.R;
-import com.example.test1.ThemGiayActivity;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -50,7 +46,7 @@ public class HomeFragment extends Fragment {
     ImageView ivResult;
     View view;
     public static ArrayList<Giay> arrayDoVat;
-    public static GiayAdapter adapter;
+    public static GiayAchapter adapter;
     RecyclerView recyclerView;
     ArrayList<MainModel> mainModels;
     MainAdapter mainAdapter;
@@ -88,13 +84,12 @@ public class HomeFragment extends Fragment {
 
         gridView = view.findViewById(R.id.lv1);
 //        button = view.findViewById(R.id.btnthem);
-        arrayDoVat = new ArrayList<>();
-        adapter = new GiayAdapter(getActivity(), R.layout.list_item_abc, arrayDoVat);
-        final Dialog dialog = new Dialog(getActivity());
+
 //        btnthem = dialog.findViewById(R.id.btnthem);
         databaseHelper = new DatabaseHelper(getActivity(), "giaydep", null, 1);
         databaseHelper.UpData("CREATE TABLE IF NOT EXISTS Sanpham1(Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia VarChar(150), SoLuong VarChar(150), LinkAnh VarChar(150),Chitiet VarChar(150))");
-
+        arrayDoVat = new ArrayList<>();
+        adapter = new GiayAchapter(getActivity(), R.layout.list_item_abc, arrayDoVat);
         abc02();
         abc03();
 //        button.setOnClickListener(new View.OnClickListener() {
@@ -137,7 +132,7 @@ public class HomeFragment extends Fragment {
         recyclerView.setAdapter(mainAdapter);
     }
     private void abc02() {
-        adapter = new GiayAdapter(getActivity(), R.layout.list_item_abc, arrayDoVat);
+        adapter = new GiayAchapter(getActivity(), R.layout.list_item_abc, arrayDoVat);
         Cursor cursor = databaseHelper.GetData("SELECT * FROM Sanpham1");
         if (cursor != null) {
             while (cursor.moveToNext()) {

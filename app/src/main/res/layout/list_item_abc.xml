@@ -30,7 +30,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="297dp"
                 android:layout_gravity="center"
-                android:contentDescription="anhsp" />
+                android:contentDescription="anhsp"
+                android:scaleType="fitCenter"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
