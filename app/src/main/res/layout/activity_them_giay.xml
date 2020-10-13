@@ -61,22 +61,13 @@
 
                 </LinearLayout>
 
-                <LinearLayout
+                <ImageView
+                    android:id="@+id/iv_result"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/botron_button"
-                    android:orientation="vertical">
-                    <ImageView
-                        android:layout_marginTop="20dp"
+                    android:layout_height="188dp"
+                    android:background="@drawable/bg_round">
 
-                        android:id="@+id/iv_result"
-                        android:layout_width="match_parent"
-                        android:layout_height="188dp"
-                        android:scaleType="fitCenter"
-                        android:background="@drawable/bg_round">
-
-                    </ImageView>
-                </LinearLayout>
+                </ImageView>
             </LinearLayout>
 
             <LinearLayout
@@ -220,7 +211,6 @@
                     </EditText>
 
                 </LinearLayout>
-
             </LinearLayout>
 
             <LinearLayout
