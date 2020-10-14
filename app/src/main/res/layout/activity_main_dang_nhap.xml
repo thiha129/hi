@@ -40,14 +40,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
+            android:textColorHint="#fff"
             android:layout_marginRight="50dp"
-            android:background="@drawable/border_2">
+            android:background="@drawable/gradient_login2">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtemail"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="61dp"
+                android:textColorHint="#fff"
+                android:textColor="#fff"
+                android:background="@drawable/gradient_login2"
                 android:hint="Nhập tên đăng nhập"
+                android:padding="20sp"
                 android:shadowRadius="300">
 
             </com.google.android.material.textfield.TextInputEditText>
@@ -61,8 +66,11 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
             android:layout_marginTop="20sp"
+            android:textColor="#fff"
+            android:textColorHint="#fff"
             android:layout_marginRight="50dp"
-            android:background="@drawable/border_2"
+            android:background="@drawable/gradient_login2"
+
             app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -70,6 +78,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nhập mật khẩu"
+                android:textColor="#fff"
+                android:textColorHint="#fff"
+                android:padding="20sp"
+                android:background="@drawable/gradient_login2"
                 android:inputType="textPassword"
                 android:shadowRadius="300">
 
@@ -81,6 +93,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
             <CheckBox
@@ -88,6 +101,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textStyle="bold"
+                android:textColor="@color/colordangnhap"
                 android:text="Nhớ mật khẩu">
 
             </CheckBox>
@@ -96,18 +111,42 @@
                  android:id="@+id/dangky"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="#FF699B"
+                android:layout_marginRight="10dp"
                 android:text="Đăng ký">
 
             </TextView>
         </LinearLayout>
-
-        <Button
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Đăng nhập"
-            android:id="@+id/btnlogin">
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
 
-        </Button>
+            <Button
+                android:id="@+id/btnthoat1"
+                android:layout_width="122dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/gradient_login2"
+                android:text="Thoát"
+                android:textColor="#fff">
+
+            </Button>
+            <Button
+                android:layout_marginLeft="70dp"
+                android:id="@+id/btnlogin"
+                android:layout_width="122dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/gradient_login2"
+                android:text="Đăng nhập"
+                android:textColor="#fff"
+                >
+
+            </Button>
+        </LinearLayout>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

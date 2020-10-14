@@ -4,58 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/dep"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".MainActivityDoiMatKhau">
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         android:gravity="center"
+        android:orientation="vertical"
         tools:ignore="MissingConstraints"
         >
 
-        <GridLayout
-            android:layout_width="167dp"
+        <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/flow">
+
+
+    </ImageView>
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:columnCount="1"
-            android:rowCount="1">
+            android:layout_gravity="center"
+            android:fontFamily="@font/haha"
+            android:text="beyourself"
+            android:textColor="#000"
+            android:textSize="30sp"
+            android:textStyle="bold">
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:layout_gravity="fill"
-                android:layout_margin="8dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="8dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|center_horizontal"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="97dp"
-                        android:layout_height="98dp"
-                        android:src="@drawable/icons8_home_60" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="ĐỔI MẬT KHẨU"
-                        android:textAlignment="center"
-
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:gravity="center_horizontal" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-        </GridLayout>
+        </TextView>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -71,7 +51,9 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
-
+            android:textColorHint="#fff"
+            android:textColor="#fff"
+            android:background="@drawable/gradient_login2"
             app:hintEnabled="true"
             app:passwordToggleEnabled="true"
             app:startIconDrawable="@drawable/ic_baseline_vpn_key_24">
@@ -81,8 +63,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginBottom="7dp"
-               
-                android:hint="Mật khẩu"
+                android:textColorHint="#fff"
+                android:textColor="#fff"
+                android:background="@drawable/gradient_login2"
+                android:hint="Mật khẩu cũ"
                 android:inputType="textPassword"
 
                 android:textStyle="bold">
@@ -94,7 +78,9 @@
 
             android:layout_width="match_parent"
             android:layout_height="70dp"
-
+            android:textColorHint="#fff"
+            android:textColor="#fff"
+            android:background="@drawable/gradient_login2"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
@@ -107,9 +93,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginBottom="7dp"
-                android:hint="Mật khẩu"
+                android:hint="Mật khẩu mới"
                 android:inputType="textPassword"
-
+                android:textColorHint="#fff"
+                android:textColor="#fff"
+                android:background="@drawable/gradient_login2"
                 android:textStyle="bold">
 
             </com.google.android.material.textfield.TextInputEditText>
@@ -119,7 +107,9 @@
 
             android:layout_width="match_parent"
             android:layout_height="70dp"
-
+            android:textColorHint="#fff"
+            android:textColor="#fff"
+            android:background="@drawable/gradient_login2"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
@@ -132,6 +122,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginBottom="7dp"
+                android:textColorHint="#fff"
+                android:textColor="#fff"
+                android:background="@drawable/gradient_login2"
                 android:hint="Nhập lại mật khẩu"
                 android:inputType="textPassword"
                 android:textStyle="bold">
@@ -150,7 +143,8 @@
                 android:layout_width="142dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@drawable/botronbuttondoimatkhau"
+                android:textColor="#fff"
+                android:background="@drawable/gradient_login2"
                 android:gravity="center"
                 android:text="Đổi mật khẩu">
 
@@ -162,8 +156,11 @@
                 android:text="Hủy"
                 android:layout_marginLeft="60dp"
                 android:gravity="center"
+                android:textColor="#fff"
+                android:textStyle="bold"
+
                 android:layout_gravity="center"
-                android:background="@drawable/botronbuttondoimatkhau">
+                android:background="@drawable/gradient_login2">
 
             </Button>
         </LinearLayout>
