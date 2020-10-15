@@ -24,7 +24,8 @@
                     android:id="@+id/et_ulr"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/botron_button2"
+                    android:textColorHint="#fff"
+                    android:background="@drawable/botron_button4"
                     android:hint="Enter URL..."
                     android:textColor="#fff">
 
@@ -40,8 +41,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/botron_button2"
-                        android:text="Clear">
+
+                        android:background="@drawable/botron_button4"
+                        android:text="Clear"
+                        android:textColor="#fff">
 
                     </Button>
 
@@ -54,8 +57,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/botron_button2"
-                        android:text="Submit">
+                        android:background="@drawable/botron_button4"
+                        android:text="Submit"
+                        android:textColor="#fff">
 
                     </Button>
 
@@ -101,7 +105,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/botron_button2"
+                        android:background="@drawable/botron_button4"
                         android:ems="4"
                         android:inputType="number"
                         android:textColor="#fff">
@@ -135,7 +139,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/botron_button2"
+                        android:background="@drawable/botron_button4"
                         android:textColor="#fff">
 
                     </EditText>
@@ -167,7 +171,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/botron_button2"
+                        android:background="@drawable/botron_button4"
                         android:ems="2"
                         android:inputType="number"
                         android:textColor="#fff"
@@ -202,7 +206,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/botron_button2"
+                        android:background="@drawable/botron_button4"
                         android:textColor="#fff"
                         android:textSize="20sp">
 
@@ -222,7 +226,8 @@
                     android:id="@+id/btnthemsp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/botron_button2"
+                    android:background="@drawable/botron_button4"
+                    android:textColor="#fff"
                     android:text="Thêm">
 
                 </Button>
@@ -232,7 +237,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="70dp"
-                    android:background="@drawable/botron_button2"
+                    android:textColor="#fff"
+                    android:background="@drawable/botron_button4"
                     android:text="Hủy">
 
                 </Button>

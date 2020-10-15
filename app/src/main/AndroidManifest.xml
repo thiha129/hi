@@ -11,11 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ThemGiayActivity"></activity>
-        <activity android:name=".MainActivityDoiMatKhau"></activity>
+        <activity android:name=".QuanlytaikhoanActivity"></activity>
+        <activity android:name=".ThemGiayActivity" />
+        <activity android:name=".MainActivityDoiMatKhau" />
         <activity
             android:name=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".MainActivityDangNhap" />
         <activity android:name=".MainActivityDangKy" />
         <activity android:name=".MainActivityThongTin" />
