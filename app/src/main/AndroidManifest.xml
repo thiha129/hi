@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".QuanlytaikhoanActivity"></activity>
+        <activity android:name=".MainActivityQuanLyTaiKhoan"></activity>
+        <activity android:name=".QuanlytaikhoanActivity" />
         <activity android:name=".ThemGiayActivity" />
         <activity android:name=".MainActivityDoiMatKhau" />
         <activity

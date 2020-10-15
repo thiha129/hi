@@ -17,15 +17,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class MainActivityDangKy extends AppCompatActivity {
     public static DatabaseLogin databaseLogin;
-    TextView txtDangNhap;
+    TextView txtDangNhap,txtNgay;
     Button btnRegister;
     Intent intent;
     EditText edthoten;
     EditText edtSDT;
     EditText edtusername;
-    EditText edtpassword_1;
+    EditText edtpassword;
     EditText edtcnfpassword;
     TextInputLayout layoutPass_1, layoutPass_2;
 
@@ -52,9 +55,14 @@ public class MainActivityDangKy extends AppCompatActivity {
         setContentView(R.layout.activity_main_dang_ky);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         databaseLogin = new DatabaseLogin(this, "mail.sqlite", null, 1);
-        databaseLogin.UpData("CREATE TABLE IF NOT EXISTS TaiKhoan (Id INTEGER PRIMARY KEY AUTOINCREMENT, Ten VARCHAR(200), Pass VARCHAR(200),SoDienThoai VARCHAR(11))");
+        MainActivityDangKy.databaseLogin.UpData("CREATE TABLE IF NOT EXISTS TaiKhoan2 (Id INTEGER PRIMARY KEY AUTOINCREMENT, Ten VARCHAR(200), Pass VARCHAR(200), Hovaten VARCHAR(200), SoDienThoai VARCHAR(11),Ngay VARCHAR(20))");
         AnhXa();
         batloi();
+        txtNgay = findViewById(R.id.txtDate);
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        final String NgayGui = simpleDateFormat.format(date);
+        txtNgay.setText(NgayGui);
         txtDangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,21 +74,22 @@ public class MainActivityDangKy extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String user = edtusername.getText().toString().trim();
-                String pwd = edtpassword_1.getText().toString().trim();
+                String pwd = edtpassword.getText().toString().trim();
                 String cnf_pwd = edtcnfpassword.getText().toString().trim();
-
+                String hovaten = edthoten.getText().toString().trim();
                 String sodienthoai = edtSDT.getText().toString().trim();
+                String Ngay = txtNgay.getText().toString().trim();
                 if (pwd.equals(cnf_pwd)) {
-                    Boolean res = MainActivityDangKy.databaseLogin.checkUser(user);
+                    Boolean res = MainActivityDangNhap.databaseLogin.checkUser(user);
                     if (res == true) {
                         Toast.makeText(MainActivityDangKy.this, "Tài khoản này đã có!", Toast.LENGTH_SHORT).show();
                     } else {
-                        long val = MainActivityDangKy.databaseLogin.addUser(user, pwd, sodienthoai);
-                        if (val > 0 && edtusername.length() != 0 && edtpassword_1.length() != 0 && edtcnfpassword.length() != 0 && edtSDT.length() != 0) {
+                        long val = MainActivityDangNhap.databaseLogin.addUser(user, pwd, hovaten, sodienthoai,Ngay);
+                        if (val > 0) {
                             Toast.makeText(MainActivityDangKy.this, "Đăng kí thành công!", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(MainActivityDangKy.this, MainActivityDangNhap.class);
+                            Intent intent = new Intent(MainActivityDangKy.this, MainActivity.class);
                             startActivity(intent);
-//                            Animatoo.animateSpin(dangki.this);
+//                            Animato.animateSpin(MainActivityDangKy.this);
 
                         } else {
                             Toast.makeText(MainActivityDangKy.this, "Đăng kí thất bại!", Toast.LENGTH_SHORT).show();
@@ -89,6 +98,7 @@ public class MainActivityDangKy extends AppCompatActivity {
                 } else {
                     Toast.makeText(MainActivityDangKy.this, "Nhập lại mật khẩu phải giống nhau!", Toast.LENGTH_SHORT).show();
                 }
+
             }
         });
     }
@@ -121,7 +131,7 @@ public class MainActivityDangKy extends AppCompatActivity {
 
             }
         });
-        edtusername.addTextChangedListener(new TextWatcher() {
+        edthoten.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -130,13 +140,13 @@ public class MainActivityDangKy extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if (charSequence.length() == 0) {
-                    edtusername.setError("Không được để trống");
+                    edthoten.setError("Không được để trống");
                 } else {
                     if (charSequence.length() < 8 || charSequence.length() > 30) {
-                        edtusername.setError("họ và tên từ 8 đến 30 kí tự");
+                        edthoten.setError("họ và tên từ 8 đến 30 kí tự");
                         Ktra2 = false;
                     } else {
-                        edtusername.setError(null);
+                        edthoten.setError(null);
                         Ktra2 = true;
                     }
 
@@ -149,7 +159,8 @@ public class MainActivityDangKy extends AppCompatActivity {
             }
         });
 
-        edtpassword_1.addTextChangedListener(new TextWatcher() {
+        final String checkMail = "[a-zA-Z0-9.]+@[a-z]+\\.+[a-z]+";
+        edtusername.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -158,14 +169,15 @@ public class MainActivityDangKy extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if (charSequence.length() == 0) {
-                    layoutPass_1.setError("Không được để trống");
+                    edtusername.setError("Không được để trống");
                 } else {
-                    if (charSequence.length() < 8 || charSequence.length() > 30) {
-                        layoutPass_1.setError("Password từ 8 đến 30 kí tự");
-                        Ktra4 = false;
+                    if (charSequence.toString().matches(checkMail)) {
+
+                        edtusername.setError(null);
+                        Ktra3 = true;
                     } else {
-                        layoutPass_1.setError(null);
-                        Ktra4 = true;
+                        edtusername.setError("Bạn phải nhập đúng cấu trúc email");
+                        Ktra3 = false;
                     }
 
                 }
@@ -176,41 +188,43 @@ public class MainActivityDangKy extends AppCompatActivity {
 
             }
         });
-        edtcnfpassword.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (charSequence.length() == 0) {
-                    layoutPass_2.setError("Không được để trống");
-                } else {
-                    if (charSequence.equals(edtpassword_1)) {
-                        layoutPass_2.setError("Nhập lại mật khẩu phải giống nhau!");
-                        Ktra4 = false;
-                    } else {
-                        layoutPass_2.setError(null);
-                        Ktra4 = true;
-                    }
-
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
+//        edtpassword.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//                if (charSequence.length() == 0) {
+//                    layoutPass_1.setError("Không được để trống");
+//                } else {
+//                    if (charSequence.length() < 8 || charSequence.length() > 30) {
+//                        layoutPass_1.setError("Password từ 8 đến 30 kí tự");
+//                        Ktra4 = false;
+//                    } else {
+//                        edtpassword.setError(null);
+//                        Ktra4 = true;
+//                    }
+//
+//                }
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable editable) {
+//                                      nghe t nói gì k
+        //mic m bị gi r
+//            }
+//        });
     }
 
     private void AnhXa() {
+        edtcnfpassword =findViewById(R.id.edtpass2);
         txtDangNhap = findViewById(R.id.login);
         edtSDT = findViewById(R.id.edtSDT);
-        edtusername = findViewById(R.id.edthvt);
-        edtpassword_1 = findViewById(R.id.edtPass_1);
-        edtcnfpassword = findViewById(R.id.edtpass2);
+        edthoten = findViewById(R.id.edthvt);
+        edtusername = findViewById(R.id.edtmail);
+        edtpassword = findViewById(R.id.edtPass_1);
         btnRegister = findViewById(R.id.btndangki);
         layoutPass_1 = findViewById(R.id.WrapPass_1);
         layoutPass_2 = findViewById(R.id.WrapPass_2);

@@ -66,10 +66,10 @@
                 </LinearLayout>
 
                 <ImageView
-                    android:layout_marginTop="20dp"
                     android:id="@+id/iv_result"
                     android:layout_width="match_parent"
                     android:layout_height="188dp"
+                    android:layout_marginTop="20dp"
                     android:background="@drawable/botron_button">
 
                 </ImageView>
@@ -202,6 +202,7 @@
                     </TextView>
 
                     <EditText
+                        android:inputType="text"
                         android:id="@+id/chitietsp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

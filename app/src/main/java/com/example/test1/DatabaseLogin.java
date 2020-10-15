@@ -28,13 +28,15 @@ public class DatabaseLogin extends SQLiteOpenHelper {
         database.execSQL(sql);
     }
 
-    public long addUser(String user, String password, String Sodienthoai) {
+    public long addUser(String user, String password, String hoten, String Sodienthoai,String Ngay) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("Ten", user);
         contentValues.put("Pass", password);
+        contentValues.put("Hovaten", hoten);
         contentValues.put("SoDienThoai", Sodienthoai);
-        long res = db.insert("TaiKhoan", null, contentValues);
+        contentValues.put("Ngay",Ngay);
+        long res = db.insert("TaiKhoan2", null, contentValues);
         db.close();
         return res;
     }
