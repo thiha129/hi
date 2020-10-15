@@ -34,8 +34,8 @@
     </TextView>
 
     <LinearLayout
-        android:layout_width="363dp"
-        android:layout_height="49dp"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:background="@drawable/botron_button"
@@ -68,9 +68,10 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal">
 
         <Button
@@ -78,7 +79,7 @@
             android:layout_width="157dp"
             android:layout_height="72dp"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
+
             android:background="@drawable/botron_button"
             android:drawableTop="@drawable/ic_baseline_add_circle_24"
             android:gravity="center"
@@ -92,7 +93,7 @@
             android:layout_height="72dp"
             android:layout_gravity="center"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="10dp"
+
             android:background="@drawable/botron_button"
             android:drawableTop="@drawable/ic_baseline_supervised_user_circle_24"
             android:gravity="center"
@@ -104,9 +105,10 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal">
 
         <Button
@@ -114,7 +116,7 @@
             android:layout_width="157dp"
             android:layout_height="72dp"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
+
             android:background="@drawable/botron_button"
             android:drawableTop="@drawable/ic_baseline_reorder_24"
             android:gravity="center"
@@ -128,7 +130,6 @@
             android:layout_height="72dp"
             android:layout_gravity="center"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="10dp"
             android:background="@drawable/botron_button"
             android:drawableTop="@drawable/ic_baseline_insert_chart_outlined_24"
             android:gravity="center"
@@ -140,9 +141,10 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal">
 
         <Button
@@ -150,7 +152,6 @@
             android:layout_width="157dp"
             android:layout_height="72dp"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
             android:background="@drawable/botron_button"
             android:drawableTop="@drawable/ic_baseline_fingerprint_24"
             android:gravity="center"
@@ -165,7 +166,6 @@
             android:layout_height="72dp"
             android:layout_gravity="center"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="10dp"
             android:background="@drawable/botron_button"
             android:drawableTop="@drawable/ic_baseline_exit_to_app_24"
             android:gravity="center"
