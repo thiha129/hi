@@ -34,24 +34,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:padding="10dp"
-                        android:layout_weight="1"
-                        android:text="Id:"
-                        android:textStyle="bold">
-                    </TextView>
-                    <TextView
-                        android:id="@+id/tvid"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:padding="10dp"
-                        android:layout_weight="1"
-                        android:textStyle="bold">
-                    </TextView>
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -83,7 +66,7 @@
                         android:layout_marginTop="5dp"
                         android:padding="10dp"
                         android:layout_weight="2"
-                        android:text="Họ Và Tên"
+                        android:text="Tên đăng nhập:"
                         android:textStyle="bold">
 
                     </TextView>
@@ -163,7 +146,7 @@
                         android:layout_weight="2"
                         android:layout_marginTop="5dp"
                         android:padding="10dp"
-                        android:text="Tên đăng nhập:"
+                        android:text="Họ Và Tên"
                         android:textStyle="bold"></TextView>
                     <TextView
                         android:id="@+id/tvtendangnhap"

@@ -31,6 +31,8 @@ public class MainActivityDangKy extends AppCompatActivity {
     EditText edtpassword;
     EditText edtcnfpassword;
     TextInputLayout layoutPass_1, layoutPass_2;
+    private int Tongtaikhoang;
+    private int tong=Tongtaikhoang;
 
     boolean Ktra1 = false, Ktra2 = false, Ktra3 = false, Ktra4 = false;
 

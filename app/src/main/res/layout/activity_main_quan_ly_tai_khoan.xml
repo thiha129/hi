@@ -5,7 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivityQuanLyTaiKhoan">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Số tài khoản hiện đã đăng kí:">
 
+    </TextView>
+    <TextView
+        android:id="@+id/tongtk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+>
+
+    </TextView>
+</LinearLayout>
     <ListView
         android:id="@+id/listnguoidung"
         android:layout_width="match_parent"
