@@ -87,7 +87,7 @@ public class MainActivityDangKy extends AppCompatActivity {
                         long val = MainActivityDangNhap.databaseLogin.addUser(user, pwd, hovaten, sodienthoai,Ngay);
                         if (val > 0) {
                             Toast.makeText(MainActivityDangKy.this, "Đăng kí thành công!", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(MainActivityDangKy.this, MainActivity.class);
+                            Intent intent = new Intent(MainActivityDangKy.this, MainActivityDangNhap.class);
                             startActivity(intent);
 //                            Animato.animateSpin(MainActivityDangKy.this);
 

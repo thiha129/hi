@@ -7,14 +7,15 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.IOException;
@@ -35,11 +36,25 @@ public class ThemGiayActivity extends AppCompatActivity {
     ImageView ivResult;
 
     Intent intent;
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_them_giay);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         databaseHelper = new DatabaseHelper(ThemGiayActivity.this, "giaydep", null, 1);
         databaseHelper.UpData("CREATE TABLE IF NOT EXISTS Sanpham1(Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia VarChar(150), SoLuong VarChar(150), LinkAnh VarChar(150),Chitiet VarChar(150))");
@@ -86,31 +101,31 @@ public class ThemGiayActivity extends AppCompatActivity {
                 SoLuong.getText().toString();
                 LinkAnh.getText().toString();
                 Chitiet.getText().toString();
-                if (Ten.equals("") && Gia.equals("")&&SoLuong.equals("") && LinkAnh.equals("")&&Chitiet.equals("")){
-                        Ten.setError("Không được để trống");
-                        Gia.setError("Không được để trống");
-                        SoLuong.setError("Không được để trống");
-                        LinkAnh.setError("Không được để trống");
-                        Chitiet.setError("Không được để trống");
-                }else if (Ten.equals("")){
-                    Ten.setError("Không được để trống");
-                }else if (Gia.equals("")){
-                    Gia.setError("Không được để trống");
-                }else if (SoLuong.equals("")){
-                    SoLuong.setError("Không được để trống");
-                }else if (LinkAnh.equals("")){
-                    LinkAnh.setError("Không được để trống");
-                }else if (Chitiet.equals("")){
-                    Chitiet.setError("Không được để trống");
-                }else if (Ten.length()>6 || Ten.length()<30){
-                    Ten.setError("Tên đăng nhập phải từ 6 đến 30 kí tự");
-                }else if (Gia.length()>1 || Gia.length()<5){
-                    Gia.setError("Tên đăng nhập phải từ 1 đến 5 số");
-                }else if (SoLuong.length()>0 || SoLuong.length()<3){
-                    SoLuong.setError("Tên đăng nhập phải từ 1 đến 2 số");
-                }else if (Chitiet.length()>0 || Chitiet.length()<150){
-                    Chitiet.setError("Tên đăng nhập phải từ 1 đến 2 số");
-                }else {
+//                if (Ten.equals("") && Gia.equals("") && SoLuong.equals("") && LinkAnh.equals("") && Chitiet.equals("")) {
+//                    Ten.setError("Không được để trống");
+//                    Gia.setError("Không được để trống");
+//                    SoLuong.setError("Không được để trống");
+//                    LinkAnh.setError("Không được để trống");
+//                    Chitiet.setError("Không được để trống");
+//                } else if (Ten.equals("")) {
+//                    Ten.setError("Không được để trống");
+//                } else if (Gia.equals("")) {
+//                    Gia.setError("Không được để trống");
+//                } else if (SoLuong.equals("")) {
+//                    SoLuong.setError("Không được để trống");
+//                } else if (LinkAnh.equals("")) {
+//                    LinkAnh.setError("Không được để trống");
+//                } else if (Chitiet.equals("")) {
+//                    Chitiet.setError("Không được để trống");
+//                } else if (Ten.length() > 6 || Ten.length() < 30) {
+//                    Ten.setError("Tên đăng nhập phải từ 6 đến 30 kí tự");
+//                } else if (Gia.length() > 1 || Gia.length() < 5) {
+//                    Gia.setError("Tên đăng nhập phải từ 1 đến 5 số");
+//                } else if (SoLuong.length() > 0 || SoLuong.length() < 3) {
+//                    SoLuong.setError("Tên đăng nhập phải từ 1 đến 2 số");
+//                } else if (Chitiet.length() > 0 || Chitiet.length() < 150) {
+//                    Chitiet.setError("Tên đăng nhập phải từ 1 đến 2 số");
+//                } else {
                     final AlertDialog.Builder builder = new AlertDialog.Builder(ThemGiayActivity.this);
                     builder.setTitle("Thêm dữ liệu");
                     builder.setMessage("Bạn có thực sự muốn gửi không?");
@@ -140,8 +155,7 @@ public class ThemGiayActivity extends AppCompatActivity {
                 }
 
 
-
-            }
+//            }
         });
         btnhuy2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -153,7 +167,6 @@ public class ThemGiayActivity extends AppCompatActivity {
     }
 
     private void sua() {
-
 
     }
 

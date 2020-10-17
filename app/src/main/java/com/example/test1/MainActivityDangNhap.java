@@ -51,8 +51,7 @@ public class MainActivityDangNhap extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_dang_nhap);
         databaseLogin = new DatabaseLogin(this, "mail.sqlite", null, 1);
-        databaseLogin.UpData("CREATE TABLE IF NOT EXISTS TaiKhoan (Id INTEGER PRIMARY KEY AUTOINCREMENT, Ten VARCHAR(200), Pass VARCHAR(200),SoDienThoai VARCHAR(11))");
-
+        MainActivityDangNhap.databaseLogin.UpData("CREATE TABLE IF NOT EXISTS TaiKhoan2 (Id INTEGER PRIMARY KEY AUTOINCREMENT, Ten VARCHAR(200), Pass VARCHAR(200), Hovaten VARCHAR(200), SoDienThoai VARCHAR(11),Ngay VARCHAR(20))");
         AnhXa();
         batloi();
 
@@ -64,10 +63,10 @@ public class MainActivityDangNhap extends AppCompatActivity {
             }
         });
         mysharedPreferences = getSharedPreferences("mylogin", MODE_PRIVATE);
-        final CheckBox checkBox = findViewById(R.id.checkBox);
-        String user1 = mysharedPreferences.getString("username", "");
-        String pwd1 = mysharedPreferences.getString("password", "");
-        boolean abc = mysharedPreferences.getBoolean("checked", false);
+//        final CheckBox checkBox = findViewById(R.id.checkBox);
+//        String user1 = mysharedPreferences.getString("username", "");
+//        String pwd1 = mysharedPreferences.getString("password", "");
+//        boolean abc = mysharedPreferences.getBoolean("checked", false);
         String islogin = mysharedPreferences.getString("username", "");
 //        ----------------------------------------------------------------------------------------
         if (islogin != "") {

@@ -2,6 +2,7 @@ package com.example.test1.ui.home;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -27,6 +28,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.test1.DatabaseHelper;
 import com.example.test1.Giay;
 import com.example.test1.GiayAchapter;
+import com.example.test1.MainActivityThongTinSanPham;
 import com.example.test1.MainAdapter;
 import com.example.test1.MainModel;
 import com.example.test1.R;
@@ -50,6 +52,7 @@ public class HomeFragment extends Fragment {
     RecyclerView recyclerView;
     ArrayList<MainModel> mainModels;
     MainAdapter mainAdapter;
+    private int indext = -1;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -79,25 +82,26 @@ public class HomeFragment extends Fragment {
 
             }
         });
-        btnSubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (etURL.getText().toString().trim().matches(textLink)){
-                    String urlLink = etURL.getText().toString();
-                    if (urlLink.isEmpty()) {
-                        Toast.makeText(getActivity(), "Please enter url", Toast.LENGTH_SHORT).show();
-                    } else {
-                        LoadImage loadImages = new LoadImage(ivResult);
-                        loadImages.execute(urlLink);
-                    }
-                }else if (etURL.equals("")){
-                    etURL.setError("Không được để rỗng");
-                }else {
-                    etURL.setError("Sai địa chỉ liên kết vui lòng nhập lại !!!");
-                }
 
-            }
-        });
+//        btnSubmit.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if (etURL.getText().toString().trim().matches(textLink)){
+//                    String urlLink = etURL.getText().toString();
+//                    if (urlLink.isEmpty()) {
+//                        Toast.makeText(getActivity(), "Please enter url", Toast.LENGTH_SHORT).show();
+//                    } else {
+//                        LoadImage loadImages = new LoadImage(ivResult);
+//                        loadImages.execute(urlLink);
+//                    }
+//                }else if (etURL.equals("")){
+//                    etURL.setError("Không được để rỗng");
+//                }else {
+//                    etURL.setError("Sai địa chỉ liên kết vui lòng nhập lại !!!");
+//                }
+//
+//            }
+//        });
 
         gridView = view.findViewById(R.id.lv1);
         databaseHelper = new DatabaseHelper(getActivity(), "giaydep", null, 1);
@@ -107,8 +111,21 @@ public class HomeFragment extends Fragment {
         abc02();
         abc03();
         Xoa();
+        abc4();
         return view;
 
+    }
+
+    private void abc4() {
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                indext = i;
+                Intent movetocharacter = new Intent(getActivity(), MainActivityThongTinSanPham.class);
+                movetocharacter.putExtra("id",arrayDoVat.get(i).getId());
+                startActivity(movetocharacter);
+            }
+        });
     }
 
     private void abc03() {
@@ -158,7 +175,7 @@ public class HomeFragment extends Fragment {
         }
 
     }
-    private class LoadImage extends AsyncTask<String, Void, Bitmap> {
+    public class LoadImage extends AsyncTask<String, Void, Bitmap> {
         ImageView imageView;
 
         public LoadImage(ImageView ivResult) {

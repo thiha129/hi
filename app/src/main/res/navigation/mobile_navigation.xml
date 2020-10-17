@@ -9,6 +9,7 @@
         android:id="@+id/nav_home"
         android:name="com.example.test1.ui.home.HomeFragment"
         android:label=""
+        android:color ="#ff00"
         tools:layout="@layout/fragment_home" />
 
     <fragment
