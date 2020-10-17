@@ -18,6 +18,15 @@
 
     </ImageView>
 
+    <TextView
+        android:id="@+id/testlink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3">
+
+    </TextView>
     <LinearLayout
 
         android:id="@+id/linearLayout4"
@@ -130,7 +139,6 @@
 
         <TextView
             android:textColor="#fff"
-
             android:id="@+id/ChiTietSanPham"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
