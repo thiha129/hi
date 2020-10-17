@@ -66,6 +66,7 @@ public class HomeFragment extends Fragment {
             }
         });
         final String textLink = "^(http:\\/\\/www\\.|https:\\/\\/www\\.|http:\\/\\/|https:\\/\\/)?[a-z0-9]+([\\-\\.]{1}[a-z0-9]+)*\\.[a-z]{2,5}(:[0-9]{1,5})?(\\/.*)?$";
+
         btnClear = view2.findViewById(R.id.btn_clear);
         btnSubmit = view2.findViewById(R.id.btn_submit);
         etURL = view2.findViewById(R.id.et_ulr);
@@ -145,7 +146,7 @@ public class HomeFragment extends Fragment {
             while (cursor.moveToNext()) {
                 int id = cursor.getInt(0);
                 String TenGiay = cursor.getString(1);
-                String Gia = cursor.getString(2);
+                String Gia = cursor.getString(2)+"$";
                 String Soluong = cursor.getString(3);
                 String LinkAnh = cursor.getString(4);
                 String Chitiet = cursor.getString(5);
