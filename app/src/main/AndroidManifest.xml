@@ -13,7 +13,6 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivityThongTinSanPham"></activity>
         <activity android:name=".MainActivityQuanLyTaiKhoan" />
-        <activity android:name=".QuanlytaikhoanActivity" />
         <activity android:name=".ThemGiayActivity" />
         <activity android:name=".MainActivityDoiMatKhau" />
         <activity

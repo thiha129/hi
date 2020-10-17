@@ -3,16 +3,26 @@ package com.example.test1;
 public class Nguoidung {
     private int Id;
     private String Tennguoidung;
+    private String hovaTen;
     private String Sodienthoai;
     private String matkhau;
     private String ngaytao;
 
-    public Nguoidung(int id, String tennguoidung, String sodienthoai, String matkhau, String ngaytao) {
+    public String getHovaTen() {
+        return hovaTen;
+    }
+
+    public void setHovaTen(String hovaTen) {
+        this.hovaTen = hovaTen;
+    }
+
+    public Nguoidung(int id, String hovaTen, String tennguoidung, String sodienthoai, String matkhau, String ngaytao) {
         Id = id;
         Tennguoidung = tennguoidung;
         Sodienthoai = sodienthoai;
         this.matkhau = matkhau;
         this.ngaytao = ngaytao;
+        this.hovaTen = hovaTen;
     }
 
     public int getId() {

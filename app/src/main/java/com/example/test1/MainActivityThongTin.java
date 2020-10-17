@@ -17,7 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivityThongTin extends AppCompatActivity {
     SharedPreferences mysharedPreferences;
-    Button btn, Exit,them;
+    Button btn, Exit,them, quanlytaikhoan;
     Intent intent;
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -32,6 +32,14 @@ public class MainActivityThongTin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_thong_tin);
          btn = findViewById(R.id.btnDoiMatkhau);
+         quanlytaikhoan = findViewById(R.id.btndanhsachnguoidung);
+         quanlytaikhoan.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+                 Intent intent = new Intent(MainActivityThongTin.this, MainActivityQuanLyTaiKhoan.class);
+                 startActivity(intent);
+             }
+         });
         them = findViewById(R.id.btnThem);
         them.setOnClickListener(new View.OnClickListener() {
             @Override
