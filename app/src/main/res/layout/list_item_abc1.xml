@@ -25,24 +25,54 @@
             android:layout_height="wrap_content"
             android:background="@drawable/botron_button4"
             android:orientation="horizontal">
-            <LinearLayout
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center">
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:id="@+id/imageView"
-                    android:layout_height="match_parent"
-                    android:contentDescription="@string/nav_header_desc"
-                    android:src="@drawable/giay" />
-            </LinearLayout>
-
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:padding="10dp"
+                        android:layout_weight="1"
+                        android:text="Id:"
+                        android:textStyle="bold">
+                    </TextView>
+                    <TextView
+                        android:id="@+id/tvid"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:padding="10dp"
+                        android:layout_weight="1"
+                        android:textStyle="bold">
+                    </TextView>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="1"
+                        android:padding="10dp"
+                        android:text="Ngày tạo"
+                        android:textStyle="bold">
 
+                    </TextView>
+                    <TextView
+                        android:id="@+id/tvtngay"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="1"
+                        android:padding="10dp"
+                        android:textStyle="bold">
+
+                    </TextView>
+                </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -109,15 +139,19 @@
                         android:layout_marginTop="5dp"
                         android:padding="10dp"
                         android:text="Mật Khẩu:"
-                        android:textStyle="bold"></TextView>
+                        android:textStyle="bold">
+
+                    </TextView>
                     <TextView
-                        android:id="@+id/tvnoidung"
+                        android:id="@+id/tvmatkhau"
                         android:layout_weight="1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginTop="5dp"
                         android:padding="10dp"
-                        android:textStyle="bold"></TextView>
+                        android:textStyle="bold">
+
+                    </TextView>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -126,23 +160,19 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
                         android:layout_weight="2"
-                        android:padding="10dp"
-                        android:text="Ngày tạo"
-                        android:textStyle="bold">
-
-                    </TextView>
-                    <TextView
-                        android:id="@+id/tvtngay"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:layout_weight="1"
                         android:padding="10dp"
-                        android:textStyle="bold">
-
-                    </TextView>
+                        android:text="Tên đăng nhập:"
+                        android:textStyle="bold"></TextView>
+                    <TextView
+                        android:id="@+id/tvtendangnhap"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="5dp"
+                        android:padding="10dp"
+                        android:textStyle="bold"></TextView>
                 </LinearLayout>
 
             </LinearLayout>
