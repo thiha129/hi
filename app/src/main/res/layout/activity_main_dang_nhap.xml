@@ -42,7 +42,7 @@
             android:layout_marginLeft="50dp"
             android:textColorHint="#fff"
             android:layout_marginRight="50dp"
-            android:background="@drawable/gradient_login2">
+            android:background="@drawable/border_2">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtemail"
@@ -69,7 +69,7 @@
             android:textColor="#fff"
             android:textColorHint="#fff"
             android:layout_marginRight="50dp"
-            android:background="@drawable/gradient_login2"
+            android:background="@drawable/border_2"
 
             app:passwordToggleEnabled="true">
 

@@ -55,7 +55,6 @@ public class ThemGiayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_them_giay);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         databaseHelper = new DatabaseHelper(ThemGiayActivity.this, "giaydep", null, 1);
         databaseHelper.UpData("CREATE TABLE IF NOT EXISTS Sanpham1(Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia VarChar(150), SoLuong VarChar(150), LinkAnh VarChar(150),Chitiet VarChar(150))");
         btnClear = findViewById(R.id.btn_clear);

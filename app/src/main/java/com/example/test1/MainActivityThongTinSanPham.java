@@ -6,9 +6,12 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.IOException;
@@ -18,11 +21,25 @@ public class MainActivityThongTinSanPham extends AppCompatActivity {
     TextView name, nd, race, number, test;
     ImageView imageView1;
     public DatabaseHelper databaseHelper;
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_thong_tin_san_pham);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         databaseHelper = new DatabaseHelper(MainActivityThongTinSanPham.this, "giaydep", null, 1);
         databaseHelper.UpData("CREATE TABLE IF NOT EXISTS Sanpham1(Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia VarChar(150), SoLuong VarChar(150), LinkAnh VarChar(150),Chitiet VarChar(150))");
 
@@ -62,7 +79,7 @@ public class MainActivityThongTinSanPham extends AppCompatActivity {
         number = findViewById(R.id.SoLuongSanPham);
         nd = findViewById(R.id.ChiTietSanPham);
         imageView1 = findViewById(R.id.imageView3);
-        test = findViewById(R.id.testlink);
+       
         Intent i = getIntent();
         int Id = i.getIntExtra("id", 1);
         Cursor cursor = databaseHelper.GetData("SELECT * FROM Sanpham1 where Id = " + Id + "");
