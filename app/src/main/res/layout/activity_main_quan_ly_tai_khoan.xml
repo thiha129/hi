@@ -3,6 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:paddingTop="10dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
     android:layout_height="match_parent"
     tools:context=".MainActivityQuanLyTaiKhoan">
 <LinearLayout
@@ -13,17 +16,12 @@
         android:id="@+id/SoluongTaiKhoan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:textColor="@color/colordangnhap1"
+        android:textStyle="bold"
+        android:textSize="18sp"
         android:text="Số tài khoản hiện đã đăng kí:">
-
     </TextView>
-    <TextView
-        android:id="@+id/tongtk"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
->
 
-    </TextView>
     <ListView
         android:id="@+id/listnguoidung"
         android:layout_width="match_parent"
