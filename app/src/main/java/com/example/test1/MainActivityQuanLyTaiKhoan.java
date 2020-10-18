@@ -15,20 +15,20 @@ public class MainActivityQuanLyTaiKhoan extends AppCompatActivity {
     public static NguoidungAdapter adapter;
     public static DatabaseLogin databaseLogin;
     ListView listView;
-    TextView textView;
+    TextView showTaikhoan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_quan_ly_tai_khoan);
-        listView=findViewById(R.id.listnguoidung);
-        nguoidungArrayList=new ArrayList<>();
+        listView = findViewById(R.id.listnguoidung);
+        nguoidungArrayList = new ArrayList<>();
         databaseLogin = new DatabaseLogin(this, "mail.sqlite", null, 1);
         databaseLogin.UpData("CREATE TABLE IF NOT EXISTS TaiKhoan2 (Id INTEGER PRIMARY KEY AUTOINCREMENT, Ten VARCHAR(200), Pass VARCHAR(200), Hovaten VARCHAR(200), SoDienThoai VARCHAR(11),Ngay VARCHAR(20))");
         abc02();
-        textView=findViewById(R.id.tongtk);
-//        textView.setText(tong);
     }
+
     private void abc02() {
+        showTaikhoan = findViewById(R.id.SoluongTaiKhoan);
         adapter = new NguoidungAdapter(MainActivityQuanLyTaiKhoan.this, R.layout.list_item_abc1, nguoidungArrayList);
         Cursor cursor = databaseLogin.GetData("SELECT * FROM TaiKhoan2");
         if (cursor != null) {
@@ -45,6 +45,7 @@ public class MainActivityQuanLyTaiKhoan extends AppCompatActivity {
         } else {
             Toast.makeText(MainActivityQuanLyTaiKhoan.this, "NOT OK", Toast.LENGTH_SHORT).show();
         }
+        showTaikhoan.setText("Số tài khoản hiện đã đăng kí:"+adapter.getCount());
 
     }
 }

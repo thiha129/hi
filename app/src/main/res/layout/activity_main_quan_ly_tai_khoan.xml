@@ -8,11 +8,12 @@
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:orientation="vertical">
     <TextView
+        android:id="@+id/SoluongTaiKhoan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+
         android:text="Số tài khoản hiện đã đăng kí:">
 
     </TextView>
@@ -20,11 +21,9 @@
         android:id="@+id/tongtk"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
 >
 
     </TextView>
-</LinearLayout>
     <ListView
         android:id="@+id/listnguoidung"
         android:layout_width="match_parent"
@@ -32,4 +31,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
+</LinearLayout>
+
 </LinearLayout>
