@@ -106,6 +106,7 @@ public class HomeFragment extends Fragment {
         gridView = view.findViewById(R.id.lv1);
         databaseHelper = new DatabaseHelper(getActivity(), "giaydep", null, 1);
         databaseHelper.UpData("CREATE TABLE IF NOT EXISTS Sanpham1(Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia VarChar(150), SoLuong VarChar(150), LinkAnh VarChar(150),Chitiet VarChar(150))");
+        databaseHelper.UpData("CREATE TABLE IF NOT EXISTS GioHang1 (Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia integer)");
         arrayDoVat = new ArrayList<>();
         adapter = new GiayAchapter(getActivity(), R.layout.list_item_abc, arrayDoVat);
         abc02();

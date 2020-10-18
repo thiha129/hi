@@ -5,28 +5,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class GiayAchapter extends BaseAdapter {
+public class GioHangAdapTer extends BaseAdapter {
     private Context context;
-    private int anInt;
-    private List<Giay> GiayArrayList;
+    private List<gioHang> GioHangArrayList;
     public int layout;
-    public GiayAchapter(Context context, int layout, List<Giay> giayArrayList) {
+
+    public GioHangAdapTer(Context context, List<gioHang> gioHangArrayList, int layout) {
         this.context = context;
-        this.GiayArrayList = giayArrayList;
+        GioHangArrayList = gioHangArrayList;
         this.layout = layout;
     }
 
-
     @Override
     public int getCount() {
-        return GiayArrayList.size();
+        return GioHangArrayList.size();
     }
 
     @Override
@@ -44,18 +40,14 @@ public class GiayAchapter extends BaseAdapter {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(layout, null);
 
-        Giay giay = GiayArrayList.get(i);
-        ImageView image = view.findViewById(R.id.imageView);
-        TextView Gia = view.findViewById(R.id.tvGia);
-        TextView Ten = view.findViewById(R.id.tvTen);
-        TextView SoLuong = view.findViewById(R.id.tvSoLuong);
 
-        Gia.setText(giay.getGia());
-        Ten.setText(giay.getTenGiay());
-        SoLuong.setText(giay.getSoluong());
-        Picasso.get()
-                .load(giay.getLinkAnh())
-                .into(image);
+        gioHang gioHang = GioHangArrayList.get(i);
+
+        TextView ten_giohang = view.findViewById(R.id.Ten_GioHang);
+        TextView gia_giohang = view.findViewById(R.id.Gia_GioHang);
+        ten_giohang.setText(gioHang.getTen());
+        gia_giohang.setText(""+gioHang.getGia());
+
         return view;
     }
 }

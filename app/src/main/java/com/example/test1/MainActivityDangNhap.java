@@ -120,6 +120,7 @@ public class MainActivityDangNhap extends AppCompatActivity {
 //                                        }, 2000);
                                         Intent danhnhap1 = new Intent(MainActivityDangNhap.this, MainActivityThongTin.class);
                                         startActivity(danhnhap1);
+                                        finish();
                                         Toast.makeText(MainActivityDangNhap.this, "Logged in successfully !", Toast.LENGTH_SHORT).show();
                                     } else {
                                         SharedPreferences.Editor editor = mysharedPreferences.edit();
@@ -147,7 +148,6 @@ public class MainActivityDangNhap extends AppCompatActivity {
                             } else {
                                 Toast.makeText(MainActivityDangNhap.this, "Login Error", Toast.LENGTH_SHORT).show();
                             }
-
                         }
                     }
                 } else {
@@ -156,7 +156,6 @@ public class MainActivityDangNhap extends AppCompatActivity {
             }
         });
     }
-
     private void AnhXa() {
         layoutPass = findViewById(R.id.wrapPass);
         layoutUser = findViewById(R.id.wrapUser);
@@ -165,7 +164,6 @@ public class MainActivityDangNhap extends AppCompatActivity {
         btnLogin = findViewById(R.id.btnlogin);
         txtDangKy = findViewById(R.id.dangky);
     }
-
     private void batloi() {
         AnhXa();
         edtusername.addTextChangedListener(new TextWatcher() {

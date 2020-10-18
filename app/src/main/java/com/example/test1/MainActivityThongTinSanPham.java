@@ -8,6 +8,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,7 +22,9 @@ import java.io.InputStream;
 public class MainActivityThongTinSanPham extends AppCompatActivity {
     TextView name, nd, race, number, test;
     ImageView imageView1;
-    public DatabaseHelper databaseHelper;
+    public static DatabaseHelper databaseHelper;
+    Button GioHang;
+    Intent intent   ;
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
         return super.onCreateOptionsMenu(menu);
@@ -42,7 +46,24 @@ public class MainActivityThongTinSanPham extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         databaseHelper = new DatabaseHelper(MainActivityThongTinSanPham.this, "giaydep", null, 1);
         databaseHelper.UpData("CREATE TABLE IF NOT EXISTS Sanpham1(Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia VarChar(150), SoLuong VarChar(150), LinkAnh VarChar(150),Chitiet VarChar(150))");
+        GioHang= findViewById(R.id.chuyengiohang);
 
+        GioHang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = getIntent();
+                int Id = i.getIntExtra("id", 1);
+                Cursor cursor = databaseHelper.GetData("SELECT * FROM Sanpham1 where Id = " + Id + "");
+                while (cursor.moveToNext()) {
+                    cursor.getString(1);
+                    cursor.getString(2);
+                    databaseHelper.UpData("Insert into GioHang values(null,'"+ cursor.getString(1)+"','"+ cursor.getString(2)+"')");
+
+                }
+                      intent = new Intent(MainActivityThongTinSanPham.this, MainActivityGioHang.class);
+                      startActivity(intent);
+            }
+        });
         AnhXa();
     }
     private class LoadImage extends AsyncTask<String, Void, Bitmap> {
