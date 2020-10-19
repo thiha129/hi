@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient1"
     tools:context=".MainActivityDangNhap">
 
     <LinearLayout
@@ -29,7 +30,7 @@
             android:layout_marginBottom="50dp"
             android:fontFamily="@font/haha"
             android:text="beyourself"
-            android:textColor="#000"
+            android:textColor="#fff"
             android:textSize="30sp"
             android:textStyle="bold">
 
@@ -40,17 +41,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
-            android:textColorHint="#fff"
             android:layout_marginRight="50dp"
-            android:background="@drawable/border_2">
+            android:background="@drawable/botron_button">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtemail"
                 android:layout_width="match_parent"
                 android:layout_height="61dp"
-                android:textColorHint="#fff"
-                android:textColor="#fff"
-                android:background="@drawable/gradient_login2"
+                android:background="@drawable/botron_button"
                 android:hint="Nhập tên đăng nhập"
                 android:padding="20sp"
                 android:shadowRadius="300">
@@ -66,10 +64,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
             android:layout_marginTop="20sp"
-            android:textColor="#fff"
-            android:textColorHint="#fff"
             android:layout_marginRight="50dp"
-            android:background="@drawable/border_2"
+            android:background="@drawable/botron_button"
 
             app:passwordToggleEnabled="true">
 
@@ -78,10 +74,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nhập mật khẩu"
-                android:textColor="#fff"
-                android:textColorHint="#fff"
                 android:padding="20sp"
-                android:background="@drawable/gradient_login2"
+                android:background="@drawable/botron_button"
                 android:inputType="textPassword"
                 android:shadowRadius="300">
 
@@ -111,7 +105,8 @@
                  android:id="@+id/dangky"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#FF699B"
+                android:textColor="#fff"
+                android:textStyle="bold"
                 android:layout_marginRight="10dp"
                 android:text="Đăng ký">
 
@@ -129,9 +124,8 @@
                 android:layout_width="122dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@drawable/gradient_login2"
-                android:text="Thoát"
-                android:textColor="#fff">
+                android:background="@drawable/botron_button"
+                android:text="Thoát">
 
             </Button>
             <Button
@@ -140,9 +134,8 @@
                 android:layout_width="122dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@drawable/gradient_login2"
+                android:background="@drawable/botron_button"
                 android:text="Đăng nhập"
-                android:textColor="#fff"
                 >
 
             </Button>

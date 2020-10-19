@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
+    android:background="@drawable/gradient1"
     tools:context=".MainActivityDoiMatKhau">
     <LinearLayout
         android:layout_width="wrap_content"
@@ -31,8 +32,8 @@
             android:layout_gravity="center"
             android:fontFamily="@font/haha"
             android:text="beyourself"
-            android:textColor="#000"
-            android:textSize="30sp"
+            android:textColor="#fff"
+            android:textSize="34sp"
             android:textStyle="bold">
 
         </TextView>
@@ -47,13 +48,10 @@
 
             android:layout_width="match_parent"
             android:layout_height="70dp"
-
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
-            android:textColorHint="#fff"
-            android:textColor="#fff"
-            android:background="@drawable/gradient_login2"
+            android:background="@drawable/botron_button"
             app:hintEnabled="true"
             app:passwordToggleEnabled="true"
             app:startIconDrawable="@drawable/ic_baseline_vpn_key_24">
@@ -62,9 +60,7 @@
                 android:id="@+id/edtpass1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textColorHint="#fff"
-                android:textColor="#fff"
-                android:background="@drawable/gradient_login2"
+                android:background="@drawable/botron_button"
                 android:hint="Mật khẩu cũ"
                 android:inputType="textPassword"
 
@@ -77,9 +73,7 @@
 
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:textColorHint="#fff"
-            android:textColor="#fff"
-            android:background="@drawable/gradient_login2"
+            android:background="@drawable/botron_button"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
@@ -94,9 +88,7 @@
                 android:layout_marginBottom="7dp"
                 android:hint="Mật khẩu mới"
                 android:inputType="textPassword"
-                android:textColorHint="#fff"
-                android:textColor="#fff"
-                android:background="@drawable/gradient_login2"
+                android:background="@drawable/botron_button"
                 android:textStyle="bold">
 
             </com.google.android.material.textfield.TextInputEditText>
@@ -106,9 +98,7 @@
 
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:textColorHint="#fff"
-            android:textColor="#fff"
-            android:background="@drawable/gradient_login2"
+            android:background="@drawable/botron_button"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
@@ -121,9 +111,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="7dp"
-                android:textColorHint="#fff"
-                android:textColor="#fff"
-                android:background="@drawable/gradient_login2"
+                android:background="@drawable/botron_button"
                 android:hint="Nhập lại mật khẩu"
                 android:inputType="textPassword"
                 android:textStyle="bold">
@@ -142,24 +130,22 @@
                 android:layout_width="142dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textColor="#fff"
-                android:background="@drawable/gradient_login2"
+                android:background="@drawable/botron_button"
                 android:gravity="center"
                 android:text="Đổi mật khẩu">
 
             </Button>
+
             <Button
                 android:id="@+id/btnhuy"
-                android:layout_width="wrap_content"
+                android:layout_width="153dp"
                 android:layout_height="wrap_content"
-                android:text="Hủy"
-                android:layout_marginLeft="60dp"
-                android:gravity="center"
-                android:textColor="#fff"
-                android:textStyle="bold"
-
                 android:layout_gravity="center"
-                android:background="@drawable/gradient_login2">
+                android:layout_marginLeft="60dp"
+                android:background="@drawable/botron_button"
+                android:gravity="center"
+                android:text="Hủy"
+                android:textStyle="bold">
 
             </Button>
         </LinearLayout>
