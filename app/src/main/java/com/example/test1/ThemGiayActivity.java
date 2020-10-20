@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -23,8 +25,11 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 public class ThemGiayActivity extends AppCompatActivity {
-
-
+    AutoCompleteTextView size;
+    private static final String[] PRODUCTS = new String[]
+            {
+                    "40", "41", "42", "43", "44"
+            };
     public static DatabaseHelper databaseHelper;
 
     public static ArrayList<Giay> arrayDoVat;
@@ -36,6 +41,7 @@ public class ThemGiayActivity extends AppCompatActivity {
     ImageView ivResult;
 
     Intent intent;
+
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
         return super.onCreateOptionsMenu(menu);
@@ -50,18 +56,24 @@ public class ThemGiayActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_them_giay);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         databaseHelper = new DatabaseHelper(ThemGiayActivity.this, "giaydep", null, 1);
-        databaseHelper.UpData("CREATE TABLE IF NOT EXISTS Sanpham1(Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia VarChar(150), SoLuong VarChar(150), LinkAnh VarChar(150),Chitiet VarChar(150))");
+        databaseHelper.UpData("CREATE TABLE IF NOT EXISTS Sanpham2(Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia VarChar(150), SoLuong VarChar(150), LinkAnh Text ,Chitiet VarChar(150), size VarChar(150))");
         btnClear = findViewById(R.id.btn_clear);
         btnhuy2 = findViewById(R.id.btnHuysp);
         btnSubmit = findViewById(R.id.btn_submit);
         etURL = findViewById(R.id.et_ulr);
         ivResult = findViewById(R.id.iv_result);
+        size = findViewById(R.id.sizesp);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_dropdown_item_1line, PRODUCTS);
+
+        size.setAdapter(adapter);
         sua();
         btnClear.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,6 +112,7 @@ public class ThemGiayActivity extends AppCompatActivity {
                 SoLuong.getText().toString();
                 LinkAnh.getText().toString();
                 Chitiet.getText().toString();
+                size.getText().toString();
 //                if (Ten.equals("") && Gia.equals("") && SoLuong.equals("") && LinkAnh.equals("") && Chitiet.equals("")) {
 //                    Ten.setError("Không được để trống");
 //                    Gia.setError("Không được để trống");
@@ -125,33 +138,34 @@ public class ThemGiayActivity extends AppCompatActivity {
 //                } else if (Chitiet.length() > 0 || Chitiet.length() < 150) {
 //                    Chitiet.setError("Tên đăng nhập phải từ 1 đến 2 số");
 //                } else {
-                    final AlertDialog.Builder builder = new AlertDialog.Builder(ThemGiayActivity.this);
-                    builder.setTitle("Thêm dữ liệu");
-                    builder.setMessage("Bạn có thực sự muốn gửi không?");
-                    builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            Toast.makeText(ThemGiayActivity.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
-                            databaseHelper.UpData("Insert into Sanpham1 Values(null,'" + Ten.getText().toString() + "','" + Gia.getText().toString() + "','" + SoLuong.getText().toString() + "', '" + LinkAnh.getText().toString() + "', '" + Chitiet.getText().toString() + "')");
-                            Ten.setText("");
-                            Gia.setText("");
-                            SoLuong.setText("");
-                            LinkAnh.setText("");
-                            Chitiet.setText("");
+                final AlertDialog.Builder builder = new AlertDialog.Builder(ThemGiayActivity.this);
+                builder.setTitle("Thêm dữ liệu");
+                builder.setMessage("Bạn có thực sự muốn gửi không?");
+                builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(ThemGiayActivity.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
+                        databaseHelper.UpData("Insert into Sanpham2 Values(null,'" + Ten.getText().toString() + "','" + Gia.getText().toString() + "','" + SoLuong.getText().toString() + "', '" + LinkAnh.getText().toString() + "', '" + Chitiet.getText().toString() + "','" + size.getText().toString() + "')");
+                        Ten.setText("");
+                        Gia.setText("");
+                        SoLuong.setText("");
+                        LinkAnh.setText("");
+                        Chitiet.setText("");
+                        size.setText("");
 //                        intent = new Intent(ThemGiayActivity.this, MainActivity.class);
 //                        startActivity(intent);
-                        }
+                    }
 
-                    });
-                    builder.setPositiveButton("No", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            Toast.makeText(ThemGiayActivity.this, "Hủy thành công", Toast.LENGTH_SHORT).show();
+                });
+                builder.setPositiveButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(ThemGiayActivity.this, "Hủy thành công", Toast.LENGTH_SHORT).show();
 
-                        }
-                    });
-                    builder.create().show();
-                }
+                    }
+                });
+                builder.create().show();
+            }
 
 
 //            }

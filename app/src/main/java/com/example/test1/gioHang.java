@@ -4,11 +4,15 @@ public class gioHang  {
     int Id;
     String Ten;
     int Gia;
+    String size;
+    String linkImage;
 
-    public gioHang(int id, String ten, int gia) {
+    public gioHang(int id, String ten, int gia, String size, String linkImage) {
         Id = id;
         Ten = ten;
         Gia = gia;
+        this.size = size;
+        this.linkImage = linkImage;
     }
 
     public int getId() {
@@ -33,5 +37,21 @@ public class gioHang  {
 
     public void setGia(int gia) {
         Gia = gia;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public String getLinkImage() {
+        return linkImage;
+    }
+
+    public void setLinkImage(String linkImage) {
+        this.linkImage = linkImage;
     }
 }

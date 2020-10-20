@@ -5,7 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -42,12 +45,18 @@ public class GioHangAdapTer extends BaseAdapter {
 
 
         gioHang gioHang = GioHangArrayList.get(i);
-
+        ImageView Imagepr = view.findViewById(R.id.imageView5);
+        TextView id_giohang = view.findViewById(R.id.tvid);
+        TextView size = view.findViewById(R.id.Sizepr);
         TextView ten_giohang = view.findViewById(R.id.Ten_GioHang);
         TextView gia_giohang = view.findViewById(R.id.Gia_GioHang);
         ten_giohang.setText(gioHang.getTen());
         gia_giohang.setText(""+gioHang.getGia());
-
+        id_giohang.setText(""+gioHang.getId());
+        size.setText(gioHang.getSize());
+        Picasso.get()
+                .load(gioHang.getLinkImage())
+                .into(Imagepr);
         return view;
     }
 }

@@ -7,17 +7,15 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivityThongTin extends AppCompatActivity {
     SharedPreferences mysharedPreferences;
-    Button btn, Exit,them, quanlytaikhoan;
+    Button btn, Exit,them, quanlytaikhoan, order;
     Intent intent;
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -48,6 +46,15 @@ public class MainActivityThongTin extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+         order = findViewById(R.id.tam);
+         order.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+                 intent = new Intent(MainActivityThongTin.this, MainActivityGioHang.class);
+                 startActivity(intent);
+
+             }
+         });
          btn.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {

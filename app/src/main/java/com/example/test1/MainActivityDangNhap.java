@@ -139,6 +139,7 @@ public class MainActivityDangNhap extends AppCompatActivity {
 //                                        }, 2000);
                                         Intent danhnhap1 = new Intent(MainActivityDangNhap.this, MainActivityThongTin.class);
                                         startActivity(danhnhap1);
+                                        finish();
                                         Toast.makeText(MainActivityDangNhap.this, "Logged in successfully !", Toast.LENGTH_SHORT).show();
                                     }
                                 } else {

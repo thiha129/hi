@@ -45,7 +45,7 @@ public class MainActivityThongTinSanPham extends AppCompatActivity {
         setContentView(R.layout.activity_main_thong_tin_san_pham);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         databaseHelper = new DatabaseHelper(MainActivityThongTinSanPham.this, "giaydep", null, 1);
-        databaseHelper.UpData("CREATE TABLE IF NOT EXISTS Sanpham1(Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia VarChar(150), SoLuong VarChar(150), LinkAnh VarChar(150),Chitiet VarChar(150))");
+        databaseHelper.UpData("CREATE TABLE IF NOT EXISTS Sanpham2(Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia VarChar(150), SoLuong VarChar(150), LinkAnh Text ,Chitiet VarChar(150), size VarChar(150))");
         GioHang= findViewById(R.id.chuyengiohang);
 
         GioHang.setOnClickListener(new View.OnClickListener() {
@@ -53,11 +53,16 @@ public class MainActivityThongTinSanPham extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = getIntent();
                 int Id = i.getIntExtra("id", 1);
-                Cursor cursor = databaseHelper.GetData("SELECT * FROM Sanpham1 where Id = " + Id + "");
+                Cursor cursor = databaseHelper.GetData("SELECT * FROM Sanpham2 where Id = " + Id + "");
                 while (cursor.moveToNext()) {
+                    cursor.getInt(0);
                     cursor.getString(1);
-                    cursor.getString(2);
-                    databaseHelper.UpData("Insert into GioHang values(null,'"+ cursor.getString(1)+"','"+ cursor.getString(2)+"')");
+                    cursor.getInt(2);
+                    cursor.getInt(3);
+                    cursor.getString(4);
+
+
+                    databaseHelper.UpData("Insert into GioHang2 values(null,'"+ cursor.getString(1)+"','"+ cursor.getInt(2)+"','"+ cursor.getInt(3)+"','"+ cursor.getString(4)+"')");
 
                 }
                       intent = new Intent(MainActivityThongTinSanPham.this, MainActivityGioHang.class);
@@ -103,7 +108,7 @@ public class MainActivityThongTinSanPham extends AppCompatActivity {
        
         Intent i = getIntent();
         int Id = i.getIntExtra("id", 1);
-        Cursor cursor = databaseHelper.GetData("SELECT * FROM Sanpham1 where Id = " + Id + "");
+        Cursor cursor = databaseHelper.GetData("SELECT * FROM Sanpham2 where Id = " + Id + "");
         while (cursor.moveToNext()) {
             if (cursor.getInt(0) == Id) {
                 String Name = cursor.getString(1);

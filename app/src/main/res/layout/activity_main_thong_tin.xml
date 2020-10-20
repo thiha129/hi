@@ -132,6 +132,7 @@
         </Button>
 
         <Button
+            android:id="@+id/tam"
             android:layout_width="157dp"
             android:layout_height="72dp"
             android:layout_gravity="center"

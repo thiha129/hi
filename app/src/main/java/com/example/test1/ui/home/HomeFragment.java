@@ -105,8 +105,8 @@ public class HomeFragment extends Fragment {
 
         gridView = view.findViewById(R.id.lv1);
         databaseHelper = new DatabaseHelper(getActivity(), "giaydep", null, 1);
-        databaseHelper.UpData("CREATE TABLE IF NOT EXISTS Sanpham1(Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia VarChar(150), SoLuong VarChar(150), LinkAnh VarChar(150),Chitiet VarChar(150))");
-        databaseHelper.UpData("CREATE TABLE IF NOT EXISTS GioHang1 (Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia integer)");
+        databaseHelper.UpData("CREATE TABLE IF NOT EXISTS Sanpham2(Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia VarChar(150), SoLuong VarChar(150), LinkAnh Text ,Chitiet VarChar(150), size VarChar(150))");
+        databaseHelper.UpData("CREATE TABLE IF NOT EXISTS GioHang2 (Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia integer,size integer,LinkAnh Text )");
         arrayDoVat = new ArrayList<>();
         adapter = new GiayAchapter(getActivity(), R.layout.list_item_abc, arrayDoVat);
         abc02();
@@ -159,7 +159,7 @@ public class HomeFragment extends Fragment {
 
     private void abc02() {
         adapter = new GiayAchapter(getActivity(), R.layout.list_item_abc, arrayDoVat);
-        Cursor cursor = databaseHelper.GetData("SELECT * FROM Sanpham1");
+        Cursor cursor = databaseHelper.GetData("SELECT * FROM Sanpham2");
         if (cursor != null) {
             while (cursor.moveToNext()) {
                 int id = cursor.getInt(0);
@@ -220,7 +220,7 @@ public class HomeFragment extends Fragment {
                 builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int j) {
-                        databaseHelper.UpData("delete from Sanpham1 where Id = " + arrayDoVat.get(indexItem).getId() + "");
+                        databaseHelper.UpData("delete from Sanpham2 where Id = " + arrayDoVat.get(indexItem).getId() + "");
                         arrayDoVat.clear();
                         abc02();
                     }
