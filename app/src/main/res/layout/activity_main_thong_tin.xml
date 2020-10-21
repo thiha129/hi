@@ -118,7 +118,7 @@
         android:orientation="horizontal">
 
         <Button
-
+            android:id="@+id/suaXOa"
             android:layout_width="157dp"
             android:layout_height="72dp"
             android:layout_gravity="center"

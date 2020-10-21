@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivityThongTin extends AppCompatActivity {
     SharedPreferences mysharedPreferences;
-    Button btn, Exit,them, quanlytaikhoan, order;
+    Button btn, Exit,them, quanlytaikhoan, order, change;
     Intent intent;
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -35,6 +35,14 @@ public class MainActivityThongTin extends AppCompatActivity {
              @Override
              public void onClick(View view) {
                  Intent intent = new Intent(MainActivityThongTin.this, MainActivityQuanLyTaiKhoan.class);
+                 startActivity(intent);
+             }
+         });
+         change=findViewById(R.id.suaXOa);
+         change.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+                 Intent intent = new Intent(MainActivityThongTin.this, MainActivitySuaXoaSanPham.class);
                  startActivity(intent);
              }
          });

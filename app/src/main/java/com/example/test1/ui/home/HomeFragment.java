@@ -170,12 +170,9 @@ public class HomeFragment extends Fragment {
                 String Chitiet = cursor.getString(5);
                 arrayDoVat.add(new Giay(id, TenGiay, Gia, Soluong, LinkAnh, Chitiet));
             }
-            adapter.notifyDataSetChanged();
             gridView.setAdapter(adapter);
-        } else {
-            Toast.makeText(getActivity(), "NOT OK", Toast.LENGTH_SHORT).show();
+            adapter.notifyDataSetChanged();
         }
-
     }
     public class LoadImage extends AsyncTask<String, Void, Bitmap> {
         ImageView imageView;
