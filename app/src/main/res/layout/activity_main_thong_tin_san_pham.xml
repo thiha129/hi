@@ -139,14 +139,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/layout7">
-        <Button
-            android:text="Thêm vào giỏ"
+        <androidx.cardview.widget.CardView
+            app:cardElevation="10dp"
+            app:cardCornerRadius="10dp"
             android:layout_gravity="center"
-            android:id="@+id/chuyengiohang"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
+            <Button
+                android:padding="10dp"
+                android:background="#fff"
+                android:text="Thêm vào giỏ"
+                android:layout_gravity="center"
+                android:id="@+id/chuyengiohang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-        </Button>
+            </Button>
+        </androidx.cardview.widget.CardView>
     </LinearLayout>
 
 

@@ -59,7 +59,6 @@ public class HomeFragment extends Fragment {
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         view = inflater.inflate(R.layout.fragment_home, container, false);
-        View view2 = inflater.inflate(R.layout.dialof_them_giay, container, false);
         View view3 = inflater.inflate(R.layout.list_item_abc, container, false);
         giohang=view3.findViewById(R.id.imageView2);
         giohang.setOnClickListener(new View.OnClickListener() {
@@ -69,19 +68,6 @@ public class HomeFragment extends Fragment {
             }
         });
         final String textLink = "^(http:\\/\\/www\\.|https:\\/\\/www\\.|http:\\/\\/|https:\\/\\/)?[a-z0-9]+([\\-\\.]{1}[a-z0-9]+)*\\.[a-z]{2,5}(:[0-9]{1,5})?(\\/.*)?$";
-
-        btnClear = view2.findViewById(R.id.btn_clear);
-        btnSubmit = view2.findViewById(R.id.btn_submit);
-        etURL = view2.findViewById(R.id.et_ulr);
-        ivResult = view2.findViewById(R.id.iv_result);
-        btnClear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                etURL.setText("");
-                ivResult.setImageBitmap(null);
-
-            }
-        });
 
 //        btnSubmit.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -111,11 +97,14 @@ public class HomeFragment extends Fragment {
         adapter = new GiayAchapter(getActivity(), R.layout.list_item_abc, arrayDoVat);
         abc02();
         abc03();
-        Xoa();
+//        Xoa();
         abc4();
+
         return view;
 
     }
+
+
 
     private void abc4() {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -159,7 +148,7 @@ public class HomeFragment extends Fragment {
 
     private void abc02() {
         adapter = new GiayAchapter(getActivity(), R.layout.list_item_abc, arrayDoVat);
-        Cursor cursor = databaseHelper.GetData("SELECT * FROM Sanpham2");
+        final Cursor cursor = databaseHelper.GetData("SELECT * FROM Sanpham2");
         if (cursor != null) {
             while (cursor.moveToNext()) {
                 int id = cursor.getInt(0);
@@ -168,6 +157,7 @@ public class HomeFragment extends Fragment {
                 String Soluong = cursor.getString(3);
                 String LinkAnh = cursor.getString(4);
                 String Chitiet = cursor.getString(5);
+
                 arrayDoVat.add(new Giay(id, TenGiay, Gia, Soluong, LinkAnh, Chitiet));
             }
             gridView.setAdapter(adapter);
@@ -203,7 +193,7 @@ public class HomeFragment extends Fragment {
     }
 
     int indexItem;
-
+                                                
     private void Xoa() {
         final GridView listView = view.findViewById(R.id.lv1);
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {

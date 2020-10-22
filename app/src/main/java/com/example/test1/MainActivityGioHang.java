@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -87,6 +88,8 @@ public class MainActivityGioHang extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivityGioHang.this);
+                final LoadingDialog_pr loadingDialog_pr = new LoadingDialog_pr(MainActivityGioHang.this);
+
                 builder.setTitle(R.string.app_name);
                 builder.setMessage("Bạn có muốn thanh toán không?");
                 builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
@@ -96,8 +99,17 @@ public class MainActivityGioHang extends AppCompatActivity {
                         arraygioHang.clear();
                         Upload();
                         Toast.makeText(MainActivityGioHang.this, "Cảm ơn bạn đã mua hàng !", Toast.LENGTH_SHORT).show();
-                         intent = new Intent(MainActivityGioHang.this, MainActivity.class);
-                         startActivity(intent);
+                        loadingDialog_pr.startLoadingDialog();
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                loadingDialog_pr.dismissDialog();
+                                intent = new Intent(MainActivityGioHang.this, MainActivity.class);
+                                startActivity(intent);
+                            }
+                        },2000);
+
                     }
                 });
                 builder.setPositiveButton("No", new DialogInterface.OnClickListener() {

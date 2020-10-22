@@ -7,27 +7,29 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="195dp"
-        android:layout_height="315dp"
+        android:layout_height="wrap_content"
         android:layout_row="0"
         android:layout_rowWeight="1"
         android:layout_column="0"
         android:layout_columnWeight="1"
         android:layout_gravity="fill"
         android:layout_marginStart="8dp"
-        android:background="@drawable/botron_button"
-        android:layout_marginTop="8dp"
+        app:cardElevation="10dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="8dp"
-        app:cardCornerRadius="8dp">
+        app:cardCornerRadius="8dp"
+        android:layout_marginBottom="12dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="320dp"
-
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="230dp">
+                android:layout_height="230dp"
+                >
+
                 <ImageView
                     android:id="@+id/imageView"
                     android:layout_width="match_parent"

@@ -34,7 +34,7 @@ public class ThemGiayActivity extends AppCompatActivity {
 
     public static ArrayList<Giay> arrayDoVat;
     public static GiayAchapter adapter;
-    Button btnthem2, btnhuy2;
+  public Button btnthem2, btnhuy2;
     EditText Ten, Gia, SoLuong, LinkAnh, Chitiet;
     EditText etURL;
     Button btnClear, btnSubmit;

@@ -1,6 +1,7 @@
 package com.example.test1;
 
 import android.content.Context;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,8 +45,8 @@ public class GiayAchapter extends BaseAdapter {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(layout, null);
 
-        Giay giay = GiayArrayList.get(i);
-        ImageView image = view.findViewById(R.id.imageView);
+        final Giay giay = GiayArrayList.get(i);
+        final ImageView image = view.findViewById(R.id.imageView);
         TextView Gia = view.findViewById(R.id.tvGia);
         TextView Ten = view.findViewById(R.id.tvTen);
         TextView SoLuong = view.findViewById(R.id.tvSoLuong);
@@ -53,9 +54,17 @@ public class GiayAchapter extends BaseAdapter {
         Gia.setText(giay.getGia());
         Ten.setText(giay.getTenGiay());
         SoLuong.setText(giay.getSoluong());
-        Picasso.get()
-                .load(giay.getLinkAnh())
-                .into(image);
+
+       Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Picasso.get()
+                        .load(giay.getLinkAnh())
+                        .into(image);
+            }
+        },1000);
+
         return view;
     }
 }
