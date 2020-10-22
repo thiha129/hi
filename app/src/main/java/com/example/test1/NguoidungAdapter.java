@@ -40,21 +40,22 @@ public class NguoidungAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(layout, null);
-        Nguoidung nguoidung = NguoidungArrayList.get(i);
+        final Nguoidung nguoidung = NguoidungArrayList.get(i);
+//        TextView id = view.findViewById(R.id.tvid);
         TextView HoVaTen = view.findViewById(R.id.tvHoVaTen);
         TextView Tendangnhap = view.findViewById(R.id.tvtendangnhap);
         TextView matkhau = view.findViewById(R.id.tvmatkhau);
         TextView ngaylap = view.findViewById(R.id.tvtngay);
         TextView Sodienthoai = view.findViewById(R.id.tvSdt);
+        TextView DiaChi = view.findViewById(R.id.tvdiachi);
 
-
-
+//        id.setText(nguoidung.getId());
         Tendangnhap.setText(nguoidung.getTennguoidung());
         HoVaTen.setText(nguoidung.getHovaTen());
         matkhau.setText(nguoidung.getMatkhau());
         ngaylap.setText(nguoidung.getNgaytao());
         Sodienthoai.setText(nguoidung.getSodienthoai());
-
+        DiaChi.setText(nguoidung.getDiachi());
         return view;
     }
 }

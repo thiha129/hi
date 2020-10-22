@@ -28,7 +28,7 @@ public class DatabaseLogin extends SQLiteOpenHelper {
         database.execSQL(sql);
     }
 
-    public long addUser(String user, String password, String hoten, String Sodienthoai,String Ngay) {
+    public long addUser(String user, String password, String hoten, String Sodienthoai, String Ngay, String address) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("Ten", user);
@@ -36,13 +36,15 @@ public class DatabaseLogin extends SQLiteOpenHelper {
         contentValues.put("Hovaten", hoten);
         contentValues.put("SoDienThoai", Sodienthoai);
         contentValues.put("Ngay",Ngay);
-        long res = db.insert("TaiKhoan2", null, contentValues);
+        contentValues.put("diachi",address);
+
+        long res = db.insert("TaiKhoan3", null, contentValues);
         db.close();
         return res;
     }
     public boolean checkUser(String username) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor1 = db.rawQuery("Select * from TaiKhoan2 where Ten = ? ", new String[]{username});
+        Cursor cursor1 = db.rawQuery("Select * from TaiKhoan3 where Ten = ? ", new String[]{username});
         int count = cursor1.getCount();
         cursor1.close();
         db.close();
@@ -54,18 +56,18 @@ public class DatabaseLogin extends SQLiteOpenHelper {
     }
     public boolean check(String name, String pass) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("select * from TaiKhoan2 where Ten=? and Pass=?", new String[]{name, pass});
+        Cursor cursor = db.rawQuery("select * from TaiKhoan3 where Ten=? and Pass=?", new String[]{name, pass});
         if (cursor.getCount() > 0) return true;
         else return false;
     }
     public Cursor ThongTinTaiKhoan(String name, String pass){
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("select * from TaiKhoan2 where Ten=? and Pass=?", new String[]{name, pass});
+        Cursor cursor = db.rawQuery("select * from TaiKhoan3 where Ten=? and Pass=?", new String[]{name, pass});
         return cursor;
     }
     public boolean checkpass(String pass) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("select * from TaiKhoan2 where Pass=?", new String[]{pass});
+        Cursor cursor = db.rawQuery("select * from TaiKhoan3 where Pass=?", new String[]{pass});
         if (cursor.getCount() > 0) return true;
         else return false;
     }

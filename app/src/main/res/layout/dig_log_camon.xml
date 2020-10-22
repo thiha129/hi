@@ -18,8 +18,8 @@ android:layout_gravity="center"
         android:background="@drawable/untitled_1">
 
     </ImageView>
-    <ImageView
-        android:layout_width="wrap_content"
+    <pl.droidsonroids.gif.GifImageView
+         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
@@ -27,5 +27,5 @@ android:layout_gravity="center"
         android:layout_marginBottom="30dp"
         android:background="@drawable/e81218b483b4dbcfc2dc521b1297e923">
 
-    </ImageView>
+    </pl.droidsonroids.gif.GifImageView>
 </LinearLayout>

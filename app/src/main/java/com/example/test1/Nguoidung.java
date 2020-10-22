@@ -7,22 +7,16 @@ public class Nguoidung {
     private String Sodienthoai;
     private String matkhau;
     private String ngaytao;
+    private String diachi;
 
-    public String getHovaTen() {
-        return hovaTen;
-    }
-
-    public void setHovaTen(String hovaTen) {
-        this.hovaTen = hovaTen;
-    }
-
-    public Nguoidung(int id, String hovaTen, String tennguoidung, String sodienthoai, String matkhau, String ngaytao) {
+    public Nguoidung(int id, String tennguoidung, String hovaTen, String sodienthoai, String matkhau, String ngaytao, String diachi) {
         Id = id;
         Tennguoidung = tennguoidung;
+        this.hovaTen = hovaTen;
         Sodienthoai = sodienthoai;
         this.matkhau = matkhau;
         this.ngaytao = ngaytao;
-        this.hovaTen = hovaTen;
+        this.diachi = diachi;
     }
 
     public int getId() {
@@ -39,6 +33,14 @@ public class Nguoidung {
 
     public void setTennguoidung(String tennguoidung) {
         Tennguoidung = tennguoidung;
+    }
+
+    public String getHovaTen() {
+        return hovaTen;
+    }
+
+    public void setHovaTen(String hovaTen) {
+        this.hovaTen = hovaTen;
     }
 
     public String getSodienthoai() {
@@ -63,5 +65,13 @@ public class Nguoidung {
 
     public void setNgaytao(String ngaytao) {
         this.ngaytao = ngaytao;
+    }
+
+    public String getDiachi() {
+        return diachi;
+    }
+
+    public void setDiachi(String diachi) {
+        this.diachi = diachi;
     }
 }

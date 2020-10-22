@@ -139,7 +139,9 @@ public class MainActivityGioHang extends AppCompatActivity {
             Cont.setText("" + gioHangAdapTer.getCount());
         }
         Sum.setText("$" + TinhTong);
-        Pay.setText("$" + TinhTong);
+        int phi = 10;
+       int tongtien = TinhTong +10;
+        Pay.setText("$" + tongtien);
     }
 
 }

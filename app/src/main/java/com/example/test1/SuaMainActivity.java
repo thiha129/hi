@@ -56,7 +56,17 @@ public class SuaMainActivity extends AppCompatActivity {
         btntSua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
+                Intent i = getIntent();
+                int Id = i.getIntExtra("id", 1);
+                String LinkMoi = etURL.getText().toString().trim();
+                String TenMoi = Ten.getText().toString().trim();
+                String GiaMoi = Gia.getText().toString().trim();
+                String SoluongMoi = SoLuong.getText().toString().trim();
+                String ChiTietMoi = Chitiet.getText().toString().trim();
+                String SizeMoi =  size.getText().toString().trim();
+                databaseHelper.UpData("UPDATE Sanpham2 SET Ten = '"+TenMoi+"', Gia = '"+GiaMoi+"', SoLuong = '"+SoluongMoi+"', LinkAnh = '"+LinkMoi+"',Chitiet = '"+ChiTietMoi+"',size ='"+SizeMoi+"' WHERE Id = '"+Id+"'");
+                intent = new Intent(SuaMainActivity.this, MainActivitySuaXoaSanPham.class);
+                startActivity(intent);
             }
         });
 

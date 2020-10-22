@@ -30,6 +30,7 @@ public class MainActivityDangKy extends AppCompatActivity {
     EditText edtusername;
     EditText edtpassword;
     EditText edtcnfpassword;
+    EditText edtAddress;
     TextInputLayout layoutPass_1, layoutPass_2;
     boolean Ktra1 = false, Ktra2 = false, Ktra3 = false, Ktra4 = false;
 
@@ -54,7 +55,7 @@ public class MainActivityDangKy extends AppCompatActivity {
         setContentView(R.layout.activity_main_dang_ky);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         databaseLogin = new DatabaseLogin(this, "mail.sqlite", null, 1);
-        MainActivityDangKy.databaseLogin.UpData("CREATE TABLE IF NOT EXISTS TaiKhoan2 (Id INTEGER PRIMARY KEY AUTOINCREMENT, Ten VARCHAR(200), Pass VARCHAR(200), Hovaten VARCHAR(200), SoDienThoai VARCHAR(11),Ngay VARCHAR(20))");
+        MainActivityDangKy.databaseLogin.UpData("CREATE TABLE IF NOT EXISTS TaiKhoan3 (Id INTEGER PRIMARY KEY AUTOINCREMENT, Ten VARCHAR(200), Pass VARCHAR(200), Hovaten VARCHAR(200), SoDienThoai VARCHAR(11),Ngay VARCHAR(20), diachi VARCHAR(200))");
         AnhXa();
         batloi();
         txtNgay = findViewById(R.id.txtDate);
@@ -78,12 +79,13 @@ public class MainActivityDangKy extends AppCompatActivity {
                 String hovaten = edthoten.getText().toString().trim();
                 String sodienthoai = edtSDT.getText().toString().trim();
                 String Ngay = txtNgay.getText().toString().trim();
+                String address = edtAddress.getText().toString().trim();
                 if (pwd.equals(cnf_pwd)) {
                     Boolean res = MainActivityDangNhap.databaseLogin.checkUser(user);
                     if (res == true) {
                         Toast.makeText(MainActivityDangKy.this, "Tài khoản này đã có!", Toast.LENGTH_SHORT).show();
                     } else {
-                        long val = MainActivityDangNhap.databaseLogin.addUser(user, pwd, hovaten, sodienthoai,Ngay);
+                        long val = MainActivityDangNhap.databaseLogin.addUser(user, pwd, hovaten, sodienthoai,Ngay,address);
                         if (val > 0) {
                             Toast.makeText(MainActivityDangKy.this, "Đăng kí thành công!", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(MainActivityDangKy.this, MainActivityDangNhap.class);
@@ -224,6 +226,7 @@ public class MainActivityDangKy extends AppCompatActivity {
         edthoten = findViewById(R.id.edthvt);
         edtusername = findViewById(R.id.edtmail);
         edtpassword = findViewById(R.id.edtPass_1);
+        edtAddress = findViewById(R.id.edtAddress);
         btnRegister = findViewById(R.id.btndangki);
         layoutPass_1 = findViewById(R.id.WrapPass_1);
         layoutPass_2 = findViewById(R.id.WrapPass_2);

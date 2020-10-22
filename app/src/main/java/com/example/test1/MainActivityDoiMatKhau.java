@@ -47,9 +47,9 @@ public class MainActivityDoiMatKhau extends AppCompatActivity {
 
                                 String user = MainActivityDangNhap.mysharedPreferences.getString("username","");
 //                                homeActivity.databaseHelper.checkUser(user,edtpass2);
-                                MainActivityDangNhap.databaseLogin.UpData("Update TaiKhoan set Pass='" + edtpass2 + "' where Ten='" + user + "'");
+                                MainActivityDangNhap.databaseLogin.UpData("Update TaiKhoan3 set Pass='" + edtpass2 + "' where Ten='" + user + "'");
                                 Toast.makeText(MainActivityDoiMatKhau.this, "Đổi mật khẩu thành công", Toast.LENGTH_SHORT).show();
-                                MainActivityDangNhap.databaseLogin.UpData("Update TaiKhoan set Pass='" + edtpass2 + "' where Id='" + edtpass1[0] + "'");
+                                MainActivityDangNhap.databaseLogin.UpData("Update TaiKhoan3 set Pass='" + edtpass2 + "' where Id='" + edtpass1[0] + "'");
                                
                                 if (getFragmentManager().getBackStackEntryCount()>0){
                                     getFragmentManager().popBackStack();
