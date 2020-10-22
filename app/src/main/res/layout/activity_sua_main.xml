@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient2"
     android:orientation="vertical">
 
     <ScrollView
@@ -23,11 +24,9 @@
                 <EditText
                     android:id="@+id/et_ulr"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColorHint="#fff"
-                    android:background="@drawable/botron_button4"
-                    android:hint="Enter URL..."
-                    android:textColor="#fff">
+                    android:layout_height="50dp"
+                    android:background="@drawable/botron_button"
+                    android:hint="Enter URL...">
 
                 </EditText>
 
@@ -41,10 +40,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-
-                        android:background="@drawable/botron_button4"
-                        android:text="Clear"
-                        android:textColor="#fff">
+                        android:background="@drawable/botron_button"
+                        android:text="Clear">
 
                     </Button>
 
@@ -57,9 +54,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/botron_button4"
-                        android:text="Submit"
-                        android:textColor="#fff">
+                        android:background="@drawable/botron_button"
+                        android:text="Submit">
 
                     </Button>
 
@@ -94,7 +90,6 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
                         android:text="Giá:"
-                        android:textColor="#eea46f"
                         android:textSize="20sp"
                         android:textStyle="bold">
 
@@ -103,12 +98,11 @@
                     <EditText
                         android:id="@+id/giasp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         android:layout_weight="1"
-                        android:background="@drawable/botron_button4"
+                        android:background="@drawable/botron_button"
                         android:ems="4"
-                        android:inputType="number"
-                        android:textColor="#fff">
+                        android:inputType="number">
 
                     </EditText>
 
@@ -127,7 +121,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
                         android:text="Tên sản phẩm:"
-                        android:textColor="#eea46f"
+
                         android:textSize="20sp"
 
                         android:textStyle="bold">
@@ -137,10 +131,9 @@
                     <EditText
                         android:id="@+id/tensp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         android:layout_weight="1"
-                        android:background="@drawable/botron_button4"
-                        android:textColor="#fff">
+                        android:background="@drawable/botron_button">
 
                     </EditText>
 
@@ -160,7 +153,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
                         android:text="Số lượng:"
-                        android:textColor="#eea46f"
+
                         android:textSize="20sp"
                         android:textStyle="bold">
 
@@ -169,9 +162,9 @@
                     <EditText
                         android:id="@+id/soluongsp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         android:layout_weight="1"
-                        android:background="@drawable/botron_button4"
+                        android:background="@drawable/botron_button"
                         android:ems="2"
                         android:inputType="number"
                         android:textColor="#fff"
@@ -195,7 +188,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
                         android:text="Chi tiết sản phẩm"
-                        android:textColor="#eea46f"
+
                         android:textSize="20sp"
                         android:textStyle="bold">
 
@@ -205,10 +198,9 @@
                         android:inputType="text"
                         android:id="@+id/chitietsp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         android:layout_weight="1"
-                        android:background="@drawable/botron_button4"
-                        android:textColor="#fff"
+                        android:background="@drawable/botron_button"
                         android:textSize="20sp">
 
                     </EditText>
@@ -232,7 +224,6 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
                         android:text="Size sản phẩm"
-                        android:textColor="#eea46f"
                         android:textSize="20sp"
                         android:textStyle="bold">
 
@@ -242,10 +233,9 @@
                         android:inputType="text"
                         android:id="@+id/sizesp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         android:layout_weight="1"
-                        android:background="@drawable/botron_button4"
-                        android:textColor="#fff"
+                        android:background="@drawable/botron_button"
                         android:textSize="20sp">
 
                     </AutoCompleteTextView>
@@ -275,8 +265,7 @@
                     android:id="@+id/btnSuasp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/botron_button4"
-                    android:textColor="#fff"
+                    android:background="@drawable/botron_button"
                     android:text="Sửa">
 
                 </Button>
@@ -286,8 +275,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="70dp"
-                    android:textColor="#fff"
-                    android:background="@drawable/botron_button4"
+                    android:background="@drawable/botron_button"
                     android:text="Hủy">
 
                 </Button>

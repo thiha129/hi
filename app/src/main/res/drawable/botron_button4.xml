@@ -5,8 +5,8 @@
 
     <!-- Set màu nền-->
     <gradient
-        android:startColor="#FFCEAB"
-        android:endColor="#FF699B"
+        android:startColor="#ff9966"
+        android:endColor="#ff5e62"
         android:type="linear"
         android:angle="45"/>
 

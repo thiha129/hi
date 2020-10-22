@@ -63,7 +63,7 @@ public class MainActivityQuanLyTaiKhoan extends AppCompatActivity {
 
     private void abc02() {
         showTaikhoan = findViewById(R.id.SoluongTaiKhoan);
-        adapter = new NguoidungAdapter(MainActivityQuanLyTaiKhoan.this, R.layout.list_item_hoadon, nguoidungArrayList);
+        adapter = new NguoidungAdapter(MainActivityQuanLyTaiKhoan.this, R.layout.list_item_nguoidung, nguoidungArrayList);
         Cursor cursor = databaseLogin.GetData("SELECT * FROM TaiKhoan3");
         if (cursor != null) {
             while (cursor.moveToNext()) {
