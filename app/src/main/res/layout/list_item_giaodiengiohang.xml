@@ -91,7 +91,7 @@
                             android:layout_marginTop="5dp"
                             android:layout_weight="1"
                             android:padding="10dp"
-                            android:text="Size:"
+                            android:text="Size :"
                             android:textStyle="bold">
 
                         </TextView>
