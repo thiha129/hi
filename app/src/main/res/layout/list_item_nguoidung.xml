@@ -23,7 +23,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/botron_button4"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -39,7 +38,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:layout_weight="1"
+                        android:layout_weight="2"
                         android:padding="10dp"
                         android:text="Ngày tạo"
                         android:textStyle="bold">
@@ -91,7 +90,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:layout_weight="1.5"
+                        android:layout_weight="2"
                         android:padding="10dp"
                         android:text="Số điện thoại:"
                         android:textStyle="bold">
