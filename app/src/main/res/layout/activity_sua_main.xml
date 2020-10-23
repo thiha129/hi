@@ -173,9 +173,7 @@
                         android:layout_height="50dp"
                         android:layout_weight="1"
                         android:background="@drawable/botron_button"
-                        android:ems="2"
                         android:inputType="number"
-                        android:textColor="#fff"
                         android:textSize="20sp">
 
                     </EditText>

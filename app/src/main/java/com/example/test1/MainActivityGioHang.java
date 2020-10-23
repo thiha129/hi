@@ -5,7 +5,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,12 +22,16 @@ import java.util.ArrayList;
 public class MainActivityGioHang extends AppCompatActivity {
     ListView listViewGioHang;
     public static ArrayList<gioHang> arraygioHang;
+    public static ArrayList<Nguoidung> nguoidungArrayList;
     public static GioHangAdapTer gioHangAdapTer;
     public static DatabaseHelper databaseHelper;
-    TextView Cont, Sum, Pay;
+    public static DatabaseLogin databaseLogin;
+    public static NguoidungAdapter adapter;
+    TextView Cont, Sum, Pay, phi;
     int indexItem;
      Button Thanks;
      Intent intent;
+    int i = -1;
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
         return super.onCreateOptionsMenu(menu);
@@ -53,12 +56,16 @@ public class MainActivityGioHang extends AppCompatActivity {
         Sum = findViewById(R.id.sum);
         Pay = findViewById(R.id.pay);
         Thanks = findViewById(R.id.thank);
+        phi = findViewById(R.id.phichuyen);
         databaseHelper = new DatabaseHelper(MainActivityGioHang.this, "giaydep", null, 1);
+        databaseLogin = new DatabaseLogin(MainActivityGioHang.this, "mail.sqlite", null, 1);
+        MainActivityGioHang.databaseLogin.UpData("CREATE TABLE IF NOT EXISTS TaiKhoan3 (Id INTEGER PRIMARY KEY AUTOINCREMENT, Ten VARCHAR(200), Pass VARCHAR(200), Hovaten VARCHAR(200), SoDienThoai VARCHAR(11),Ngay VARCHAR(20), diachi VARCHAR(200))");
+
         arraygioHang = new ArrayList<>();
         Upload();
 
 
-//        Toast.makeText(this, "Tinhs toong " + TinhTong, Toast.LENGTH_SHORT).show();
+//      
 
         listViewGioHang.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -73,6 +80,7 @@ public class MainActivityGioHang extends AppCompatActivity {
                         databaseHelper.UpData("delete from GioHang2 where Id = " + arraygioHang.get(indexItem).getId() + "");
                         arraygioHang.clear();
                         Upload();
+                        Toast.makeText(MainActivityGioHang.this, "Bạn đã xoá sản phẩm này ra khỏi giỏ hàng !", Toast.LENGTH_SHORT).show();
                     }
                 });
                 builder.setPositiveButton("No", new DialogInterface.OnClickListener() {
@@ -95,20 +103,32 @@ public class MainActivityGioHang extends AppCompatActivity {
                 builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int j) {
-                        databaseHelper.UpData("delete from GioHang2 ");
-                        arraygioHang.clear();
-                        Upload();
-                        Toast.makeText(MainActivityGioHang.this, "Cảm ơn bạn đã mua hàng !", Toast.LENGTH_SHORT).show();
-                        loadingDialog_pr.startLoadingDialog();
-                        Handler handler = new Handler();
-                        handler.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                loadingDialog_pr.dismissDialog();
-                                intent = new Intent(MainActivityGioHang.this, MainActivity.class);
-                                startActivity(intent);
-                            }
-                        },2000);
+//                        databaseHelper.UpData("delete from GioHang2 ");
+//                        arraygioHang.clear();
+//                        Upload();
+//                        Toast.makeText(MainActivityGioHang.this, "Cảm ơn bạn đã mua hàng !", Toast.LENGTH_SHORT).show();
+//                        loadingDialog_pr.startLoadingDialog();
+//                        Handler handler = new Handler();
+//                        handler.postDelayed(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                loadingDialog_pr.dismissDialog();
+//                                intent = new Intent(MainActivityGioHang.this, MainActivity.class);
+//                                startActivity(intent);
+//                            }
+//                        },2000);
+
+                        
+                        Cursor cursor1 = databaseLogin.GetData("SELECT * FROM TaiKhoan3 ");
+                        while (cursor1.moveToNext()) {
+                            int id = cursor1.getInt(0);
+                            Toast.makeText(MainActivityGioHang.this, ""+id, Toast.LENGTH_SHORT).show();
+                            intent = new Intent(MainActivityGioHang.this, MainActivityHoaDon.class);
+                        intent.putExtra("IdUser",id);
+                       startActivity(intent);
+                        }
+
+//
 
                     }
                 });
@@ -138,10 +158,20 @@ public class MainActivityGioHang extends AppCompatActivity {
             TinhTong += cursor.getInt(2);
             Cont.setText("" + gioHangAdapTer.getCount());
         }
-        Sum.setText("$" + TinhTong);
-        int phi = 10;
-       int tongtien = TinhTong +10;
-        Pay.setText("$" + tongtien);
+        if (gioHangAdapTer.getCount() <1){
+            Cont.setText("0");
+            Sum.setText("$0" );
+            Pay.setText("$0");
+            phi.setText("0");
+            Thanks.setEnabled(false);
+        }    else{
+            Sum.setText("$" + TinhTong);
+            int tongtien = TinhTong +10;
+            Pay.setText("$" + tongtien);
+            phi.setText("$10");
+            Thanks.setEnabled(true);
+        }
+
     }
 
 }

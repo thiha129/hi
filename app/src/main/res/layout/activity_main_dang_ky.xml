@@ -6,14 +6,16 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient1"
     tools:context=".MainActivityDangKy">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         tools:ignore="MissingConstraints">
+
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_gravity="center"
             android:layout_marginTop="40dp"
             android:src="@drawable/logo3">
@@ -92,6 +94,36 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/wrapsodiachi"
+                android:layout_width="match_parent"
+                android:layout_height="69dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/border_2">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Địa chỉ ...."
+                    android:inputType="text"
+                    android:maxLength="10"
+                    android:paddingLeft="10dp"
+                    android:textStyle="bold">
+
+                </com.google.android.material.textfield.TextInputEditText>
+
+
+
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/wrapsodienthoai"
                 android:layout_width="match_parent"
                 android:layout_height="69dp"
@@ -111,6 +143,11 @@
                     android:textStyle="bold">
 
                 </com.google.android.material.textfield.TextInputEditText>
+
+
+
+
+
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout

@@ -20,7 +20,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class MainActivityThongTinSanPham extends AppCompatActivity {
-    TextView name, nd, race, number, test;
+    TextView name, nd, race, number, size;
     ImageView imageView1;
     public static DatabaseHelper databaseHelper;
     Button GioHang;
@@ -105,7 +105,7 @@ public class MainActivityThongTinSanPham extends AppCompatActivity {
         number = findViewById(R.id.SoLuongSanPham);
         nd = findViewById(R.id.ChiTietSanPham);
         imageView1 = findViewById(R.id.imageView3);
-
+        size = findViewById(R.id.SizeSanPham);
         Intent i = getIntent();
         int Id = i.getIntExtra("id", 1);
         Cursor cursor = databaseHelper.GetData("SELECT * FROM Sanpham2 where Id = " + Id + "");
@@ -124,7 +124,8 @@ public class MainActivityThongTinSanPham extends AppCompatActivity {
                 loadImages.execute(link);
                 String ND = cursor.getString(5);
                 nd.setText(ND);
-
+                 String Size = cursor.getString(6);
+                size.setText(Size);
             }
         }
 

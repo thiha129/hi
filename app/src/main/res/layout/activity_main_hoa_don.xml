@@ -77,6 +77,7 @@
                     </TextView>
 
                     <TextView
+                        android:id="@+id/edt_Address"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -101,6 +102,7 @@
                     </TextView>
 
                     <TextView
+                        android:id="@+id/edt_number"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -126,6 +128,7 @@
                     </TextView>
 
                     <TextView
+                        android:id="@+id/edt_NameUser"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -177,6 +180,7 @@
                     </TextView>
 
                     <TextView
+                        android:id="@+id/Pay"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"

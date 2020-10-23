@@ -38,7 +38,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
-    private DatabaseHelper databaseHelper;
+    public static DatabaseHelper databaseHelper;
     private HomeViewModel homeViewModel;
     GridView gridView;
     Button button, btnthem, btnhuy, btnthem2;
@@ -92,7 +92,7 @@ public class HomeFragment extends Fragment {
         gridView = view.findViewById(R.id.lv1);
         databaseHelper = new DatabaseHelper(getActivity(), "giaydep", null, 1);
         databaseHelper.UpData("CREATE TABLE IF NOT EXISTS Sanpham2(Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia VarChar(150), SoLuong VarChar(150), LinkAnh Text ,Chitiet VarChar(150), size VarChar(150))");
-        databaseHelper.UpData("CREATE TABLE IF NOT EXISTS GioHang2 (Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia integer,size integer,LinkAnh Text )");
+        databaseHelper.UpData("CREATE TABLE IF NOT EXISTS GioHang2 (Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia integer,size integer,LinkAnh Text, tong VarChar(150) )");
         arrayDoVat = new ArrayList<>();
         adapter = new GiayAchapter(getActivity(), R.layout.list_item_abc, arrayDoVat);
         abc02();
