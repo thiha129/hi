@@ -156,6 +156,11 @@
                     app:layout_constraintEnd_toEndOf="parent">
 
                 </TextView>
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/Ngay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"></TextView>
 
             </LinearLayout>
 

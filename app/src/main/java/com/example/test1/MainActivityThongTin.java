@@ -42,7 +42,7 @@ public class MainActivityThongTin extends AppCompatActivity {
          change.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
-                 Intent intent = new Intent(MainActivityThongTin.this, MainActivitySuaXoaSanPham.class);
+                 Intent intent = new Intent(MainActivityThongTin.this, MainActivityQuanLyHoaDon.class);
                  startActivity(intent);
              }
          });
@@ -50,7 +50,7 @@ public class MainActivityThongTin extends AppCompatActivity {
         them.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                intent = new Intent(MainActivityThongTin.this, ThemGiayActivity.class);
+                intent = new Intent(MainActivityThongTin.this, MainActivitySuaXoaSanPham.class);
                 startActivity(intent);
             }
         });

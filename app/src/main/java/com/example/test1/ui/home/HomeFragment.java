@@ -8,6 +8,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,6 +55,7 @@ public class HomeFragment extends Fragment {
     ArrayList<MainModel> mainModels;
     MainAdapter mainAdapter;
     private int indext = -1;
+    EditText Search;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -60,7 +63,7 @@ public class HomeFragment extends Fragment {
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         view = inflater.inflate(R.layout.fragment_home, container, false);
         View view3 = inflater.inflate(R.layout.list_item_abc, container, false);
-        giohang=view3.findViewById(R.id.imageView2);
+        giohang = view3.findViewById(R.id.imageView2);
         giohang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -93,17 +96,56 @@ public class HomeFragment extends Fragment {
         databaseHelper = new DatabaseHelper(getActivity(), "giaydep", null, 1);
         databaseHelper.UpData("CREATE TABLE IF NOT EXISTS Sanpham2(Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia VarChar(150), SoLuong VarChar(150), LinkAnh Text ,Chitiet VarChar(150), size VarChar(150))");
         databaseHelper.UpData("CREATE TABLE IF NOT EXISTS GioHang2 (Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia integer,size integer,LinkAnh Text, tong VarChar(150) )");
+
         arrayDoVat = new ArrayList<>();
         adapter = new GiayAchapter(getActivity(), R.layout.list_item_abc, arrayDoVat);
         abc02();
         abc03();
 //        Xoa();
         abc4();
-
+//        Find();
         return view;
 
     }
 
+    private void Find() {
+        Search = view.findViewById(R.id.editText);
+        Search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//                databaseHelper = new DatabaseHelper(getActivity(), "giaydep", null, 1);
+//                databaseHelper.UpData("CREATE TABLE IF NOT EXISTS Sanpham2(Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia VarChar(150), SoLuong VarChar(150), LinkAnh Text ,Chitiet VarChar(150), size VarChar(150))");
+
+                adapter = new GiayAchapter(getActivity(), R.layout.list_item_abc, arrayDoVat);
+                Cursor cursor = databaseHelper.GetData("SELECT * FROM Sanpham2 WHERE Ten LIKE '%" + Search.getText().toString().trim() + "%' ");
+                arrayDoVat.clear();
+                if (cursor != null) {
+                    while (cursor.moveToNext()) {
+                        int id = cursor.getInt(0);
+                        String TenGiay = cursor.getString(1);
+                        String Gia = cursor.getString(2)+"$";
+                        String Soluong = cursor.getString(3);
+                        String LinkAnh = cursor.getString(4);
+                        String Chitiet = cursor.getString(5);
+
+                        arrayDoVat.add(new Giay(id, TenGiay, Gia, Soluong, LinkAnh, Chitiet));
+                    }
+//                    gridView.setAdapter(adapter);
+                    adapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+    }
 
 
     private void abc4() {
@@ -112,7 +154,7 @@ public class HomeFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 indext = i;
                 Intent movetocharacter = new Intent(getActivity(), MainActivityThongTinSanPham.class);
-                movetocharacter.putExtra("id",arrayDoVat.get(i).getId());
+                movetocharacter.putExtra("id", arrayDoVat.get(i).getId());
                 startActivity(movetocharacter);
             }
         });
@@ -144,6 +186,7 @@ public class HomeFragment extends Fragment {
 
         mainAdapter = new MainAdapter(getActivity(), mainModels);
         recyclerView.setAdapter(mainAdapter);
+
     }
 
     private void abc02() {
@@ -153,7 +196,7 @@ public class HomeFragment extends Fragment {
             while (cursor.moveToNext()) {
                 int id = cursor.getInt(0);
                 String TenGiay = cursor.getString(1);
-                String Gia = cursor.getString(2)+"$";
+                String Gia = cursor.getString(2) + "$";
                 String Soluong = cursor.getString(3);
                 String LinkAnh = cursor.getString(4);
                 String Chitiet = cursor.getString(5);
@@ -164,6 +207,7 @@ public class HomeFragment extends Fragment {
             adapter.notifyDataSetChanged();
         }
     }
+
     public class LoadImage extends AsyncTask<String, Void, Bitmap> {
         ImageView imageView;
 
@@ -193,7 +237,7 @@ public class HomeFragment extends Fragment {
     }
 
     int indexItem;
-                                                
+
     private void Xoa() {
         final GridView listView = view.findViewById(R.id.lv1);
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {

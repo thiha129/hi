@@ -6,6 +6,7 @@
     android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/haha"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
@@ -14,6 +15,7 @@
         app:cardElevation="10dp">
 
         <LinearLayout
+            android:id="@+id/linear_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

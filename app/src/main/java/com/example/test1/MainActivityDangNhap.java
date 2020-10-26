@@ -84,6 +84,8 @@ public class MainActivityDangNhap extends AppCompatActivity {
 //            edtpassword.setText("");
 //            checkBox.setChecked(false);
 //        }
+
+
         btnLogin = findViewById(R.id.btnlogin);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,9 +120,17 @@ public class MainActivityDangNhap extends AppCompatActivity {
 //
 //                                            }
 //                                        }, 2000);
-                                        Intent danhnhap1 = new Intent(MainActivityDangNhap.this, MainActivityThongTin.class);
-                                        startActivity(danhnhap1);
-                                        finish();
+                                        if (user.equals("admin123@gmail.com")) {
+                                            Intent danhnhap1 = new Intent(MainActivityDangNhap.this, MainActivity.class);
+                                            startActivity(danhnhap1);
+                                            finish();
+                                        } else {
+                                            Intent danhnhap1 = new Intent(MainActivityDangNhap.this, MainActivityUser.class);
+                                            startActivity(danhnhap1);
+                                            finish();
+
+                                        }
+
                                         Toast.makeText(MainActivityDangNhap.this, "Logged in successfully !", Toast.LENGTH_SHORT).show();
                                     } else {
                                         SharedPreferences.Editor editor = mysharedPreferences.edit();
@@ -137,9 +147,16 @@ public class MainActivityDangNhap extends AppCompatActivity {
 //
 //                                            }
 //                                        }, 2000);
-                                        Intent danhnhap1 = new Intent(MainActivityDangNhap.this, MainActivityThongTin.class);
-                                        startActivity(danhnhap1);
-                                        finish();
+                                        if (user.equals("admin123@gmail.com")) {
+                                            Intent danhnhap1 = new Intent(MainActivityDangNhap.this, MainActivity.class);
+                                            startActivity(danhnhap1);
+                                            finish();
+                                        } else {
+                                            Intent danhnhap1 = new Intent(MainActivityDangNhap.this, MainActivityUser.class);
+                                            startActivity(danhnhap1);
+                                            finish();
+
+                                        }
                                         Toast.makeText(MainActivityDangNhap.this, "Logged in successfully !", Toast.LENGTH_SHORT).show();
                                     }
                                 } else {
@@ -157,6 +174,14 @@ public class MainActivityDangNhap extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent danhnhap1 = new Intent(MainActivityDangNhap.this, MainActivity.class);
+        startActivity(danhnhap1);
+        super.onBackPressed();
+    }
+
     private void AnhXa() {
         layoutPass = findViewById(R.id.wrapPass);
         layoutUser = findViewById(R.id.wrapUser);
@@ -165,6 +190,7 @@ public class MainActivityDangNhap extends AppCompatActivity {
         btnLogin = findViewById(R.id.btnlogin);
         txtDangKy = findViewById(R.id.dangky);
     }
+
     private void batloi() {
         AnhXa();
         edtusername.addTextChangedListener(new TextWatcher() {

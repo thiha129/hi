@@ -57,6 +57,13 @@
                         android:textStyle="bold">
 
                     </TextView>
+                      <TextView
+                          android:visibility="gone"
+                          android:id="@+id/Ngay_hoaDon"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content">
+
+                      </TextView>
                 </LinearLayout>
 
 
@@ -69,6 +76,7 @@
                     android:orientation="horizontal">
 
                     <TextView
+                           
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
@@ -76,14 +84,14 @@
 
                     </TextView>
 
-                    <TextView
+                    <EditText
                         android:id="@+id/edt_Address"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center">
 
-                    </TextView>
+                    </EditText>
                 </LinearLayout>
 
                 <LinearLayout
@@ -101,14 +109,14 @@
 
                     </TextView>
 
-                    <TextView
+                    <EditText
                         android:id="@+id/edt_number"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center">
 
-                    </TextView>
+                    </EditText>
                 </LinearLayout>
 
                 <LinearLayout
@@ -127,12 +135,37 @@
 
                     </TextView>
 
-                    <TextView
+                    <EditText
                         android:id="@+id/edt_NameUser"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center">
+
+                    </EditText>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20sp"
+                    android:background="@drawable/botron_button"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text="Số lượng:">
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/Count_hoadon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="">
 
                     </TextView>
                 </LinearLayout>
@@ -200,25 +233,14 @@
                     android:background="@drawable/botron_button"
                     android:orientation="horizontal">
                     <Button
+                        android:id="@+id/DatHang"
+                        android:paddingStart="30sp"
+                        android:paddingEnd="30sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/botron_button4"
                         android:textColor="#fff"
-                        android:text="Đã giao" />
-                    <Button
-                        android:background="@drawable/botron_button4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="#fff"
-                        android:layout_marginLeft="20sp"
-                        android:text="Chưa giao" />
-                    <Button
-                        android:layout_marginLeft="20sp"
-                        android:background="@drawable/botron_button4"
-                        android:textColor="#fff"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Chờ shiper giao" />
+                        android:text="Đặt hàng" />
 
                 </LinearLayout>
             </LinearLayout>

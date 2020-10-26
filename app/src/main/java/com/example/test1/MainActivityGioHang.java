@@ -3,8 +3,12 @@ package com.example.test1;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.icu.text.SimpleDateFormat;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,13 +19,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class MainActivityGioHang extends AppCompatActivity {
     ListView listViewGioHang;
     public static ArrayList<gioHang> arraygioHang;
+    public static SharedPreferences mysharedPreferences;
     public static ArrayList<Nguoidung> nguoidungArrayList;
     public static GioHangAdapTer gioHangAdapTer;
     public static DatabaseHelper databaseHelper;
@@ -29,9 +36,11 @@ public class MainActivityGioHang extends AppCompatActivity {
     public static NguoidungAdapter adapter;
     TextView Cont, Sum, Pay, phi;
     int indexItem;
-     Button Thanks;
-     Intent intent;
+    Button Thanks;
+    Intent intent;
     int i = -1;
+    TextView Date_Tao;
+
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
         return super.onCreateOptionsMenu(menu);
@@ -46,6 +55,7 @@ public class MainActivityGioHang extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,15 +67,15 @@ public class MainActivityGioHang extends AppCompatActivity {
         Pay = findViewById(R.id.pay);
         Thanks = findViewById(R.id.thank);
         phi = findViewById(R.id.phichuyen);
+        mysharedPreferences = getSharedPreferences("mylogin", MODE_PRIVATE);
+
         databaseHelper = new DatabaseHelper(MainActivityGioHang.this, "giaydep", null, 1);
         databaseLogin = new DatabaseLogin(MainActivityGioHang.this, "mail.sqlite", null, 1);
         MainActivityGioHang.databaseLogin.UpData("CREATE TABLE IF NOT EXISTS TaiKhoan3 (Id INTEGER PRIMARY KEY AUTOINCREMENT, Ten VARCHAR(200), Pass VARCHAR(200), Hovaten VARCHAR(200), SoDienThoai VARCHAR(11),Ngay VARCHAR(20), diachi VARCHAR(200))");
+        databaseLogin.UpData("CREATE TABLE IF NOT EXISTS HoaDon (Id INTEGER PRIMARY KEY AUTOINCREMENT, Ten VARCHAR(200), SoDienThoai VARCHAR(11), diachi VARCHAR(200),soluong integer,tong integer,Ngay VARCHAR(20))");
 
         arraygioHang = new ArrayList<>();
         Upload();
-
-
-//      
 
         listViewGioHang.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -92,17 +102,26 @@ public class MainActivityGioHang extends AppCompatActivity {
                 return false;
             }
         });
+
+//        Chuyen trang
         Thanks.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivityGioHang.this);
-                final LoadingDialog_pr loadingDialog_pr = new LoadingDialog_pr(MainActivityGioHang.this);
-
-                builder.setTitle(R.string.app_name);
-                builder.setMessage("Bạn có muốn thanh toán không?");
-                builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int j) {
+                ChuyenTrang();
+            }
+        });
+//        Thanks.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivityGioHang.this);
+//                final LoadingDialog_pr loadingDialog_pr = new LoadingDialog_pr(MainActivityGioHang.this);
+//
+//                builder.setTitle(R.string.app_name);
+//                builder.setMessage("Bạn có muốn thanh toán không?");
+//                builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int j) {
 //                        databaseHelper.UpData("delete from GioHang2 ");
 //                        arraygioHang.clear();
 //                        Upload();
@@ -117,29 +136,70 @@ public class MainActivityGioHang extends AppCompatActivity {
 //                                startActivity(intent);
 //                            }
 //                        },2000);
-
-                        
-                        Cursor cursor1 = databaseLogin.GetData("SELECT * FROM TaiKhoan3 ");
-                        while (cursor1.moveToNext()) {
-                            int id = cursor1.getInt(0);
-                            Toast.makeText(MainActivityGioHang.this, ""+id, Toast.LENGTH_SHORT).show();
-                            intent = new Intent(MainActivityGioHang.this, MainActivityHoaDon.class);
-                        intent.putExtra("IdUser",id);
-                       startActivity(intent);
-                        }
-
 //
+//
+//
+//
+////
+//
+//                    }
+//                });
+//                builder.setPositiveButton("No", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//                    }
+//                });
+//                builder.create().show();
+//            }
+//        });
+    }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private void ChuyenTrang() {
+       
+        Date_Tao = findViewById(R.id.Ngay);
+//        ---------------------------------------------------------------------------
+//        Date date = new Date();
+//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+//        final String NgayGui = simpleDateFormat.format(date);
+//        Date_Tao.setText(NgayGui);
+//        ----------------------------------------------------------------------------
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm:ss a, dd/MM/yyyy");
+        String dateTime  =   simpleDateFormat.format(calendar.getTime());
+        Date_Tao.setText(dateTime);
+
+        final LoadingDialog loadingDialog = new LoadingDialog(MainActivityGioHang.this);
+        Cursor cursor1 = databaseLogin.GetData("SELECT * FROM TaiKhoan3 ");
+        while (cursor1.moveToNext()) {
+            final int id = cursor1.getInt(0);
+            cursor1.getString(3);
+            cursor1.getString(4);
+            cursor1.getString(6);
+
+            loadingDialog.startLoadingDialog();
+            Handler handler = new Handler();
+//            Toast.makeText(this, ""+cursor1.getString(6), Toast.LENGTH_SHORT).show();
+//            databaseLogin.UpData("Insert into HoaDon values(null,'" + cursor1.getString(3) + "','" + cursor1.getString(4) + "','" + cursor1.getString(6) + "', '" + Cont.getText() + "', '"+Pay.getText()+"','"+Date_Tao.getText()+"' )");
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    loadingDialog.dismissDialog();
+                    intent = new Intent(MainActivityGioHang.this, MainActivityHoaDon.class);
+                    String islogin = mysharedPreferences.getString("username", "");
+                    if (islogin != ""){
+                        intent.putExtra("IdUser", id);
+                        startActivity(intent);
+                    }    else{
+                        startActivity(intent);
                     }
-                });
-                builder.setPositiveButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                    }
-                });
-                builder.create().show();
-            }
-        });
+
+
+                }
+            }, 2000);
+        }
+//       HoaDon (Id INTEGER PRIMARY KEY AUTOINCREMENT, Ten VARCHAR(200), SoDienThoai VARCHAR(11), diachi VARCHAR(200),soluong integer,tong integer,Ngay VARCHAR(20))");
+
     }
 
     private void Upload() {
@@ -158,15 +218,16 @@ public class MainActivityGioHang extends AppCompatActivity {
             TinhTong += cursor.getInt(2);
             Cont.setText("" + gioHangAdapTer.getCount());
         }
-        if (gioHangAdapTer.getCount() <1){
+        gioHangAdapTer.notifyDataSetChanged();
+        if (gioHangAdapTer.getCount() < 1) {
             Cont.setText("0");
-            Sum.setText("$0" );
+            Sum.setText("$0");
             Pay.setText("$0");
             phi.setText("0");
             Thanks.setEnabled(false);
-        }    else{
+        } else {
             Sum.setText("$" + TinhTong);
-            int tongtien = TinhTong +10;
+            int tongtien = TinhTong + 10;
             Pay.setText("$" + tongtien);
             phi.setText("$10");
             Thanks.setEnabled(true);

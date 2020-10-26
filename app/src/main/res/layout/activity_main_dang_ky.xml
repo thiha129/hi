@@ -108,7 +108,6 @@
                     android:layout_height="match_parent"
                     android:hint="Địa chỉ ...."
                     android:inputType="text"
-                    android:maxLength="10"
                     android:paddingLeft="10dp"
                     android:textStyle="bold">
 

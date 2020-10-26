@@ -11,7 +11,6 @@ import java.util.List;
 
 public class NguoidungAdapter extends BaseAdapter {
     private Context context;
-    private int anInt;
     private List<Nguoidung> NguoidungArrayList;
     public int layout;
 
