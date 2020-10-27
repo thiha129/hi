@@ -56,8 +56,9 @@ public class MainActivitySuaXoaSanPham extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 indext = i;
-                Intent movetocharacter = new Intent(MainActivitySuaXoaSanPham.this, SuaMainActivity.class);
+                Intent movetocharacter = new Intent(MainActivitySuaXoaSanPham.this, ThemGiayActivity.class);
                 movetocharacter.putExtra("id",arrayDoVat.get(i).getId());
+                btnthem2.setEnabled(true);
                 startActivity(movetocharacter);
             }
         });

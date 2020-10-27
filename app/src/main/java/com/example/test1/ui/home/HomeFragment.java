@@ -171,7 +171,8 @@ public class HomeFragment extends Fragment {
                 R.drawable.mn,
         };
         String[] langname = {
-                "Shoe", "Bag", "Bear", "Shoe", "Bag", "Bear"
+                "https://thethao247.vn/318-su-phat-trien-than-ki-cua-cong-nghe-nike-flyknit-d177599.html",
+                "Bag", "Bear", "Shoe", "Bag", "Bear"
         };
         mainModels = new ArrayList<>();
         for (int i = 0; i < langLogo.length; i++) {

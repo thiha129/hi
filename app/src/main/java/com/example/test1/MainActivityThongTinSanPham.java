@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -25,7 +27,7 @@ public class MainActivityThongTinSanPham extends AppCompatActivity {
     public static DatabaseHelper databaseHelper;
     Button GioHang;
     Intent intent;
-
+    Animation TopAnim, bottomAnim;
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
         return super.onCreateOptionsMenu(menu);
@@ -69,6 +71,8 @@ public class MainActivityThongTinSanPham extends AppCompatActivity {
             }
         });
         AnhXa();
+        TopAnim = AnimationUtils.loadAnimation(this,R.anim.top_animation);
+        bottomAnim = AnimationUtils.loadAnimation(this,R.anim.bottom_animation);
     }
 
     private class LoadImage extends AsyncTask<String, Void, Bitmap> {

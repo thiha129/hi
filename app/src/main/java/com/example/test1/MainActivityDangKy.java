@@ -55,7 +55,7 @@ public class MainActivityDangKy extends AppCompatActivity {
         setContentView(R.layout.activity_main_dang_ky);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         databaseLogin = new DatabaseLogin(this, "mail.sqlite", null, 1);
-        MainActivityDangKy.databaseLogin.UpData("CREATE TABLE IF NOT EXISTS TaiKhoan3 (Id INTEGER PRIMARY KEY AUTOINCREMENT, Ten VARCHAR(200), Pass VARCHAR(200), Hovaten VARCHAR(200), SoDienThoai VARCHAR(11),Ngay VARCHAR(20), diachi VARCHAR(200))");
+        MainActivityDangKy.databaseLogin.UpData("CREATE TABLE IF NOT EXISTS TaiKhoan6 (Id INTEGER PRIMARY KEY AUTOINCREMENT, Ten COLLATE NOCASE, Pass VARCHAR(200), Hovaten COLLATE NOCASE, SoDienThoai VARCHAR(11),Ngay VARCHAR(20), diachi VARCHAR(200))");
         AnhXa();
         batloi();
         txtNgay = findViewById(R.id.txtDate);
@@ -70,9 +70,11 @@ public class MainActivityDangKy extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+      
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 String user = edtusername.getText().toString().trim();
                 String pwd = edtpassword.getText().toString().trim();
                 String cnf_pwd = edtcnfpassword.getText().toString().trim();
@@ -80,28 +82,37 @@ public class MainActivityDangKy extends AppCompatActivity {
                 String sodienthoai = edtSDT.getText().toString().trim();
                 String Ngay = txtNgay.getText().toString().trim();
                 String address = edtAddress.getText().toString().trim();
-                if (pwd.equals(cnf_pwd)) {
-                    Boolean res = MainActivityDangNhap.databaseLogin.checkUser(user);
-                    if (res == true) {
-                        Toast.makeText(MainActivityDangKy.this, "Tài khoản này đã có!", Toast.LENGTH_SHORT).show();
-                    } else {
-                        long val = MainActivityDangNhap.databaseLogin.addUser(user, pwd, hovaten, sodienthoai,Ngay,address);
-                        if (val > 0) {
-                            Toast.makeText(MainActivityDangKy.this, "Đăng kí thành công!", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(MainActivityDangKy.this, MainActivityDangNhap.class);
-                            startActivity(intent);
-//                            Animato.animateSpin(MainActivityDangKy.this);
 
+                if (user.length() >0 && pwd.length() >0 && cnf_pwd.length() >0 && hovaten.length()>0 && sodienthoai.length()>0 && address.length()>0 ){
+
+                    if (pwd.equals(cnf_pwd)) {
+                        Boolean res = MainActivityDangNhap.databaseLogin.checkUser(user);
+                        if (res == true) {
+                            Toast.makeText(MainActivityDangKy.this, "Tài khoản này đã có!", Toast.LENGTH_SHORT).show();
                         } else {
-                            Toast.makeText(MainActivityDangKy.this, "Đăng kí thất bại!", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                } else {
-                    Toast.makeText(MainActivityDangKy.this, "Nhập lại mật khẩu phải giống nhau!", Toast.LENGTH_SHORT).show();
-                }
+                            long val = MainActivityDangNhap.databaseLogin.addUser(user, pwd, hovaten, sodienthoai,Ngay,address);
 
+                            if (val > 0) {
+                                btnRegister.setEnabled(false);
+                                Toast.makeText(MainActivityDangKy.this, "Đăng kí thành công!", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(MainActivityDangKy.this, MainActivityDangNhap.class);
+                                startActivity(intent);
+//                            Animato.animateSpin(MainActivityDangKy.this);
+                            } else {
+                                Toast.makeText(MainActivityDangKy.this, "Đăng kí thất bại!", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    } else {
+                        Toast.makeText(MainActivityDangKy.this, "Nhập lại mật khẩu phải giống nhau!", Toast.LENGTH_SHORT).show();
+                    }
+                }  else{
+                    btnRegister.setEnabled(true);
+                    Toast.makeText(MainActivityDangKy.this, "Vui lòng không được để trống", Toast.LENGTH_SHORT).show();
+                }
             }
         });
+
+
     }
 
     private void batloi() {

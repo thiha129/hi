@@ -29,7 +29,7 @@ public class MainActivityQuanLyTaiKhoan extends AppCompatActivity {
         listView = findViewById(R.id.listnguoidung);
         nguoidungArrayList = new ArrayList<>();
         databaseLogin = new DatabaseLogin(this, "mail.sqlite", null, 1);
-        MainActivityQuanLyTaiKhoan.databaseLogin.UpData("CREATE TABLE IF NOT EXISTS TaiKhoan3 (Id INTEGER PRIMARY KEY AUTOINCREMENT, Ten VARCHAR(200), Pass VARCHAR(200), Hovaten VARCHAR(200), SoDienThoai VARCHAR(11),Ngay VARCHAR(20), diachi VARCHAR(200))");
+        MainActivityQuanLyTaiKhoan.databaseLogin.UpData("CREATE TABLE IF NOT EXISTS TaiKhoan6 (Id INTEGER PRIMARY KEY AUTOINCREMENT, Ten COLLATE NOCASE, Pass VARCHAR(200), Hovaten COLLATE NOCASE, SoDienThoai VARCHAR(11),Ngay VARCHAR(20), diachi VARCHAR(200))");
         abc02();
         Xoa();
     }
@@ -45,7 +45,7 @@ public class MainActivityQuanLyTaiKhoan extends AppCompatActivity {
                 builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int j) {
-                        databaseLogin.UpData("delete from TaiKhoan3 where Id = " + nguoidungArrayList.get(indexItem).getId() + "");
+                        databaseLogin.UpData("delete from TaiKhoan6 where Id = " + nguoidungArrayList.get(indexItem).getId() + "");
                         nguoidungArrayList.clear();
                         abc02();
                     }
@@ -64,7 +64,7 @@ public class MainActivityQuanLyTaiKhoan extends AppCompatActivity {
     private void abc02() {
         showTaikhoan = findViewById(R.id.SoluongTaiKhoan);
         adapter = new NguoidungAdapter(MainActivityQuanLyTaiKhoan.this, R.layout.list_item_nguoidung, nguoidungArrayList);
-        Cursor cursor = databaseLogin.GetData("SELECT * FROM TaiKhoan3");
+        Cursor cursor = databaseLogin.GetData("SELECT * FROM TaiKhoan6");
         if (cursor != null) {
             while (cursor.moveToNext()) {
                 int id = cursor.getInt(0);

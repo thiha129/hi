@@ -71,7 +71,7 @@ public class MainActivityGioHang extends AppCompatActivity {
 
         databaseHelper = new DatabaseHelper(MainActivityGioHang.this, "giaydep", null, 1);
         databaseLogin = new DatabaseLogin(MainActivityGioHang.this, "mail.sqlite", null, 1);
-        MainActivityGioHang.databaseLogin.UpData("CREATE TABLE IF NOT EXISTS TaiKhoan3 (Id INTEGER PRIMARY KEY AUTOINCREMENT, Ten VARCHAR(200), Pass VARCHAR(200), Hovaten VARCHAR(200), SoDienThoai VARCHAR(11),Ngay VARCHAR(20), diachi VARCHAR(200))");
+        MainActivityGioHang.databaseLogin.UpData("CREATE TABLE IF NOT EXISTS TaiKhoan6 (Id INTEGER PRIMARY KEY AUTOINCREMENT, Ten COLLATE NOCASE, Pass VARCHAR(200), Hovaten COLLATE NOCASE, SoDienThoai VARCHAR(11),Ngay VARCHAR(20), diachi VARCHAR(200))");
         databaseLogin.UpData("CREATE TABLE IF NOT EXISTS HoaDon (Id INTEGER PRIMARY KEY AUTOINCREMENT, Ten VARCHAR(200), SoDienThoai VARCHAR(11), diachi VARCHAR(200),soluong integer,tong integer,Ngay VARCHAR(20))");
 
         arraygioHang = new ArrayList<>();

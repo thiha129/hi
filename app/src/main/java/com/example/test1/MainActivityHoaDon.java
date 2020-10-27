@@ -62,7 +62,7 @@ public class MainActivityHoaDon extends AppCompatActivity {
         Date_Tao.setText(dateTime);
         databaseHelper = new DatabaseHelper(MainActivityHoaDon.this, "giaydep", null, 1);
         databaseLogin = new DatabaseLogin(MainActivityHoaDon.this, "mail.sqlite", null, 1);
-        MainActivityHoaDon.databaseLogin.UpData("CREATE TABLE IF NOT EXISTS TaiKhoan3 (Id INTEGER PRIMARY KEY AUTOINCREMENT, Ten VARCHAR(200), Pass VARCHAR(200), Hovaten VARCHAR(200), SoDienThoai VARCHAR(11),Ngay VARCHAR(20), diachi VARCHAR(200))");
+        MainActivityHoaDon.databaseLogin.UpData("CREATE TABLE IF NOT EXISTS TaiKhoan6 (Id INTEGER PRIMARY KEY AUTOINCREMENT, Ten COLLATE NOCASE, Pass VARCHAR(200), Hovaten COLLATE NOCASE, SoDienThoai VARCHAR(11),Ngay VARCHAR(20), diachi VARCHAR(200))");
         databaseLogin.UpData("CREATE TABLE IF NOT EXISTS HoaDon (Id INTEGER PRIMARY KEY AUTOINCREMENT, Ten VARCHAR(200), SoDienThoai VARCHAR(11), diachi VARCHAR(200),soluong integer,tong integer,Ngay VARCHAR(20))");
 
         arraygioHang = new ArrayList<>();
@@ -87,7 +87,7 @@ public class MainActivityHoaDon extends AppCompatActivity {
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivityHoaDon.this);
                 alertDialog.setTitle("Thông báo");
                 alertDialog.setIcon(R.drawable.icons8_error_xanh);
-                alertDialog.setMessage("Bạn có muốn thoát");
+                alertDialog.setMessage("Bạn có muốn chắc thanh toán hóa đơn này không >");
                 alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -101,7 +101,6 @@ public class MainActivityHoaDon extends AppCompatActivity {
                                 databaseHelper.UpData("delete from GioHang2 ");
                                 arraygioHang.clear();
                                 AnhXa();
-
                                 intent = new Intent(MainActivityHoaDon.this, MainActivity.class);
                                 startActivity(intent);
                             }
