@@ -109,7 +109,6 @@
                         android:layout_height="50dp"
                         android:layout_weight="1"
                         android:background="@drawable/botron_button"
-                        android:ems="4"
                         android:inputType="number">
 
                     </EditText>

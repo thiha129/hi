@@ -46,20 +46,21 @@ public class MainActivitySuaXoaSanPham extends AppCompatActivity {
         arrayDoVat = new ArrayList<>();
         abc02();
         Xoa();
-        Sua();
-
-    }
-
-    private void Sua() {
-        final GridView gridView = findViewById(R.id.danhsachsp);
+//        Sua();
+         gridView = findViewById(R.id.danhsachsp);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 indext = i;
                 Intent movetocharacter = new Intent(MainActivitySuaXoaSanPham.this, ThemGiayActivity.class);
-                movetocharacter.putExtra("id",arrayDoVat.get(i).getId());
-                btnthem2.setEnabled(true);
+                movetocharacter.putExtra("idSp",arrayDoVat.get(i).getId());
+//                btnthem2.setEnabled(true);
+                Toast.makeText(MainActivitySuaXoaSanPham.this, ""+arrayDoVat.get(i).getId(), Toast.LENGTH_SHORT).show();
                 startActivity(movetocharacter);
+    }
+
+    private void Sua() {
+
             }
         });
     }

@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -28,6 +29,8 @@ public class MainActivityThongTinSanPham extends AppCompatActivity {
     Button GioHang;
     Intent intent;
     Animation TopAnim, bottomAnim;
+    CardView cardView, cardView_btn;
+
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
         return super.onCreateOptionsMenu(menu);
@@ -71,8 +74,14 @@ public class MainActivityThongTinSanPham extends AppCompatActivity {
             }
         });
         AnhXa();
-        TopAnim = AnimationUtils.loadAnimation(this,R.anim.top_animation);
-        bottomAnim = AnimationUtils.loadAnimation(this,R.anim.bottom_animation);
+        TopAnim = AnimationUtils.loadAnimation(this, R.anim.top_animation);
+        bottomAnim = AnimationUtils.loadAnimation(this, R.anim.bottom_animation);
+
+        imageView1.setAnimation(TopAnim);
+        name.setAnimation(bottomAnim);
+        cardView.setAnimation(bottomAnim);
+        cardView_btn.setAnimation(bottomAnim);
+
     }
 
     private class LoadImage extends AsyncTask<String, Void, Bitmap> {
@@ -110,6 +119,8 @@ public class MainActivityThongTinSanPham extends AppCompatActivity {
         nd = findViewById(R.id.ChiTietSanPham);
         imageView1 = findViewById(R.id.imageView3);
         size = findViewById(R.id.SizeSanPham);
+        cardView = findViewById(R.id.cardView2);
+        cardView_btn = findViewById(R.id.cardView_btn);
         Intent i = getIntent();
         int Id = i.getIntExtra("id", 1);
         Cursor cursor = databaseHelper.GetData("SELECT * FROM Sanpham2 where Id = " + Id + "");
@@ -128,7 +139,7 @@ public class MainActivityThongTinSanPham extends AppCompatActivity {
                 loadImages.execute(link);
                 String ND = cursor.getString(5);
                 nd.setText(ND);
-                 String Size = cursor.getString(6);
+                String Size = cursor.getString(6);
                 size.setText(Size);
             }
         }

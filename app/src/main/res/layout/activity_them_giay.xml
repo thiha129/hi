@@ -22,6 +22,7 @@
                 android:padding="20dp">
 
                 <EditText
+                    android:textColor="#000"
                     android:id="@+id/et_ulr"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
@@ -97,6 +98,7 @@
                     </TextView>
 
                     <EditText
+                        android:textColor="#000"
                         android:id="@+id/giasp"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
@@ -134,7 +136,7 @@
                         android:layout_height="50dp"
                         android:layout_weight="1"
                         android:background="@drawable/botron_button"
-                        android:textColor="#fff">
+                        android:textColor="#000">
 
                     </EditText>
 
@@ -167,7 +169,7 @@
                         android:background="@drawable/botron_button"
                         android:ems="2"
                         android:inputType="number"
-                        android:textColor="#fff"
+                        android:textColor="#000"
                         android:textSize="20sp">
 
                     </EditText>
@@ -200,7 +202,7 @@
                         android:layout_height="50dp"
                         android:layout_weight="1"
                         android:background="@drawable/botron_button"
-                        android:textColor="#fff"
+                        android:textColor="#000"
                         android:textSize="20sp">
 
                     </EditText>
@@ -236,7 +238,7 @@
                          android:layout_height="50dp"
                          android:layout_weight="1"
                          android:background="@drawable/botron_button"
-                         android:textColor="#fff"
+                         android:textColor="#000"
                          android:textSize="20sp">
                          
                      </AutoCompleteTextView>

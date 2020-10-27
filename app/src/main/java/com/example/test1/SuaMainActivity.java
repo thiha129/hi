@@ -114,7 +114,7 @@ public class SuaMainActivity extends AppCompatActivity {
         size = findViewById(R.id.sizesp);
         btntSua = findViewById(R.id.btnSuasp);
         Intent i = getIntent();
-        int Id = i.getIntExtra("id", 1);
+        int Id = i.getIntExtra("idSp", 1);
         Cursor cursor = databaseHelper.GetData("SELECT * FROM Sanpham2 where Id = " + Id + "");
         while (cursor.moveToNext()) {
             if (cursor.getInt(0) == Id) {
