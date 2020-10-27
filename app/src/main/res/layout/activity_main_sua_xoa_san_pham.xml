@@ -10,7 +10,7 @@
 
         android:id="@+id/danhsachsp"
         android:layout_width="match_parent"
-        android:layout_height="600dp"
+        android:layout_height="500dp"
         android:gravity="center"
         android:numColumns="2"
         tools:ignore="MissingConstraints">
@@ -18,11 +18,12 @@
     </GridView>
 
     <TextView
-        android:textSize="20sp"
+        android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Thao tác"
         android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,34 +32,32 @@
         tools:ignore="MissingConstraints">
 
     </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Click vào sản phẩm đẻ sửa "
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView11"
+        tools:ignore="MissingConstraints">
+
+    </TextView>
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="80dp"
         android:layout_marginBottom="20dp"
-        android:text="Thêm"
-        android:textStyle="bold"
-        android:textColor="#fff"
         android:background="@drawable/botron_button4"
+        android:text="Thêm"
+        android:textColor="#fff"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints">
 
     </Button>
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="80dp"
-        android:layout_marginBottom="20dp"
-        android:text="Sửa"
-        android:textStyle="bold"
-        android:textColor="#fff"
-        android:background="@drawable/botron_button4"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-    </Button>
 </androidx.constraintlayout.widget.ConstraintLayout>

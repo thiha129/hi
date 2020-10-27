@@ -32,7 +32,6 @@ public class MainActivitySuaXoaSanPham extends AppCompatActivity {
         setContentView(R.layout.activity_main_sua_xoa_san_pham);
         gridView = findViewById(R.id.danhsachsp);
         submit = findViewById(R.id.button);
-        edit = findViewById(R.id.button2);
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,8 +51,8 @@ public class MainActivitySuaXoaSanPham extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 indext = i;
-                Intent movetocharacter = new Intent(MainActivitySuaXoaSanPham.this, ThemGiayActivity.class);
-                movetocharacter.putExtra("idSp",arrayDoVat.get(i).getId());
+                Intent movetocharacter = new Intent(MainActivitySuaXoaSanPham.this, SuaMainActivity.class);
+//                movetocharacter.putExtra("id",arrayDoVat.get(i).getId());
 //                btnthem2.setEnabled(true);
                 Toast.makeText(MainActivitySuaXoaSanPham.this, ""+arrayDoVat.get(i).getId(), Toast.LENGTH_SHORT).show();
                 startActivity(movetocharacter);
