@@ -125,7 +125,7 @@ public class MainActivityHoaDon extends AppCompatActivity {
         ten = findViewById(R.id.edt_NameUser);
         Intent i = getIntent();
         int Id = i.getIntExtra("IdUser", 1);
-        Cursor cursor = databaseLogin.GetData("SELECT * FROM TaiKhoan3 where Id = " + Id + "");
+        Cursor cursor = databaseLogin.GetData("SELECT * FROM TaiKhoan6 where Id = " + Id + "");
         while (cursor.moveToNext()) {
             String TenMoi = cursor.getString(3);
             ten.setText(TenMoi);
@@ -143,7 +143,7 @@ public class MainActivityHoaDon extends AppCompatActivity {
         int TinhTong = 0;
         gioHangAdapTer = new GioHangAdapTer(MainActivityHoaDon.this, arraygioHang, R.layout.list_item_giaodiengiohang);
         listViewDonHang.setAdapter(gioHangAdapTer);
-        Cursor cursor = databaseHelper.GetData("Select * from GioHang2");
+        Cursor cursor = databaseHelper.GetData("Select * from GioHang3");
         while (cursor.moveToNext()) {
             arraygioHang.add(new gioHang(
                     cursor.getInt(0),

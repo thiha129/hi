@@ -30,49 +30,12 @@
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                
                 tools:ignore="MissingConstraints" />
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="5dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/toolbar"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="MissingConstraints">
 
-                <EditText
-                    android:id="@+id/editText"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:background="#fff"
-                    android:drawableLeft="@drawable/ic_baseline_search_24"
-                    android:hint="  Search"
-                    android:padding="5dp"
-                    android:textColor="#cdc9c9"
-                    android:textColorHint="#cdc9c9"
-                    tools:ignore="MissingConstraints">
-
-                </EditText>
-            </androidx.cardview.widget.CardView>
-
-
-            <ImageButton
-                android:id="@+id/imageButton"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginRight="15dp"
-                android:background="#00000000"
-                android:src="@drawable/ic_baseline_person_outline_24"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="MissingConstraints">
-
-            </ImageButton>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.appbar.AppBarLayout>

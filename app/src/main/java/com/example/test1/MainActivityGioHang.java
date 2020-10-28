@@ -87,7 +87,7 @@ public class MainActivityGioHang extends AppCompatActivity {
                 builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int j) {
-                        databaseHelper.UpData("delete from GioHang2 where Id = " + arraygioHang.get(indexItem).getId() + "");
+                        databaseHelper.UpData("delete from GioHang3 where Id = " + arraygioHang.get(indexItem).getId() + "");
                         arraygioHang.clear();
                         Upload();
                         Toast.makeText(MainActivityGioHang.this, "Bạn đã xoá sản phẩm này ra khỏi giỏ hàng !", Toast.LENGTH_SHORT).show();
@@ -170,7 +170,7 @@ public class MainActivityGioHang extends AppCompatActivity {
         Date_Tao.setText(dateTime);
 
         final LoadingDialog loadingDialog = new LoadingDialog(MainActivityGioHang.this);
-        Cursor cursor1 = databaseLogin.GetData("SELECT * FROM TaiKhoan3 ");
+        Cursor cursor1 = databaseLogin.GetData("SELECT * FROM TaiKhoan6 ");
         while (cursor1.moveToNext()) {
             final int id = cursor1.getInt(0);
             cursor1.getString(3);
@@ -206,7 +206,7 @@ public class MainActivityGioHang extends AppCompatActivity {
         int TinhTong = 0;
         gioHangAdapTer = new GioHangAdapTer(MainActivityGioHang.this, arraygioHang, R.layout.list_item_giaodiengiohang);
         listViewGioHang.setAdapter(gioHangAdapTer);
-        Cursor cursor = databaseHelper.GetData("Select * from GioHang2");
+        Cursor cursor = databaseHelper.GetData("Select * from GioHang3");
         while (cursor.moveToNext()) {
             arraygioHang.add(new gioHang(
                     cursor.getInt(0),

@@ -95,7 +95,7 @@ public class HomeFragment extends Fragment {
         gridView = view.findViewById(R.id.lv1);
         databaseHelper = new DatabaseHelper(getActivity(), "giaydep", null, 1);
         databaseHelper.UpData("CREATE TABLE IF NOT EXISTS Sanpham2(Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia VarChar(150), SoLuong VarChar(150), LinkAnh Text ,Chitiet VarChar(150), size VarChar(150))");
-        databaseHelper.UpData("CREATE TABLE IF NOT EXISTS GioHang2 (Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia integer,size integer,LinkAnh Text, tong VarChar(150) )");
+        databaseHelper.UpData("CREATE TABLE IF NOT EXISTS GioHang3 (Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia integer,size integer,LinkAnh Text )");
 
         arrayDoVat = new ArrayList<>();
         adapter = new GiayAchapter(getActivity(), R.layout.list_item_abc, arrayDoVat);
@@ -109,7 +109,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void Find() {
-        Search = view.findViewById(R.id.editText);
+//        Search = view.findViewById(R.id.editText);
         Search.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {

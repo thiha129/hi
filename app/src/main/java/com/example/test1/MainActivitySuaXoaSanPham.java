@@ -32,6 +32,7 @@ public class MainActivitySuaXoaSanPham extends AppCompatActivity {
         setContentView(R.layout.activity_main_sua_xoa_san_pham);
         gridView = findViewById(R.id.danhsachsp);
         submit = findViewById(R.id.button);
+      
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,25 +42,22 @@ public class MainActivitySuaXoaSanPham extends AppCompatActivity {
             }
         });
         databaseHelper = new DatabaseHelper(MainActivitySuaXoaSanPham.this, "giaydep", null, 1);
-        databaseHelper.UpData("CREATE TABLE IF NOT EXISTS Sanpham2(Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia VarChar(150), SoLuong VarChar(150), LinkAnh Text ,Chitiet VarChar(150), size VarChar(150))");
-        arrayDoVat = new ArrayList<>();
+        databaseHelper.UpData("CREATE TABLE IF NOT EXISTS Sanpham2(Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia VarChar(150), SoLuong VarChar(150), LinkAnh Text ,Chitiet VarChar(150), size VarChar(150))");        arrayDoVat = new ArrayList<>();
         abc02();
         Xoa();
-//        Sua();
-         gridView = findViewById(R.id.danhsachsp);
+        Sua();
+
+    }
+
+    private void Sua() {
+        final GridView gridView = findViewById(R.id.danhsachsp);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 indext = i;
                 Intent movetocharacter = new Intent(MainActivitySuaXoaSanPham.this, SuaMainActivity.class);
-//                movetocharacter.putExtra("id",arrayDoVat.get(i).getId());
-//                btnthem2.setEnabled(true);
-                Toast.makeText(MainActivitySuaXoaSanPham.this, ""+arrayDoVat.get(i).getId(), Toast.LENGTH_SHORT).show();
+                movetocharacter.putExtra("id",arrayDoVat.get(i).getId());
                 startActivity(movetocharacter);
-    }
-
-    private void Sua() {
-
             }
         });
     }

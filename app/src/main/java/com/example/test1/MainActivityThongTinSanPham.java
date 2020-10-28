@@ -67,7 +67,7 @@ public class MainActivityThongTinSanPham extends AppCompatActivity {
                     cursor.getInt(2);
                     cursor.getInt(3);
                     cursor.getString(4);
-                    databaseHelper.UpData("Insert into GioHang2 values(null,'" + cursor.getString(1) + "','" + cursor.getInt(2) + "','" + cursor.getInt(3) + "','" + cursor.getString(4) + "')");
+                    databaseHelper.UpData("Insert into GioHang3 values(null,'" + cursor.getString(1) + "','" + cursor.getInt(2) + "','" + cursor.getInt(3) + "','" + cursor.getString(4) + "')");
                 }
                 intent = new Intent(MainActivityThongTinSanPham.this, MainActivityGioHang.class);
                 startActivity(intent);
