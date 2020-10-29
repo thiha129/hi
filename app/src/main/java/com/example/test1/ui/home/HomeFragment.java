@@ -4,12 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,8 +30,6 @@ import com.example.test1.MainAdapter;
 import com.example.test1.MainModel;
 import com.example.test1.R;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
@@ -72,26 +65,6 @@ public class HomeFragment extends Fragment {
         });
         final String textLink = "^(http:\\/\\/www\\.|https:\\/\\/www\\.|http:\\/\\/|https:\\/\\/)?[a-z0-9]+([\\-\\.]{1}[a-z0-9]+)*\\.[a-z]{2,5}(:[0-9]{1,5})?(\\/.*)?$";
 
-//        btnSubmit.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if (etURL.getText().toString().trim().matches(textLink)){
-//                    String urlLink = etURL.getText().toString();
-//                    if (urlLink.isEmpty()) {
-//                        Toast.makeText(getActivity(), "Please enter url", Toast.LENGTH_SHORT).show();
-//                    } else {
-//                        LoadImage loadImages = new LoadImage(ivResult);
-//                        loadImages.execute(urlLink);
-//                    }
-//                }else if (etURL.equals("")){
-//                    etURL.setError("Không được để rỗng");
-//                }else {
-//                    etURL.setError("Sai địa chỉ liên kết vui lòng nhập lại !!!");
-//                }
-//
-//            }
-//        });
-
         gridView = view.findViewById(R.id.lv1);
         databaseHelper = new DatabaseHelper(getActivity(), "giaydep", null, 1);
         databaseHelper.UpData("CREATE TABLE IF NOT EXISTS Sanpham2(Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia VarChar(150), SoLuong VarChar(150), LinkAnh Text ,Chitiet VarChar(150), size VarChar(150))");
@@ -101,50 +74,9 @@ public class HomeFragment extends Fragment {
         adapter = new GiayAchapter(getActivity(), R.layout.list_item_abc, arrayDoVat);
         abc02();
         abc03();
-//        Xoa();
         abc4();
-//        Find();
         return view;
 
-    }
-
-    private void Find() {
-//        Search = view.findViewById(R.id.editText);
-        Search.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//                databaseHelper = new DatabaseHelper(getActivity(), "giaydep", null, 1);
-//                databaseHelper.UpData("CREATE TABLE IF NOT EXISTS Sanpham2(Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia VarChar(150), SoLuong VarChar(150), LinkAnh Text ,Chitiet VarChar(150), size VarChar(150))");
-
-                adapter = new GiayAchapter(getActivity(), R.layout.list_item_abc, arrayDoVat);
-                Cursor cursor = databaseHelper.GetData("SELECT * FROM Sanpham2 WHERE Ten LIKE '%" + Search.getText().toString().trim() + "%' ");
-                arrayDoVat.clear();
-                if (cursor != null) {
-                    while (cursor.moveToNext()) {
-                        int id = cursor.getInt(0);
-                        String TenGiay = cursor.getString(1);
-                        String Gia = cursor.getString(2)+"$";
-                        String Soluong = cursor.getString(3);
-                        String LinkAnh = cursor.getString(4);
-                        String Chitiet = cursor.getString(5);
-
-                        arrayDoVat.add(new Giay(id, TenGiay, Gia, Soluong, LinkAnh, Chitiet));
-                    }
-                    gridView.setAdapter(adapter);
-                    adapter.notifyDataSetChanged();
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
     }
 
 
@@ -206,34 +138,6 @@ public class HomeFragment extends Fragment {
             }
             gridView.setAdapter(adapter);
             adapter.notifyDataSetChanged();
-        }
-    }
-
-    public class LoadImage extends AsyncTask<String, Void, Bitmap> {
-        ImageView imageView;
-
-        public LoadImage(ImageView ivResult) {
-            this.imageView = ivResult;
-        }
-
-        @Override
-        protected Bitmap doInBackground(String... strings) {
-            String urlLink = strings[0];
-            Bitmap bitmap = null;
-            try {
-                InputStream inputStream = new java.net.URL(urlLink).openStream();
-                bitmap = BitmapFactory.decodeStream(inputStream);
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return bitmap;
-        }
-
-        @Override
-        protected void onPostExecute(Bitmap bitmap) {
-            ivResult.setImageBitmap(bitmap);
-            super.onPostExecute(bitmap);
         }
     }
 
