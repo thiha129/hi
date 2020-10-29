@@ -15,7 +15,6 @@ import java.util.List;
 
 public class GiayAchapter extends BaseAdapter {
     private Context context;
-    private int anInt;
     private List<Giay> GiayArrayList;
     public int layout;
     public GiayAchapter(Context context, int layout, List<Giay> giayArrayList) {
@@ -50,7 +49,7 @@ public class GiayAchapter extends BaseAdapter {
         TextView Gia = view.findViewById(R.id.tvGia);
         TextView Ten = view.findViewById(R.id.tvTen);
         TextView SoLuong = view.findViewById(R.id.tvSoLuong);
-
+       
         Gia.setText(giay.getGia());
         Ten.setText(giay.getTenGiay());
         SoLuong.setText(giay.getSoluong());

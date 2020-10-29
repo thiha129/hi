@@ -135,7 +135,7 @@ public class HomeFragment extends Fragment {
 
                         arrayDoVat.add(new Giay(id, TenGiay, Gia, Soluong, LinkAnh, Chitiet));
                     }
-//                    gridView.setAdapter(adapter);
+                    gridView.setAdapter(adapter);
                     adapter.notifyDataSetChanged();
                 }
             }
