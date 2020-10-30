@@ -152,8 +152,8 @@ public class ThemGiayActivity extends AppCompatActivity {
                         LinkAnh.setText("");
                         Chitiet.setText("");
                         size.setText("");
-//                        intent = new Intent(ThemGiayActivity.this, MainActivity.class);
-//                        startActivity(intent);
+                        intent = new Intent(ThemGiayActivity.this, MainActivitySuaXoaSanPham.class);
+                        startActivity(intent);
                     }
 
                 });

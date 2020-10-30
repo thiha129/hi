@@ -4,11 +4,13 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,7 +19,8 @@ public class MainActivityThongTin extends AppCompatActivity {
     SharedPreferences mysharedPreferences;
     Button btn, Exit,them, quanlytaikhoan, order, change, noti;
     Intent intent;
-
+    TextView ten, sdt;
+    public static DatabaseLogin databaseLogin;
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
         return super.onCreateOptionsMenu(menu);
@@ -29,7 +32,18 @@ public class MainActivityThongTin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_thong_tin);
-         btn = findViewById(R.id.btnDoiMatkhau);
+        databaseLogin = new DatabaseLogin(MainActivityThongTin.this, "mail.sqlite", null, 1);
+        MainActivityThongTin.databaseLogin.UpData("CREATE TABLE IF NOT EXISTS TaiKhoan6 (Id INTEGER PRIMARY KEY AUTOINCREMENT, Ten COLLATE NOCASE, Pass VARCHAR(200), Hovaten COLLATE NOCASE, SoDienThoai VARCHAR(11),Ngay VARCHAR(20), diachi VARCHAR(200))");
+        ten = findViewById(R.id.tennguoidung);
+        sdt = findViewById(R.id.sdt);
+        Cursor cursor1 = databaseLogin.GetData("SELECT * FROM TaiKhoan6 ");
+        while (cursor1.moveToNext()){
+            String tenmoi = cursor1.getString(3);
+            ten.setText(tenmoi);
+            String sdtmoi = cursor1.getString(4);
+            sdt.setText(sdtmoi);
+        }
+        btn = findViewById(R.id.btnDoiMatkhau);
          quanlytaikhoan = findViewById(R.id.btndanhsachnguoidung);
          quanlytaikhoan.setOnClickListener(new View.OnClickListener() {
              @Override

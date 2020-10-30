@@ -14,7 +14,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DetalActivity"></activity>
+        <meta-data
+            android:name="com.google.android.gms.ads.AD_MANAGER_APP"
+            android:value="true"/>
+        <activity android:name=".MainActivityQuangCao"></activity>
+        <activity android:name=".DetalActivity" />
         <activity android:name=".MainActivityUser" />
         <activity android:name=".MainActivityQuanLyHoaDon" />
         <activity android:name=".MainActivityHoaDon" />
@@ -25,7 +29,7 @@
         <activity android:name=".MainActivityQuanLyTaiKhoan" />
         <activity android:name=".ThemGiayActivity" />
         <activity android:name=".MainActivityDoiMatKhau" />
-        <activity android:name=".MainActivity4"/>
+        <activity android:name=".MainActivity4" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -42,11 +46,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <receiver android:name=".AlarmReceiver"></receiver>
-        <service android:name=".Music"
-            android:enabled="true">
 
-        </service>
+        <receiver android:name=".AlarmReceiver" />
+
+        <service
+            android:name=".Music"
+            android:enabled="true"></service>
     </application>
 
 </manifest>

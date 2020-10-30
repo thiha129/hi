@@ -159,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_info:
-                startActivity(new Intent(MainActivity.this, MainActivityThongTin.class));
+                startActivity(new Intent(MainActivity.this, MainActivityDangNhap.class));
                 break;
             case R.id.action_search:
 

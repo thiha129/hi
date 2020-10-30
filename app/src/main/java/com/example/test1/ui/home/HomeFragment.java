@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -27,8 +26,12 @@ import com.example.test1.Giay;
 import com.example.test1.GiayAchapter;
 import com.example.test1.MainActivityThongTinSanPham;
 import com.example.test1.MainAdapter;
+import com.example.test1.MainAdapter_Web;
 import com.example.test1.MainModel;
+import com.example.test1.MainModel_web;
 import com.example.test1.R;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import java.util.ArrayList;
 
@@ -44,27 +47,18 @@ public class HomeFragment extends Fragment {
     View view;
     public static ArrayList<Giay> arrayDoVat;
     public static GiayAchapter adapter;
-    RecyclerView recyclerView;
+    RecyclerView recyclerView, recyclerView_Web;
     ArrayList<MainModel> mainModels;
     MainAdapter mainAdapter;
+    ArrayList<MainModel_web> mainModel_webs;
+    MainAdapter_Web mainAdapter_web;
     private int indext = -1;
-    EditText Search;
-
+    private AdView mAdView;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         view = inflater.inflate(R.layout.fragment_home, container, false);
-        View view3 = inflater.inflate(R.layout.list_item_abc, container, false);
-        giohang = view3.findViewById(R.id.imageView2);
-        giohang.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(), "Oke nha", Toast.LENGTH_SHORT).show();
-            }
-        });
-        final String textLink = "^(http:\\/\\/www\\.|https:\\/\\/www\\.|http:\\/\\/|https:\\/\\/)?[a-z0-9]+([\\-\\.]{1}[a-z0-9]+)*\\.[a-z]{2,5}(:[0-9]{1,5})?(\\/.*)?$";
-
         gridView = view.findViewById(R.id.lv1);
         databaseHelper = new DatabaseHelper(getActivity(), "giaydep", null, 1);
         databaseHelper.UpData("CREATE TABLE IF NOT EXISTS Sanpham2(Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia VarChar(150), SoLuong VarChar(150), LinkAnh Text ,Chitiet VarChar(150), size VarChar(150))");
@@ -74,22 +68,50 @@ public class HomeFragment extends Fragment {
         adapter = new GiayAchapter(getActivity(), R.layout.list_item_abc, arrayDoVat);
         abc02();
         abc03();
+        abc04();
         abc4();
+        QuangCao();
         return view;
 
     }
 
+    private void QuangCao() {
+        mAdView = view.findViewById(R.id.adView);
 
-    private void abc4() {
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                indext = i;
-                Intent movetocharacter = new Intent(getActivity(), MainActivityThongTinSanPham.class);
-                movetocharacter.putExtra("id", arrayDoVat.get(i).getId());
-                startActivity(movetocharacter);
-            }
-        });
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+    }
+
+    private void abc04() {
+        recyclerView_Web = view.findViewById(R.id.recyclerview_web);
+        Integer[] langLogo = {
+                R.drawable.web2,
+                R.drawable.nike,
+                R.drawable.puma,
+                R.drawable.fila,
+                R.drawable.converse,
+                R.drawable.mn,
+        };
+        String[] langname = {
+                "Sự phát triển thần kì",
+                "Bag", "Bear", "Shoe", "Bag", "Bear"
+        };
+        String[] langlink = {"https://thethao247.vn/318-su-phat-trien-than-ki-cua-cong-nghe-nike-flyknit-d177599.html",
+                "Bag", "Bear", "Shoe", "Bag", "Bear"
+        };
+        mainModel_webs = new ArrayList<>();
+        for (int i = 0; i < langLogo.length; i++) {
+            MainModel_web model_web = new MainModel_web(langLogo[i], langname[i]+"...",langlink[i]);
+            mainModel_webs.add(model_web);
+        }
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        recyclerView_Web.setLayoutManager(layoutManager);
+        recyclerView_Web.setItemAnimator(new DefaultItemAnimator());
+
+
+        mainAdapter_web = new MainAdapter_Web(getActivity(), mainModel_webs);
+        recyclerView_Web.setAdapter(mainAdapter_web);
     }
 
     private void abc03() {
@@ -121,6 +143,20 @@ public class HomeFragment extends Fragment {
         recyclerView.setAdapter(mainAdapter);
 
     }
+    private void abc4() {
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                indext = i;
+                Intent movetocharacter = new Intent(getActivity(), MainActivityThongTinSanPham.class);
+                movetocharacter.putExtra("id", arrayDoVat.get(i).getId());
+                startActivity(movetocharacter);
+            }
+        });
+    }
+
+
+
 
     private void abc02() {
         adapter = new GiayAchapter(getActivity(), R.layout.list_item_abc, arrayDoVat);
