@@ -1,7 +1,5 @@
 package com.example.test1.ui.home;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -13,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -24,12 +23,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.test1.DatabaseHelper;
 import com.example.test1.Giay;
 import com.example.test1.GiayAchapter;
+import com.example.test1.GioHangAdapTer;
+import com.example.test1.MainActivityGioHang;
 import com.example.test1.MainActivityThongTinSanPham;
 import com.example.test1.MainAdapter;
 import com.example.test1.MainAdapter_Web;
 import com.example.test1.MainModel;
 import com.example.test1.MainModel_web;
 import com.example.test1.R;
+import com.example.test1.gioHang;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
@@ -45,6 +47,7 @@ public class HomeFragment extends Fragment {
     Button btnClear, btnSubmit;
     ImageView ivResult, giohang;
     View view;
+    TextView Gh;
     public static ArrayList<Giay> arrayDoVat;
     public static GiayAchapter adapter;
     RecyclerView recyclerView, recyclerView_Web;
@@ -52,6 +55,8 @@ public class HomeFragment extends Fragment {
     MainAdapter mainAdapter;
     ArrayList<MainModel_web> mainModel_webs;
     MainAdapter_Web mainAdapter_web;
+    public static GioHangAdapTer gioHangAdapTer;
+    public static ArrayList<gioHang> arraygioHang;
     private int indext = -1;
     private AdView mAdView;
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -71,8 +76,32 @@ public class HomeFragment extends Fragment {
         abc04();
         abc4();
         QuangCao();
+        arraygioHang = new ArrayList<>();
+        hienthi();
         return view;
 
+    }
+
+    private void hienthi() {
+               Gh = view.findViewById(R.id.txtSoluongSp);
+        gioHangAdapTer = new GioHangAdapTer(getActivity(), arraygioHang, R.layout.list_item_giaodiengiohang);
+        Cursor cursor = databaseHelper.GetData("Select * from GioHang3");
+        while (cursor.moveToNext()) {
+            arraygioHang.add(new gioHang(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getInt(2),
+                    cursor.getString(3),
+                    cursor.getString(4))
+            );
+            Gh.setText("(" + gioHangAdapTer.getCount()+")");
+        }
+        Gh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), MainActivityGioHang.class));
+            }
+        });
     }
 
     private void QuangCao() {
@@ -178,33 +207,4 @@ public class HomeFragment extends Fragment {
     }
 
     int indexItem;
-
-    private void Xoa() {
-        final GridView listView = view.findViewById(R.id.lv1);
-        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, final int i, long l) {
-                indexItem = i;
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                builder.setTitle(R.string.app_name);
-                builder.setMessage("Bạn có muốn xóa không?");
-
-                builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int j) {
-                        databaseHelper.UpData("delete from Sanpham2 where Id = " + arrayDoVat.get(indexItem).getId() + "");
-                        arrayDoVat.clear();
-                        abc02();
-                    }
-                });
-                builder.setPositiveButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                    }
-                });
-                builder.create().show();
-                return false;
-            }
-        });
-    }
 }
