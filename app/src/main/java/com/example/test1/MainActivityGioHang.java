@@ -50,7 +50,9 @@ public class MainActivityGioHang extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                onBackPressed();
+               intent = new Intent(MainActivityGioHang.this, MainActivityThongTinSanPham.class);
+               startActivity(intent);
+               finish();
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -102,7 +104,6 @@ public class MainActivityGioHang extends AppCompatActivity {
                 return false;
             }
         });
-
 //        Chuyen trang
         Thanks.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
@@ -111,52 +112,11 @@ public class MainActivityGioHang extends AppCompatActivity {
                 ChuyenTrang();
             }
         });
-//        Thanks.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivityGioHang.this);
-//                final LoadingDialog_pr loadingDialog_pr = new LoadingDialog_pr(MainActivityGioHang.this);
-//
-//                builder.setTitle(R.string.app_name);
-//                builder.setMessage("Bạn có muốn thanh toán không?");
-//                builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialogInterface, int j) {
-//                        databaseHelper.UpData("delete from GioHang2 ");
-//                        arraygioHang.clear();
-//                        Upload();
-//                        Toast.makeText(MainActivityGioHang.this, "Cảm ơn bạn đã mua hàng !", Toast.LENGTH_SHORT).show();
-//                        loadingDialog_pr.startLoadingDialog();
-//                        Handler handler = new Handler();
-//                        handler.postDelayed(new Runnable() {
-//                            @Override
-//                            public void run() {
-//                                loadingDialog_pr.dismissDialog();
-//                                intent = new Intent(MainActivityGioHang.this, MainActivity.class);
-//                                startActivity(intent);
-//                            }
-//                        },2000);
-//
-//
-//
-//
-////
-//
-//                    }
-//                });
-//                builder.setPositiveButton("No", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialogInterface, int i) {
-//                    }
-//                });
-//                builder.create().show();
-//            }
-//        });
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void ChuyenTrang() {
-       
+
         Date_Tao = findViewById(R.id.Ngay);
 //        ---------------------------------------------------------------------------
 //        Date date = new Date();
@@ -166,7 +126,7 @@ public class MainActivityGioHang extends AppCompatActivity {
 //        ----------------------------------------------------------------------------
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm:ss a, dd/MM/yyyy");
-        String dateTime  =   simpleDateFormat.format(calendar.getTime());
+        String dateTime = simpleDateFormat.format(calendar.getTime());
         Date_Tao.setText(dateTime);
 
         final LoadingDialog loadingDialog = new LoadingDialog(MainActivityGioHang.this);
@@ -179,27 +139,21 @@ public class MainActivityGioHang extends AppCompatActivity {
 
             loadingDialog.startLoadingDialog();
             Handler handler = new Handler();
-//            Toast.makeText(this, ""+cursor1.getString(6), Toast.LENGTH_SHORT).show();
-//            databaseLogin.UpData("Insert into HoaDon values(null,'" + cursor1.getString(3) + "','" + cursor1.getString(4) + "','" + cursor1.getString(6) + "', '" + Cont.getText() + "', '"+Pay.getText()+"','"+Date_Tao.getText()+"' )");
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     loadingDialog.dismissDialog();
                     intent = new Intent(MainActivityGioHang.this, MainActivityHoaDon.class);
                     String islogin = mysharedPreferences.getString("username", "");
-                    if (islogin != ""){
+                    if (islogin != "") {
                         intent.putExtra("IdUser", id);
                         startActivity(intent);
-                    }    else{
+                    } else {
                         startActivity(intent);
                     }
-
-
                 }
             }, 2000);
         }
-//       HoaDon (Id INTEGER PRIMARY KEY AUTOINCREMENT, Ten VARCHAR(200), SoDienThoai VARCHAR(11), diachi VARCHAR(200),soluong integer,tong integer,Ngay VARCHAR(20))");
-
     }
 
     private void Upload() {
@@ -232,7 +186,5 @@ public class MainActivityGioHang extends AppCompatActivity {
             phi.setText("$10");
             Thanks.setEnabled(true);
         }
-
     }
-
 }

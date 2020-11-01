@@ -7,6 +7,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -34,7 +36,7 @@ public class ThemGiayActivity extends AppCompatActivity {
 
     public static ArrayList<Giay> arrayDoVat;
     public static GiayAchapter adapter;
-  public Button btnthem2, btnhuy2;
+    public Button btnthem2, btnhuy2;
     EditText Ten, Gia, SoLuong, LinkAnh, Chitiet;
     EditText etURL;
     Button btnClear, btnSubmit;
@@ -62,27 +64,16 @@ public class ThemGiayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_them_giay);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        AnhXa();
         databaseHelper = new DatabaseHelper(ThemGiayActivity.this, "giaydep", null, 1);
         databaseHelper.UpData("CREATE TABLE IF NOT EXISTS Sanpham2(Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia VarChar(150), SoLuong VarChar(150), LinkAnh Text ,Chitiet VarChar(150), size VarChar(150))");
-        btnClear = findViewById(R.id.btn_clear);
-        btnhuy2 = findViewById(R.id.btnHuysp);
-        btnSubmit = findViewById(R.id.btn_submit);
-        etURL = findViewById(R.id.et_ulr);
-        ivResult = findViewById(R.id.iv_result);
-        size = findViewById(R.id.sizesp);
+
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_dropdown_item_1line, PRODUCTS);
 
         size.setAdapter(adapter);
-        sua();
-        btnClear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                etURL.setText("");
-                ivResult.setImageBitmap(null);
 
-            }
-        });
+
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -97,89 +88,212 @@ public class ThemGiayActivity extends AppCompatActivity {
 
             }
         });
-        btnthem2 = findViewById(R.id.btnthemsp);
+//--------------------------------------------------------------------------------------------------------------------------
         btnthem2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Ten = findViewById(R.id.tensp);
-                Gia = findViewById(R.id.giasp);
-                SoLuong = findViewById(R.id.soluongsp);
-                LinkAnh = findViewById(R.id.et_ulr);
-                Chitiet = findViewById(R.id.chitietsp);
                 Ten.getText().toString();
                 Gia.getText().toString();
                 SoLuong.getText().toString();
                 LinkAnh.getText().toString();
                 Chitiet.getText().toString();
                 size.getText().toString();
-//                if (Ten.equals("") && Gia.equals("") && SoLuong.equals("") && LinkAnh.equals("") && Chitiet.equals("")) {
-//                    Ten.setError("Không được để trống");
-//                    Gia.setError("Không được để trống");
-//                    SoLuong.setError("Không được để trống");
-//                    LinkAnh.setError("Không được để trống");
-//                    Chitiet.setError("Không được để trống");
-//                } else if (Ten.equals("")) {
-//                    Ten.setError("Không được để trống");
-//                } else if (Gia.equals("")) {
-//                    Gia.setError("Không được để trống");
-//                } else if (SoLuong.equals("")) {
-//                    SoLuong.setError("Không được để trống");
-//                } else if (LinkAnh.equals("")) {
-//                    LinkAnh.setError("Không được để trống");
-//                } else if (Chitiet.equals("")) {
-//                    Chitiet.setError("Không được để trống");
-//                } else if (Ten.length() > 6 || Ten.length() < 30) {
-//                    Ten.setError("Tên đăng nhập phải từ 6 đến 30 kí tự");
-//                } else if (Gia.length() > 1 || Gia.length() < 5) {
-//                    Gia.setError("Tên đăng nhập phải từ 1 đến 5 số");
-//                } else if (SoLuong.length() > 0 || SoLuong.length() < 3) {
-//                    SoLuong.setError("Tên đăng nhập phải từ 1 đến 2 số");
-//                } else if (Chitiet.length() > 0 || Chitiet.length() < 150) {
-//                    Chitiet.setError("Tên đăng nhập phải từ 1 đến 2 số");
-//                } else {
-                final AlertDialog.Builder builder = new AlertDialog.Builder(ThemGiayActivity.this);
-                builder.setTitle("Thêm dữ liệu");
-                builder.setMessage("Bạn có thực sự muốn gửi không?");
-                builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(ThemGiayActivity.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
-                        databaseHelper.UpData("Insert into Sanpham2 Values(null,'" + Ten.getText().toString() + "','" + Gia.getText().toString() + "','" + SoLuong.getText().toString() + "', '" + LinkAnh.getText().toString() + "', '" + Chitiet.getText().toString() + "','" + size.getText().toString() + "')");
-                        Ten.setText("");
-                        Gia.setText("");
-                        SoLuong.setText("");
-                        LinkAnh.setText("");
-                        Chitiet.setText("");
-                        size.setText("");
-                        intent = new Intent(ThemGiayActivity.this, MainActivitySuaXoaSanPham.class);
-                        startActivity(intent);
-                    }
+                if (etURL.length() > 0 && Gia.length() > 0 && Ten.length() > 0 && SoLuong.length() > 0 && Chitiet.length() > 0 && size.length() > 0) {
+                    final AlertDialog.Builder builder = new AlertDialog.Builder(ThemGiayActivity.this);
+                    builder.setTitle("Thêm dữ liệu");
+                    builder.setMessage("Bạn có thực sự muốn gửi không?");
+                    builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Toast.makeText(ThemGiayActivity.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
+                            databaseHelper.UpData("Insert into Sanpham2 Values(null,'" + Ten.getText().toString() + "','" + Gia.getText().toString() + "','" + SoLuong.getText().toString() + "', '" + LinkAnh.getText().toString() + "', '" + Chitiet.getText().toString() + "','" + size.getText().toString() + "')");
+                            etURL.setText("");
+                            ivResult.setImageBitmap(null);
+                            Ten.setText("");
+                            Gia.setText("");
+                            SoLuong.setText("");
+                            LinkAnh.setText("");
+                            Chitiet.setText("");
+                            size.setText("");
+//                        intent = new Intent(ThemGiayActivity.this, MainActivitySuaXoaSanPham.class);
+//                        startActivity(intent);
+                        }
 
-                });
-                builder.setPositiveButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(ThemGiayActivity.this, "Hủy thành công", Toast.LENGTH_SHORT).show();
-
-                    }
-                });
-                builder.create().show();
+                    });
+                    builder.setPositiveButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Toast.makeText(ThemGiayActivity.this, "Hủy thành công", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    builder.create().show();
+                } else {
+                    btnthem2.setEnabled(true);
+                    Toast.makeText(ThemGiayActivity.this, "Vui lòng bạn điền đầy đủ thông tin !", Toast.LENGTH_SHORT).show();
+                }
             }
-
-
-//            }
         });
         btnhuy2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                intent = new Intent(ThemGiayActivity.this, MainActivity.class);
+                intent = new Intent(ThemGiayActivity.this, MainActivitySuaXoaSanPham.class);
                 startActivity(intent);
             }
         });
+        btnClear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                etURL.setText("");
+                ivResult.setImageBitmap(null);
+                Ten.setText("");
+                Gia.setText("");
+            }
+        });
+
+        Batloi();
     }
 
-    private void sua() {
+    private void AnhXa() {
+        btnClear = findViewById(R.id.btn_clear);
+        btnhuy2 = findViewById(R.id.btnHuysp);
+        btnSubmit = findViewById(R.id.btn_submit);
+        etURL = findViewById(R.id.et_ulr);
+        ivResult = findViewById(R.id.iv_result);
+        size = findViewById(R.id.sizesp);
+        Ten = findViewById(R.id.tensp);
+        Gia = findViewById(R.id.giasp);
+        SoLuong = findViewById(R.id.soluongsp);
+        LinkAnh = findViewById(R.id.et_ulr);
+        Chitiet = findViewById(R.id.chitietsp);
+        btnthem2 = findViewById(R.id.btnthemsp);
+    }
+
+    private void Batloi() {
+        etURL.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (charSequence.length() == 0) {
+                    etURL.setError("Vui lòng không được đẻ trống !");
+                } else {
+                    etURL.setError(null);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        //-------------------------------------------------------------------------------------------------------------------------------------------------------------
+        Gia.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (charSequence.length() == 0) {
+                    Gia.setError("Vui lòng không được đẻ trống !");
+                } else {
+                    Gia.setError(null);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        //-------------------------------------------------------------------------------------------------------------------------------------------------------------
+        Ten.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (charSequence.length() == 0) {
+                    Ten.setError("Vui lòng không được đẻ trống !");
+                } else {
+                    Ten.setError(null);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        //-------------------------------------------------------------------------------------------------------------------------------------------------------------
+        SoLuong.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (charSequence.length() == 0) {
+                    SoLuong.setError("Vui lòng không được đẻ trống !");
+                } else {
+                    SoLuong.setError(null);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        //-------------------------------------------------------------------------------------------------------------------------------------------------------------
+        Chitiet.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (charSequence.length() == 0) {
+                    Chitiet.setError("Vui lòng không được đẻ trống !");
+                } else {
+                    Chitiet.setError(null);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        //-------------------------------------------------------------------------------------------------------------------------------------------------------------
+        size.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (charSequence.length() == 0) {
+                    size.setError("Vui lòng không được đẻ trống !");
+                } else {
+                    size.setError(null);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
     }
 
@@ -211,21 +325,5 @@ public class ThemGiayActivity extends AppCompatActivity {
             super.onPostExecute(bitmap);
         }
     }
-//    private void abc02() {
-//        adapter = new GiayAdapter(ThemGiayActivity.this, R.layout.list_item_abc, arrayDoVat);
-//        Cursor cursor = databaseHelper.GetData("SELECT * FROM Sanpham");
-//        if (cursor != null) {
-//            while (cursor.moveToNext()) {
-//                int id = cursor.getInt(0);
-//                String TenGiay = cursor.getString(1);
-//                String Gia = cursor.getString(2);
-//                String Soluong = cursor.getString(3);
-//                arrayDoVat.add(new Giay(id, TenGiay, Gia, Soluong));
-//            }
-//            gridView.setAdapter(adapter);
-//        } else {
-//            Toast.makeText(getActivity(), "NOT OK", Toast.LENGTH_SHORT).show();
-//        }
 
-//    }
 }

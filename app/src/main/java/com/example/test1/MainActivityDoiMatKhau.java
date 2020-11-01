@@ -3,11 +3,14 @@ package com.example.test1;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivityDoiMatKhau extends AppCompatActivity {
@@ -16,10 +19,25 @@ public class MainActivityDoiMatKhau extends AppCompatActivity {
     EditText pass3;
     Button btndoimatkhau;
     Button btnhuy;
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_doi_mat_khau);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Anhxa();
         final String[] edtpass1 = new String[1];// = pass1.getText().toString().trim();
         thuchien();

@@ -6,9 +6,12 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,6 +25,10 @@ import java.io.InputStream;
 
 public class SuaMainActivity extends AppCompatActivity {
     AutoCompleteTextView size;
+    private static final String[] PRODUCTS = new String[]
+            {
+                    "40", "41", "42", "43", "44"
+            };
     public static DatabaseHelper databaseHelper;
     Intent intent;
     Button btntSua, btnhuy2;
@@ -53,6 +60,7 @@ public class SuaMainActivity extends AppCompatActivity {
         databaseHelper = new DatabaseHelper(SuaMainActivity.this, "giaydep", null, 1);
         databaseHelper.UpData("CREATE TABLE IF NOT EXISTS Sanpham2(Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia VarChar(150), SoLuong VarChar(150), LinkAnh Text ,Chitiet VarChar(150), size VarChar(150))");
         AnhXa();
+        Batloi();
         btntSua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,7 +77,144 @@ public class SuaMainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        btnhuy2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SuaMainActivity.this, MainActivitySuaXoaSanPham.class));
+            }
+        });
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_dropdown_item_1line, PRODUCTS);
 
+        size.setAdapter(adapter);
+    }
+
+    private void Batloi() {
+        etURL.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (charSequence.length() == 0) {
+                    etURL.setError("Vui lòng không được đẻ trống !");
+                } else {
+                    etURL.setError(null);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        //-------------------------------------------------------------------------------------------------------------------------------------------------------------
+        Gia.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (charSequence.length() == 0) {
+                    Gia.setError("Vui lòng không được đẻ trống !");
+                } else {
+                    Gia.setError(null);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        //-------------------------------------------------------------------------------------------------------------------------------------------------------------
+        Ten.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (charSequence.length() == 0) {
+                    Ten.setError("Vui lòng không được đẻ trống !");
+                } else {
+                    Ten.setError(null);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        //-------------------------------------------------------------------------------------------------------------------------------------------------------------
+        SoLuong.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (charSequence.length() == 0) {
+                    SoLuong.setError("Vui lòng không được đẻ trống !");
+                } else {
+                    SoLuong.setError(null);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        //-------------------------------------------------------------------------------------------------------------------------------------------------------------
+        Chitiet.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (charSequence.length() == 0) {
+                    Chitiet.setError("Vui lòng không được đẻ trống !");
+                } else {
+                    Chitiet.setError(null);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        //-------------------------------------------------------------------------------------------------------------------------------------------------------------
+        size.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (charSequence.length() == 0) {
+                    size.setError("Vui lòng không được đẻ trống !");
+                } else {
+                    size.setError(null);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
     }
 
     private class LoadImage extends AsyncTask<String, Void, Bitmap> {

@@ -43,7 +43,9 @@ public class MainActivityHoaDon extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                onBackPressed();
+              intent= new Intent(MainActivityHoaDon.this, MainActivityGioHang.class);
+              startActivity(intent);
+                finish();
                 return true;
         }
         return super.onOptionsItemSelected(item);

@@ -8,11 +8,13 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivityThongTin extends AppCompatActivity {
@@ -21,10 +23,23 @@ public class MainActivityThongTin extends AppCompatActivity {
     Intent intent;
     TextView ten, sdt;
     public static DatabaseLogin databaseLogin;
+
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
         return super.onCreateOptionsMenu(menu);
     }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+              intent = new Intent(MainActivityThongTin.this, MainActivity.class);
+              startActivity(intent);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 
 
 
@@ -32,6 +47,7 @@ public class MainActivityThongTin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_thong_tin);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         databaseLogin = new DatabaseLogin(MainActivityThongTin.this, "mail.sqlite", null, 1);
         MainActivityThongTin.databaseLogin.UpData("CREATE TABLE IF NOT EXISTS TaiKhoan6 (Id INTEGER PRIMARY KEY AUTOINCREMENT, Ten COLLATE NOCASE, Pass VARCHAR(200), Hovaten COLLATE NOCASE, SoDienThoai VARCHAR(11),Ngay VARCHAR(20), diachi VARCHAR(200))");
         ten = findViewById(R.id.tennguoidung);
@@ -39,9 +55,9 @@ public class MainActivityThongTin extends AppCompatActivity {
         Cursor cursor1 = databaseLogin.GetData("SELECT * FROM TaiKhoan6 ");
         while (cursor1.moveToNext()){
             String tenmoi = cursor1.getString(3);
-            ten.setText(tenmoi);
+            ten.setText("      "+tenmoi);
             String sdtmoi = cursor1.getString(4);
-            sdt.setText(sdtmoi);
+            sdt.setText("  "+sdtmoi);
         }
         btn = findViewById(R.id.btnDoiMatkhau);
          quanlytaikhoan = findViewById(R.id.btndanhsachnguoidung);

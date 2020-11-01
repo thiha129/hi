@@ -34,7 +34,7 @@
     </TextView>
 
     <LinearLayout
-        android:layout_width="350dp"
+        android:layout_width="340dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
@@ -43,10 +43,10 @@
         android:orientation="horizontal">
 
         <TextView
+            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="15dp"
             android:text="Số điện thoại:"
             android:textColor="#000000"
             android:textSize="24sp"
@@ -55,11 +55,11 @@
         </TextView>
 
         <TextView
+            android:layout_marginRight="20dp"
+             android:layout_weight="1"
             android:id="@+id/sdt"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="10dp"
             android:text="0911915743"
             android:textColor="#000000"
             android:textSize="24sp"
@@ -80,11 +80,10 @@
             android:layout_width="157dp"
             android:layout_height="72dp"
             android:layout_gravity="center"
-
             android:background="@drawable/botron_button"
-            android:drawableTop="@drawable/ic_baseline_add_circle_24"
+            android:drawableTop="@drawable/ic_baseline_dvr_24"
             android:gravity="center"
-            android:text="Thêm Sản Phẩm"
+            android:text="Quản lý Sản Phẩm"
             android:textColor="#000000">
 
         </Button>
@@ -125,7 +124,7 @@
             android:layout_gravity="center"
 
             android:background="@drawable/botron_button"
-            android:drawableTop="@drawable/ic_baseline_reorder_24"
+            android:drawableTop="@drawable/ic_baseline_assignment_24"
             android:gravity="center"
             android:text="Quản lý hóa đơn"
             android:textColor="#000000">
@@ -167,6 +166,29 @@
             android:textColor="#000000">
 
         </Button>
+        <Button
+            android:layout_marginLeft="30dp"
+            android:id="@+id/btnNoti"
+            android:layout_width="157dp"
+            android:layout_height="72dp"
+            android:layout_gravity="center"
+            android:background="@drawable/botron_button"
+            android:drawableTop="@drawable/ic_baseline_notifications_24"
+            android:gravity="center"
+            android:text="Quản lý thông tin"
+            android:textColor="#000000">
+
+        </Button>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/btnExit"
@@ -181,28 +203,6 @@
             android:textColor="#000000">
 
         </Button>
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal">
-        <Button
-            android:id="@+id/btnNoti"
-            android:layout_width="157dp"
-            android:layout_height="72dp"
-            android:layout_gravity="center"
-            android:background="@drawable/botron_button"
-            android:drawableTop="@drawable/ic_baseline_fingerprint_24"
-            android:gravity="center"
-            android:text="Quản lý thông tin"
-            android:textColor="#000000">
-
-        </Button>
-
 
     </LinearLayout>
 

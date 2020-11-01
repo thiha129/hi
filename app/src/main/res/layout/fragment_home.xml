@@ -57,7 +57,7 @@
     <GridView
         android:id="@+id/lv1"
         android:layout_width="match_parent"
-        android:layout_height="1000dp"
+        android:layout_height="10000dp"
         android:layout_marginLeft="15dp"
         android:gravity="center"
         android:numColumns="2"

@@ -33,7 +33,6 @@ public class MainActivitySuaXoaSanPham extends AppCompatActivity {
         gridView = findViewById(R.id.danhsachsp);
         submit = findViewById(R.id.button);
       
-
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,10 +42,13 @@ public class MainActivitySuaXoaSanPham extends AppCompatActivity {
         });
         databaseHelper = new DatabaseHelper(MainActivitySuaXoaSanPham.this, "giaydep", null, 1);
         databaseHelper.UpData("CREATE TABLE IF NOT EXISTS Sanpham2(Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia VarChar(150), SoLuong VarChar(150), LinkAnh Text ,Chitiet VarChar(150), size VarChar(150))");        arrayDoVat = new ArrayList<>();
+        arrayDoVat = new ArrayList<>();
+        adapter = new GiayAchapter(MainActivitySuaXoaSanPham.this, R.layout.list_item_abc, arrayDoVat);
+
         abc02();
         Xoa();
         Sua();
-
+        adapter.notifyDataSetChanged();
     }
 
     private void Sua() {
@@ -108,6 +110,6 @@ public class MainActivitySuaXoaSanPham extends AppCompatActivity {
         } else {
             Toast.makeText(MainActivitySuaXoaSanPham.this, "NOT OK", Toast.LENGTH_SHORT).show();
         }
-
+        adapter.notifyDataSetChanged();
     }
 }

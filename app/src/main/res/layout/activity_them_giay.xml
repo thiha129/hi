@@ -22,12 +22,13 @@
                 android:padding="20dp">
 
                 <EditText
-                    android:textColor="#000"
                     android:id="@+id/et_ulr"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:background="@drawable/botron_button"
-                    android:hint="Enter URL...">
+                    android:hint="Enter URL..."
+                    android:padding="10dp"
+                    android:textColor="#000">
 
                 </EditText>
 
@@ -43,7 +44,7 @@
                         android:layout_weight="1"
 
                         android:background="@drawable/botron_button"
-                        android:text="Clear">
+                        android:text="Clear link url">
 
                     </Button>
 
@@ -57,7 +58,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/botron_button"
-                        android:text="Submit">
+                        android:text="Show Image">
 
                     </Button>
 
@@ -98,14 +99,15 @@
                     </TextView>
 
                     <EditText
-                        android:textColor="#000"
                         android:id="@+id/giasp"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_weight="1"
                         android:background="@drawable/botron_button"
                         android:ems="4"
-                        android:inputType="number">
+                        android:inputType="number"
+                        android:padding="10dp"
+                        android:textColor="#000">
 
                     </EditText>
 
@@ -136,6 +138,7 @@
                         android:layout_height="50dp"
                         android:layout_weight="1"
                         android:background="@drawable/botron_button"
+                        android:padding="10dp"
                         android:textColor="#000">
 
                     </EditText>
@@ -169,6 +172,7 @@
                         android:background="@drawable/botron_button"
                         android:ems="2"
                         android:inputType="number"
+                        android:padding="10dp"
                         android:textColor="#000"
                         android:textSize="20sp">
 
@@ -189,27 +193,26 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
-                        android:text="Chi tiết sản phẩm"
+                        android:text="Chi tiết sản phẩm:"
                         android:textSize="20sp"
                         android:textStyle="bold">
 
                     </TextView>
 
                     <EditText
-                        android:inputType="text"
                         android:id="@+id/chitietsp"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_weight="1"
                         android:background="@drawable/botron_button"
+                        android:inputType="text"
+                        android:padding="10dp"
                         android:textColor="#000"
                         android:textSize="20sp">
 
                     </EditText>
 
                 </LinearLayout>
-
-
 
 
                 <LinearLayout
@@ -225,34 +228,36 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
-                        android:text="Size sản phẩm"
+                        android:text="Size sản phẩm:"
                         android:textSize="20sp"
                         android:textStyle="bold">
 
                     </TextView>
-                     <AutoCompleteTextView
-                         android:completionThreshold="1"
-                         android:inputType="text"
-                         android:id="@+id/sizesp"
-                         android:layout_width="match_parent"
-                         android:layout_height="50dp"
-                         android:layout_weight="1"
-                         android:background="@drawable/botron_button"
-                         android:textColor="#000"
-                         android:textSize="20sp">
-                         
-                     </AutoCompleteTextView>
-<!--                    <EditText-->
-<!--                        android:inputType="text"-->
-<!--                        android:id="@+id/sizesp"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_weight="1"-->
-<!--                        android:background="@drawable/botron_button4"-->
-<!--                        android:textColor="#fff"-->
-<!--                        android:textSize="20sp">-->
 
-<!--                    </EditText>-->
+                    <AutoCompleteTextView
+                        android:id="@+id/sizesp"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/botron_button"
+                        android:completionThreshold="1"
+                        android:inputType="text"
+                        android:padding="10dp"
+                        android:textColor="#000"
+                        android:textSize="20sp">
+
+                    </AutoCompleteTextView>
+                    <!--                    <EditText-->
+                    <!--                        android:inputType="text"-->
+                    <!--                        android:id="@+id/sizesp"-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_weight="1"-->
+                    <!--                        android:background="@drawable/botron_button4"-->
+                    <!--                        android:textColor="#fff"-->
+                    <!--                        android:textSize="20sp">-->
+
+                    <!--                    </EditText>-->
 
                 </LinearLayout>
             </LinearLayout>
