@@ -55,11 +55,12 @@
         android:layout_height="match_parent">
 
     </TextView>
+
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="40dp"
         android:id="@+id/recyclerview_web"
         android:layout_width="match_parent"
-        android:layout_height="340dp">
+        android:layout_height="150dp"
+        android:layout_marginTop="5dp">
 
     </androidx.recyclerview.widget.RecyclerView>
     <TextView
@@ -75,8 +76,7 @@
     <GridView
         android:id="@+id/lv1"
         android:layout_width="match_parent"
-        android:layout_height="10000dp"
-        android:layout_marginLeft="15dp"
+        android:layout_height="330dp"
         android:gravity="center"
         android:numColumns="2"
         android:paddingBottom="10dp">
