@@ -46,14 +46,16 @@ public class GiayAchapter extends BaseAdapter {
 
         final Giay giay = GiayArrayList.get(i);
         final ImageView image = view.findViewById(R.id.imageView);
-        TextView Gia = view.findViewById(R.id.tvGia);
+
         TextView Ten = view.findViewById(R.id.tvTen);
         TextView SoLuong = view.findViewById(R.id.tvSoLuong);
-       
-        Gia.setText(giay.getGia());
+//        TextView Gia = view.findViewById(R.id.tvGia);
+        TextView gia = view.findViewById(R.id.tvGia);
+
         Ten.setText(giay.getTenGiay());
         SoLuong.setText(giay.getSoluong());
-
+//        Gia.setText(giay.getGia());
+        gia.setText(""+giay.getGia());
        Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override

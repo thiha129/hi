@@ -41,7 +41,7 @@ public class MainActivitySuaXoaSanPham extends AppCompatActivity {
             }
         });
         databaseHelper = new DatabaseHelper(MainActivitySuaXoaSanPham.this, "giaydep", null, 1);
-        databaseHelper.UpData("CREATE TABLE IF NOT EXISTS Sanpham2(Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia VarChar(150), SoLuong VarChar(150), LinkAnh Text ,Chitiet VarChar(150), size VarChar(150))");        arrayDoVat = new ArrayList<>();
+        databaseHelper.UpData("CREATE TABLE IF NOT EXISTS Sanpham3(Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia VarChar(150), SoLuong VarChar(150), LinkAnh Text ,Chitiet VarChar(150), size VarChar(150))");        arrayDoVat = new ArrayList<>();
         arrayDoVat = new ArrayList<>();
         adapter = new GiayAchapter(MainActivitySuaXoaSanPham.this, R.layout.list_item_abc, arrayDoVat);
 
@@ -77,7 +77,7 @@ public class MainActivitySuaXoaSanPham extends AppCompatActivity {
                 builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int j) {
-                        databaseHelper.UpData("delete from Sanpham2 where Id = " + arrayDoVat.get(indexItem).getId() + "");
+                        databaseHelper.UpData("delete from Sanpham3 where Id = " + arrayDoVat.get(indexItem).getId() + "");
                         arrayDoVat.clear();
                         abc02();
                     }
@@ -94,12 +94,12 @@ public class MainActivitySuaXoaSanPham extends AppCompatActivity {
     }
     private void abc02() {
         adapter = new GiayAchapter(MainActivitySuaXoaSanPham.this, R.layout.list_item_abc, arrayDoVat);
-        Cursor cursor = databaseHelper.GetData("SELECT * FROM Sanpham2");
+        Cursor cursor = databaseHelper.GetData("SELECT * FROM Sanpham3");
         if (cursor != null) {
             while (cursor.moveToNext()) {
                 int id = cursor.getInt(0);
                 String TenGiay = cursor.getString(1);
-                String Gia = cursor.getString(2)+"$";
+                int Gia = cursor.getInt(2);
                 String Soluong = cursor.getString(3);
                 String LinkAnh = cursor.getString(4);
                 String Chitiet = cursor.getString(5);

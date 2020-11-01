@@ -88,6 +88,7 @@
                 </TextView>
 
                 <TextView
+                    android:drawableLeft="@drawable/dola"
                     android:id="@+id/sum"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -115,6 +116,7 @@
                 </TextView>
 
                 <TextView
+                    android:drawableLeft="@drawable/dola"
                     android:id="@+id/phichuyen"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -144,6 +146,7 @@
                 </TextView>
 
                 <TextView
+                    android:drawableLeft="@drawable/dola"
                     android:id="@+id/pay"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

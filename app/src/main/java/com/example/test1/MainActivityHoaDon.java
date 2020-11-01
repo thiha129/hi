@@ -43,8 +43,8 @@ public class MainActivityHoaDon extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-              intent= new Intent(MainActivityHoaDon.this, MainActivityGioHang.class);
-              startActivity(intent);
+                intent = new Intent(MainActivityHoaDon.this, MainActivityGioHang.class);
+                startActivity(intent);
                 finish();
                 return true;
         }
@@ -60,12 +60,12 @@ public class MainActivityHoaDon extends AppCompatActivity {
         Date_Tao = findViewById(R.id.Ngay_hoaDon);
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm:ss a, dd/MM/yyyy");
-        String dateTime  =   simpleDateFormat.format(calendar.getTime());
+        String dateTime = simpleDateFormat.format(calendar.getTime());
         Date_Tao.setText(dateTime);
         databaseHelper = new DatabaseHelper(MainActivityHoaDon.this, "giaydep", null, 1);
         databaseLogin = new DatabaseLogin(MainActivityHoaDon.this, "mail.sqlite", null, 1);
         MainActivityHoaDon.databaseLogin.UpData("CREATE TABLE IF NOT EXISTS TaiKhoan6 (Id INTEGER PRIMARY KEY AUTOINCREMENT, Ten COLLATE NOCASE, Pass VARCHAR(200), Hovaten COLLATE NOCASE, SoDienThoai VARCHAR(11),Ngay VARCHAR(20), diachi VARCHAR(200))");
-        databaseLogin.UpData("CREATE TABLE IF NOT EXISTS HoaDon (Id INTEGER PRIMARY KEY AUTOINCREMENT, Ten VARCHAR(200), SoDienThoai VARCHAR(11), diachi VARCHAR(200),soluong integer,tong integer,Ngay VARCHAR(20))");
+        databaseLogin.UpData("CREATE TABLE IF NOT EXISTS HoaDon1 (Id INTEGER PRIMARY KEY AUTOINCREMENT, Ten VARCHAR(200), SoDienThoai VARCHAR(11), diachi VARCHAR(200),soluong integer,tong integer,Ngay VARCHAR(20))");
 
         arraygioHang = new ArrayList<>();
         AnhXa();
@@ -99,8 +99,8 @@ public class MainActivityHoaDon extends AppCompatActivity {
                             @Override
                             public void run() {
                                 loadingDialog_pr.dismissDialog();
-                                databaseLogin.UpData("Insert into HoaDon values(null,'" + ten.getText() + "','" + sdt.getText() + "','" + dt.getText() + "', '" + conut.getText() + "', '" + Payy.getText() + "','" + Date_Tao.getText() + "' )");
-                                databaseHelper.UpData("delete from GioHang2 ");
+                                databaseLogin.UpData("Insert into HoaDon1 values(null,'" + ten.getText() + "','" + sdt.getText() + "','" + dt.getText() + "', '" + conut.getText() + "', '" + Payy.getText() + "','" + Date_Tao.getText() + "' )");
+                                databaseHelper.UpData("delete from GioHang3 ");
                                 arraygioHang.clear();
                                 AnhXa();
                                 intent = new Intent(MainActivityHoaDon.this, MainActivity.class);
@@ -158,7 +158,7 @@ public class MainActivityHoaDon extends AppCompatActivity {
             conut.setText("" + gioHangAdapTer.getCount());
         }
         int tongtien = TinhTong + 10;
-        Payy.setText("$" + tongtien);
+        Payy.setText(""+tongtien);
 
 
     }

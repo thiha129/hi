@@ -33,7 +33,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
     public boolean checkid(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("select * from Sanpham1 where Id=?", new String[]{id});
+        Cursor cursor = db.rawQuery("select * from Sanpham3 where Id=?", new String[]{id});
         if (cursor.getCount() > 0) return true;
         else return false;
     }

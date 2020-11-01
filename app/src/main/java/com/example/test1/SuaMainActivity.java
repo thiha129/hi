@@ -58,7 +58,7 @@ public class SuaMainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sua_main);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         databaseHelper = new DatabaseHelper(SuaMainActivity.this, "giaydep", null, 1);
-        databaseHelper.UpData("CREATE TABLE IF NOT EXISTS Sanpham2(Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia VarChar(150), SoLuong VarChar(150), LinkAnh Text ,Chitiet VarChar(150), size VarChar(150))");
+        databaseHelper.UpData("CREATE TABLE IF NOT EXISTS Sanpham3(Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia VarChar(150), SoLuong VarChar(150), LinkAnh Text ,Chitiet VarChar(150), size VarChar(150))");
         AnhXa();
         Batloi();
         btntSua.setOnClickListener(new View.OnClickListener() {
@@ -72,7 +72,7 @@ public class SuaMainActivity extends AppCompatActivity {
                 String SoluongMoi = SoLuong.getText().toString().trim();
                 String ChiTietMoi = Chitiet.getText().toString().trim();
                 String SizeMoi =  size.getText().toString().trim();
-                databaseHelper.UpData("UPDATE Sanpham2 SET Ten = '"+TenMoi+"', Gia = '"+GiaMoi+"', SoLuong = '"+SoluongMoi+"', LinkAnh = '"+LinkMoi+"',Chitiet = '"+ChiTietMoi+"',size ='"+SizeMoi+"' WHERE Id = '"+Id+"'");
+                databaseHelper.UpData("UPDATE Sanpham3 SET Ten = '"+TenMoi+"', Gia = '"+GiaMoi+"', SoLuong = '"+SoluongMoi+"', LinkAnh = '"+LinkMoi+"',Chitiet = '"+ChiTietMoi+"',size ='"+SizeMoi+"' WHERE Id = '"+Id+"'");
                 intent = new Intent(SuaMainActivity.this, MainActivitySuaXoaSanPham.class);
                 startActivity(intent);
             }
@@ -260,7 +260,7 @@ public class SuaMainActivity extends AppCompatActivity {
         btntSua = findViewById(R.id.btnSuasp);
         Intent i = getIntent();
         int Id = i.getIntExtra("id", 1);
-        Cursor cursor = databaseHelper.GetData("SELECT * FROM Sanpham2 where Id = " + Id + "");
+        Cursor cursor = databaseHelper.GetData("SELECT * FROM Sanpham3 where Id = " + Id + "");
         while (cursor.moveToNext()) {
             if (cursor.getInt(0) == Id) {
                 String Name = cursor.getString(1);

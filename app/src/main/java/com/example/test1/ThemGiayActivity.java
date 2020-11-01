@@ -66,7 +66,7 @@ public class ThemGiayActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         AnhXa();
         databaseHelper = new DatabaseHelper(ThemGiayActivity.this, "giaydep", null, 1);
-        databaseHelper.UpData("CREATE TABLE IF NOT EXISTS Sanpham2(Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia VarChar(150), SoLuong VarChar(150), LinkAnh Text ,Chitiet VarChar(150), size VarChar(150))");
+        databaseHelper.UpData("CREATE TABLE IF NOT EXISTS Sanpham3(Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia VarChar(150), SoLuong VarChar(150), LinkAnh Text ,Chitiet VarChar(150), size VarChar(150))");
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_dropdown_item_1line, PRODUCTS);
@@ -106,7 +106,7 @@ public class ThemGiayActivity extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             Toast.makeText(ThemGiayActivity.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
-                            databaseHelper.UpData("Insert into Sanpham2 Values(null,'" + Ten.getText().toString() + "','" + Gia.getText().toString() + "','" + SoLuong.getText().toString() + "', '" + LinkAnh.getText().toString() + "', '" + Chitiet.getText().toString() + "','" + size.getText().toString() + "')");
+                            databaseHelper.UpData("Insert into Sanpham3 Values(null,'" + Ten.getText().toString() + "','" + Gia.getText().toString() + "','" + SoLuong.getText().toString() + "', '" + LinkAnh.getText().toString() + "', '" + Chitiet.getText().toString() + "','" + size.getText().toString() + "')");
                             etURL.setText("");
                             ivResult.setImageBitmap(null);
                             Ten.setText("");

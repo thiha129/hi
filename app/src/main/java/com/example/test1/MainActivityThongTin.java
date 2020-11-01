@@ -51,13 +51,11 @@ public class MainActivityThongTin extends AppCompatActivity {
         databaseLogin = new DatabaseLogin(MainActivityThongTin.this, "mail.sqlite", null, 1);
         MainActivityThongTin.databaseLogin.UpData("CREATE TABLE IF NOT EXISTS TaiKhoan6 (Id INTEGER PRIMARY KEY AUTOINCREMENT, Ten COLLATE NOCASE, Pass VARCHAR(200), Hovaten COLLATE NOCASE, SoDienThoai VARCHAR(11),Ngay VARCHAR(20), diachi VARCHAR(200))");
         ten = findViewById(R.id.tennguoidung);
-        sdt = findViewById(R.id.sdt);
+
         Cursor cursor1 = databaseLogin.GetData("SELECT * FROM TaiKhoan6 ");
         while (cursor1.moveToNext()){
             String tenmoi = cursor1.getString(3);
             ten.setText("      "+tenmoi);
-            String sdtmoi = cursor1.getString(4);
-            sdt.setText("  "+sdtmoi);
         }
         btn = findViewById(R.id.btnDoiMatkhau);
          quanlytaikhoan = findViewById(R.id.btndanhsachnguoidung);
@@ -96,7 +94,7 @@ public class MainActivityThongTin extends AppCompatActivity {
          order.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
-                 intent = new Intent(MainActivityThongTin.this, MainActivityGioHang.class);
+                 intent = new Intent(MainActivityThongTin.this, MainActivityThongKe.class);
                  startActivity(intent);
 
              }

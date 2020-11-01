@@ -59,6 +59,7 @@ public class HomeFragment extends Fragment {
     public static ArrayList<gioHang> arraygioHang;
     private int indext = -1;
     private AdView mAdView;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
@@ -66,7 +67,7 @@ public class HomeFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_home, container, false);
         gridView = view.findViewById(R.id.lv1);
         databaseHelper = new DatabaseHelper(getActivity(), "giaydep", null, 1);
-        databaseHelper.UpData("CREATE TABLE IF NOT EXISTS Sanpham2(Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia VarChar(150), SoLuong VarChar(150), LinkAnh Text ,Chitiet VarChar(150), size VarChar(150))");
+        databaseHelper.UpData("CREATE TABLE IF NOT EXISTS Sanpham3(Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia VarChar(150), SoLuong VarChar(150), LinkAnh Text ,Chitiet VarChar(150), size VarChar(150))");
         databaseHelper.UpData("CREATE TABLE IF NOT EXISTS GioHang3 (Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia integer,size integer,LinkAnh Text )");
 
         arrayDoVat = new ArrayList<>();
@@ -83,7 +84,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void hienthi() {
-               Gh = view.findViewById(R.id.txtSoluongSp);
+        Gh = view.findViewById(R.id.txtSoluongSp);
         gioHangAdapTer = new GioHangAdapTer(getActivity(), arraygioHang, R.layout.list_item_giaodiengiohang);
         Cursor cursor = databaseHelper.GetData("Select * from GioHang3");
         while (cursor.moveToNext()) {
@@ -94,7 +95,7 @@ public class HomeFragment extends Fragment {
                     cursor.getString(3),
                     cursor.getString(4))
             );
-            Gh.setText("(" + gioHangAdapTer.getCount()+")");
+            Gh.setText("(" + gioHangAdapTer.getCount() + ")");
         }
         Gh.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,7 +131,7 @@ public class HomeFragment extends Fragment {
         };
         mainModel_webs = new ArrayList<>();
         for (int i = 0; i < langLogo.length; i++) {
-            MainModel_web model_web = new MainModel_web(langLogo[i], langname[i]+"...",langlink[i]);
+            MainModel_web model_web = new MainModel_web(langLogo[i], langname[i] + "...", langlink[i]);
             mainModel_webs.add(model_web);
         }
 
@@ -172,6 +173,7 @@ public class HomeFragment extends Fragment {
         recyclerView.setAdapter(mainAdapter);
 
     }
+
     private void abc4() {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -184,17 +186,14 @@ public class HomeFragment extends Fragment {
         });
     }
 
-
-
-
     private void abc02() {
         adapter = new GiayAchapter(getActivity(), R.layout.list_item_abc, arrayDoVat);
-        final Cursor cursor = databaseHelper.GetData("SELECT * FROM Sanpham2");
+        final Cursor cursor = databaseHelper.GetData("SELECT * FROM Sanpham3");
         if (cursor != null) {
             while (cursor.moveToNext()) {
                 int id = cursor.getInt(0);
                 String TenGiay = cursor.getString(1);
-                String Gia = cursor.getString(2) + "$";
+                int Gia = cursor.getInt(2);
                 String Soluong = cursor.getString(3);
                 String LinkAnh = cursor.getString(4);
                 String Chitiet = cursor.getString(5);

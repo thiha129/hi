@@ -6,17 +6,17 @@ public class hoadon {
     String SDT;
     String DiaChi;
     int SoLuong;
+    int Tong;
     String Ngay;
-    String Tong;
 
-    public hoadon(int id, String ten, String SDT, String diaChi, int soLuong, String ngay, String tong) {
+    public hoadon(int id, String ten, String SDT, String diaChi, int soLuong, int tong, String ngay) {
         Id = id;
         Ten = ten;
         this.SDT = SDT;
         DiaChi = diaChi;
         SoLuong = soLuong;
-        Ngay = ngay;
         Tong = tong;
+        Ngay = ngay;
     }
 
     public int getId() {
@@ -59,19 +59,19 @@ public class hoadon {
         SoLuong = soLuong;
     }
 
+    public int getTong() {
+        return Tong;
+    }
+
+    public void setTong(int tong) {
+        Tong = tong;
+    }
+
     public String getNgay() {
         return Ngay;
     }
 
     public void setNgay(String ngay) {
         Ngay = ngay;
-    }
-
-    public String getTong() {
-        return Tong;
-    }
-
-    public void setTong(String tong) {
-        Tong = tong;
     }
 }

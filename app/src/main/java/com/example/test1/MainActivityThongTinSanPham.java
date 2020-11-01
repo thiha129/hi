@@ -52,7 +52,7 @@ public class MainActivityThongTinSanPham extends AppCompatActivity {
         setContentView(R.layout.activity_main_thong_tin_san_pham);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         databaseHelper = new DatabaseHelper(MainActivityThongTinSanPham.this, "giaydep", null, 1);
-        databaseHelper.UpData("CREATE TABLE IF NOT EXISTS Sanpham2(Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia VarChar(150), SoLuong VarChar(150), LinkAnh Text ,Chitiet VarChar(150), size VarChar(150))");
+        databaseHelper.UpData("CREATE TABLE IF NOT EXISTS Sanpham3(Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia VarChar(150), SoLuong VarChar(150), LinkAnh Text ,Chitiet VarChar(150), size VarChar(150))");
         GioHang = findViewById(R.id.chuyengiohang);
 
         GioHang.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +60,7 @@ public class MainActivityThongTinSanPham extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = getIntent();
                 int Id = i.getIntExtra("id", 1);
-                Cursor cursor = databaseHelper.GetData("SELECT * FROM Sanpham2 where Id = " + Id + "");
+                Cursor cursor = databaseHelper.GetData("SELECT * FROM Sanpham3 where Id = " + Id + "");
                 while (cursor.moveToNext()) {
                     cursor.getInt(0);
                     cursor.getString(1);
@@ -123,13 +123,13 @@ public class MainActivityThongTinSanPham extends AppCompatActivity {
         cardView_btn = findViewById(R.id.cardView_btn);
         Intent i = getIntent();
         int Id = i.getIntExtra("id", 1);
-        Cursor cursor = databaseHelper.GetData("SELECT * FROM Sanpham2 where Id = " + Id + "");
+        Cursor cursor = databaseHelper.GetData("SELECT * FROM Sanpham3 where Id = " + Id + "");
         while (cursor.moveToNext()) {
             if (cursor.getInt(0) == Id) {
                 String Name = cursor.getString(1);
                 name.setText(Name);
-                String Race = cursor.getString(2);
-                race.setText(Race);
+                int Race = cursor.getInt(2);
+                race.setText(""+Race);
                 String Number = cursor.getString(3);
                 number.setText(Number);
                 String link = cursor.getString(4);

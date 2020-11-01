@@ -45,15 +45,18 @@ public class HoaDonAdapter extends BaseAdapter {
         TextView SDT_User = view.findViewById(R.id.txt_SDT);
         TextView DiaChi_User = view.findViewById(R.id.txt_Diachi);
         TextView Soluong_hoadon = view.findViewById(R.id.txt_Soluong);
-        TextView NgayTao_HoaDon = view.findViewById(R.id.txt_NgayTao);
         TextView Pay_HoaDon = view.findViewById(R.id.txt_Pay);
+        TextView NgayTao_HoaDon = view.findViewById(R.id.txt_NgayTao);
+
 
         ten_User.setText(""+hoadon.getTen());
         SDT_User.setText(""+hoadon.getSDT());
         DiaChi_User.setText(""+hoadon.getDiaChi());
-        NgayTao_HoaDon.setText(""+hoadon.getTong());
         Soluong_hoadon.setText(""+hoadon.getSoLuong());
-        Pay_HoaDon.setText(""+hoadon.getNgay());
+        Pay_HoaDon.setText("$"+hoadon.getTong());
+        NgayTao_HoaDon.setText(""+hoadon.getNgay());
+
+
         return view;
     }
 }

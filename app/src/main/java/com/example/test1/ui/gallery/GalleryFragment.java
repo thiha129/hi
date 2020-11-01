@@ -43,7 +43,7 @@ public class GalleryFragment extends Fragment implements PopupMenu.OnMenuItemCli
         View root = inflater.inflate(R.layout.fragment_gallery, container, false);
         gridView = root.findViewById(R.id.lv1);
         databaseHelper = new DatabaseHelper(getActivity(), "giaydep", null, 1);
-        databaseHelper.UpData("CREATE TABLE IF NOT EXISTS Sanpham2(Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia VarChar(150), SoLuong VarChar(150), LinkAnh Text ,Chitiet VarChar(150), size VarChar(150))");
+        databaseHelper.UpData("CREATE TABLE IF NOT EXISTS Sanpham3(Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia VarChar(150), SoLuong VarChar(150), LinkAnh Text ,Chitiet VarChar(150), size VarChar(150))");
         arrayDoVat = new ArrayList<>();
         adapter = new GiayAchapter(getActivity(), R.layout.list_item_abc, arrayDoVat);
         loc = root.findViewById(R.id.textView12);
@@ -116,13 +116,13 @@ public class GalleryFragment extends Fragment implements PopupMenu.OnMenuItemCli
     }
 
     private void HightToLow() {
-        Cursor cursor = databaseHelper.GetData("SELECT * FROM Sanpham2 WHERE Ten LIKE '%Nike%' ORDER BY Gia DESC");
+        Cursor cursor = databaseHelper.GetData("SELECT * FROM Sanpham3 WHERE Ten LIKE '%Nike%' ORDER BY Gia DESC");
         arrayDoVat.clear();
         if (cursor != null) {
             while (cursor.moveToNext()) {
                 int id = cursor.getInt(0);
                 String TenGiay = cursor.getString(1);
-                String Gia = cursor.getString(2) + "$";
+                int Gia = cursor.getInt(2);
                 String Soluong = cursor.getString(3);
                 String LinkAnh = cursor.getString(4);
                 String Chitiet = cursor.getString(5);
@@ -136,13 +136,13 @@ public class GalleryFragment extends Fragment implements PopupMenu.OnMenuItemCli
     }
 
     private void LowToHight() {
-        Cursor cursor = databaseHelper.GetData("SELECT * FROM Sanpham2 WHERE Ten LIKE '%Nike%' ORDER BY Gia ASC");
+        Cursor cursor = databaseHelper.GetData("SELECT * FROM Sanpham3 WHERE Ten LIKE '%Nike%' ORDER BY Gia ASC");
         arrayDoVat.clear();
         if (cursor != null) {
             while (cursor.moveToNext()) {
                 int id = cursor.getInt(0);
                 String TenGiay = cursor.getString(1);
-                String Gia = cursor.getString(2) + "$";
+                int Gia = cursor.getInt(2);
                 String Soluong = cursor.getString(3);
                 String LinkAnh = cursor.getString(4);
                 String Chitiet = cursor.getString(5);
@@ -158,12 +158,12 @@ public class GalleryFragment extends Fragment implements PopupMenu.OnMenuItemCli
 
     private void xyz() {
         adapter = new GiayAchapter(getActivity(), R.layout.list_item_abc, arrayDoVat);
-        final Cursor cursor = databaseHelper.GetData("SELECT * FROM Sanpham2 where Ten LIKE '%Nike%'  ");
+        final Cursor cursor = databaseHelper.GetData("SELECT * FROM Sanpham3 where Ten LIKE '%Nike%'  ");
         if (cursor != null) {
             while (cursor.moveToNext()) {
                 int id = cursor.getInt(0);
                 String TenGiay = cursor.getString(1);
-                String Gia = cursor.getString(2) + "$";
+                int Gia = cursor.getInt(2);
                 String Soluong = cursor.getString(3);
                 String LinkAnh = cursor.getString(4);
                 String Chitiet = cursor.getString(5);

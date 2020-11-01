@@ -44,7 +44,7 @@ public class MainActivityQuanLyHoaDon extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         listHoaDon = findViewById(R.id.List_HoaDon);
         databaseLogin = new DatabaseLogin(MainActivityQuanLyHoaDon.this, "mail.sqlite", null, 1);
-    MainActivityQuanLyHoaDon.databaseLogin.UpData("CREATE TABLE IF NOT EXISTS HoaDon (Id INTEGER PRIMARY KEY AUTOINCREMENT, Ten VARCHAR(200), SoDienThoai VARCHAR(11), diachi VARCHAR(200),soluong integer,tong integer,Ngay VARCHAR(20))");
+    MainActivityQuanLyHoaDon.databaseLogin.UpData("CREATE TABLE IF NOT EXISTS HoaDon1 (Id INTEGER PRIMARY KEY AUTOINCREMENT, Ten VARCHAR(200), SoDienThoai VARCHAR(11), diachi VARCHAR(200),soluong integer,tong integer,Ngay VARCHAR(20))");
 
         arrayhoadon = new ArrayList<>();
         Upoad();
@@ -58,7 +58,7 @@ public class MainActivityQuanLyHoaDon extends AppCompatActivity {
                 builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int j) {
-                        databaseLogin.UpData("delete from HoaDon where Id = " + arrayhoadon.get(indexItem).getId() + "");
+                        databaseLogin.UpData("delete from HoaDon1 where Id = " + arrayhoadon.get(indexItem).getId() + "");
                         arrayhoadon.clear();
                         Upoad();
                         Toast.makeText(MainActivityQuanLyHoaDon.this, "Bạn đã xoá sản phẩm này ra khỏi giỏ hàng !", Toast.LENGTH_SHORT).show();
@@ -79,7 +79,7 @@ public class MainActivityQuanLyHoaDon extends AppCompatActivity {
     private void Upoad() {
         hoaDonAdapter = new HoaDonAdapter(MainActivityQuanLyHoaDon.this, arrayhoadon, R.layout.list_item_hoadon3);
         listHoaDon.setAdapter(hoaDonAdapter);
-        Cursor cursor = databaseLogin.GetData("Select * from HoaDon ORDER BY Id desc");
+        Cursor cursor = databaseLogin.GetData("Select * from HoaDon1 ORDER BY Id desc");
         while (cursor.moveToNext()){
             arrayhoadon.add(new hoadon(
                     cursor.getInt(0),
@@ -87,7 +87,7 @@ public class MainActivityQuanLyHoaDon extends AppCompatActivity {
                     cursor.getString(2),
                     cursor.getString(3),
                     cursor.getInt(4),
-                    cursor.getString(5),
+                    cursor.getInt(5),
                     cursor.getString(6)
             ));
         }

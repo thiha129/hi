@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         databaseHelper = new DatabaseHelper(MainActivity.this, "giaydep", null, 1);
-        databaseHelper.UpData("CREATE TABLE IF NOT EXISTS Sanpham2(Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia VarChar(150), SoLuong VarChar(150), LinkAnh Text ,Chitiet VarChar(150), size VarChar(150))");
+        databaseHelper.UpData("CREATE TABLE IF NOT EXISTS Sanpham3(Id INTEGER PRIMARY KEY AUTOINCREMENT,Ten VarChar(150), Gia VarChar(150), SoLuong VarChar(150), LinkAnh Text ,Chitiet VarChar(150), size VarChar(150))");
         arrayDoVat = new ArrayList<>();
         adapter = new GiayAchapter(MainActivity.this, R.layout.list_item_abc, arrayDoVat);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -126,13 +126,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String newText) {
 
-                Cursor cursor = databaseHelper.GetData("SELECT * FROM Sanpham2 WHERE Ten LIKE '%" + searchView.getQuery().toString().trim() + "%' ");
+                Cursor cursor = databaseHelper.GetData("SELECT * FROM Sanpham3 WHERE Ten LIKE '%" + searchView.getQuery().toString().trim() + "%' ");
                 arrayDoVat.clear();
                 if (cursor != null) {
                     while (cursor.moveToNext()) {
                         int id = cursor.getInt(0);
                         String TenGiay = cursor.getString(1);
-                        String Gia = cursor.getString(2)+"$";
+                        int Gia = cursor.getInt(2);
                         String Soluong = cursor.getString(3);
                         String LinkAnh = cursor.getString(4);
                         String Chitiet = cursor.getString(5);
