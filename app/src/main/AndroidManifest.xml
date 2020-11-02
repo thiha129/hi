@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivityThongKe"></activity>
+        <activity android:name=".ThongtinusersActivity"></activity>
+        <activity android:name=".MainActivityThongKe" />
 
         <meta-data
             android:name="com.google.android.gms.ads.AD_MANAGER_APP"
