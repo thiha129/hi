@@ -5,49 +5,99 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivityThongKe">
-<LinearLayout
-    android:layout_marginRight="50dp"
-    android:layout_marginLeft="50dp"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:gravity="center"
-    tools:ignore="MissingConstraints">
-            <TextView
 
-                android:text="Tổng tiền trong ngày:"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-            </TextView>
-    <TextView
-        android:layout_weight="1"
-        android:id="@+id/TongTien"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-    </TextView>
-</LinearLayout>
     <LinearLayout
-        android:layout_marginRight="50dp"
         android:layout_marginLeft="50dp"
+        android:layout_marginTop="30dp"
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:gravity="center"
-        tools:ignore="MissingConstraints">
-        <TextView
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="50dp">
 
-            android:text="Tổng tiền trong ngày:"
+        <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:text="Tổng tiền trong ngày:"
+            android:textSize="24sp"
+            android:textStyle="bold">
 
         </TextView>
+
         <TextView
-            android:layout_weight="1"
-            android:id="@+id/TongTien1"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/TongTien"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="24sp"
+            android:textStyle="bold">
+
+        </TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="50dp">
+
+        <TextView
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tổng hoá đơn trong ngày:">
+
+        </TextView>
+
+        <TextView
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:id="@+id/TongHoaDon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+        </TextView>
+    </LinearLayout>
+
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="50dp">
+
+        <TextView
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tổng số lượng sản phậm bán được trong ngày:">
+
+        </TextView>
+
+        <TextView
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:id="@+id/TongSanPham"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
 
         </TextView>
     </LinearLayout>

@@ -118,6 +118,8 @@
                         </TextView>
 
                         <TextView
+                            android:drawableRight="@drawable/dola_12"
+
                             android:id="@+id/Gia_GioHang"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

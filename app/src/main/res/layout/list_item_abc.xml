@@ -49,7 +49,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
                     <TextView
-                        android:drawableLeft="@drawable/dola"
+                        android:drawableLeft="@drawable/dola_17_pink"
                         android:id="@+id/tvGia"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

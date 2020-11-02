@@ -57,6 +57,7 @@ public class MainActivityDangNhap extends AppCompatActivity {
         AnhXa();
         batloi();
 
+
         txtDangKy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,6 +70,8 @@ public class MainActivityDangNhap extends AppCompatActivity {
 //        String user1 = mysharedPreferences.getString("username", "");
 //        String pwd1 = mysharedPreferences.getString("password", "");
 //        boolean abc = mysharedPreferences.getBoolean("checked", false);
+        final CheckBox checkBox = findViewById(R.id.checkBox);
+        checkBox.setChecked(mysharedPreferences.getBoolean("checked", true));
         String islogin = mysharedPreferences.getString("username", "");
 //        ----------------------------------------------------------------------------------------
         if (islogin != "") {

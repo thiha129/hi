@@ -60,12 +60,13 @@
 
                 </TextView>
                 <TextView
+                    android:layout_marginRight="4pt"
                     android:id="@+id/cont"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="right|end"
-                    android:text="0 "
+                    android:text="0  "
                     android:textSize="20sp"
                     app:layout_constraintStart_toEndOf="@+id/textView2">
 
@@ -88,7 +89,7 @@
                 </TextView>
 
                 <TextView
-                    android:drawableLeft="@drawable/dola"
+                    android:drawableRight="@drawable/dola"
                     android:id="@+id/sum"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -116,13 +117,14 @@
                 </TextView>
 
                 <TextView
-                    android:drawableLeft="@drawable/dola"
+                    android:drawableRight="@drawable/dola"
+
                     android:id="@+id/phichuyen"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="right|end"
-                    android:text=" $10"
+                    android:text=" 10"
                     android:textSize="20sp">
 
                 </TextView>
@@ -146,7 +148,8 @@
                 </TextView>
 
                 <TextView
-                    android:drawableLeft="@drawable/dola"
+                    android:drawableRight="@drawable/dola"
+
                     android:id="@+id/pay"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
