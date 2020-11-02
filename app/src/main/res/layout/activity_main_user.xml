@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@drawable/gradient3">
+<ImageView
+    android:layout_width="150dp"
+    android:layout_height="150dp"
+    android:layout_gravity="center"
+    android:src="@drawable/logo3">
 
+</ImageView>
     <TextView
         android:id="@+id/title_view"
         android:layout_width="wrap_content"
         android:layout_height="95dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="102dp"
         android:gravity="center"
+        android:layout_gravity="center"
         android:text="Tên người dùng"
         android:textColor="#fff"
         android:textSize="30sp"
@@ -31,7 +38,7 @@
         android:rowCount="3">
 
         <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_rowWeight="1"
@@ -43,22 +50,18 @@
             app:cardElevation="8dp">
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_gravity="center_vertical|center_horizontal"
                 android:gravity="center"
+
                 android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/icons8_admin_settings_male_24" />
-
                 <TextView
+                    android:drawableTop="@drawable/icons8_admin_settings_male_24"
                     android:id="@+id/User_DoiMatKhau"
-                    android:layout_width="70dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="              ĐỔI MẬT KHẨU"
+                    android:text="ĐỔI MẬT KHẨU"
                     android:textAlignment="center"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -67,7 +70,7 @@
 
         <androidx.cardview.widget.CardView
 
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_rowWeight="1"
@@ -79,20 +82,16 @@
             app:cardElevation="8dp">
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_gravity="center_vertical|center_horizontal"
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/icons8_admin_settings_male_24" />
-
                 <TextView
+                    android:drawableTop="@drawable/icons8_admin_settings_male_24"
                     android:id="@+id/User_Info"
-                    android:layout_width="70dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Thông tin người dùng"
                     android:textAlignment="center"
@@ -102,7 +101,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_rowWeight="1"
@@ -114,19 +113,14 @@
             app:cardElevation="8dp">
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_gravity="center_vertical|center_horizontal"
                 android:gravity="center"
                 android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/icons8_map_24" />
-
                 <TextView
-                    android:layout_width="70dp"
+                    android:drawableTop="@drawable/icons8_map_24"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="MAP"
                     android:textAlignment="center"
@@ -136,7 +130,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_row="1"
             android:layout_rowWeight="1"
@@ -148,20 +142,17 @@
             app:cardElevation="8dp">
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_gravity="center_vertical|center_horizontal"
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/icons8_favorite_cart_24" />
 
                 <TextView
+                    android:drawableTop="@drawable/icons8_favorite_cart_24"
                     android:id="@+id/Usser_GioHang"
-                    android:layout_width="70dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="GIỎ HÀNG"
                     android:textAlignment="center"
@@ -172,7 +163,7 @@
 
         <androidx.cardview.widget.CardView
 
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_row="1"
             android:layout_rowWeight="1"
@@ -184,20 +175,15 @@
             app:cardElevation="8dp">
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_gravity="center_vertical|center_horizontal"
                 android:gravity="center"
                 android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/icons8_notification_24" />
-
                 <TextView
+                    android:drawableTop="@drawable/icons8_notification_24"
                     android:id="@+id/User_Noti"
-                    android:layout_width="70dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="THÔNG BÁO"
                     android:textAlignment="center"
@@ -207,7 +193,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_row="1"
             android:layout_rowWeight="1"
@@ -219,8 +205,8 @@
             app:cardElevation="8dp">
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_gravity="center_vertical|center_horizontal"
                 android:gravity="center"
                 android:orientation="vertical">
@@ -232,7 +218,7 @@
 
                 <TextView
                     android:id="@+id/User_Exit"
-                    android:layout_width="70dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="THOÁT"
                     android:textAlignment="center"
@@ -242,4 +228,4 @@
         </androidx.cardview.widget.CardView>
 
     </GridLayout>
-</RelativeLayout>
+</LinearLayout>
