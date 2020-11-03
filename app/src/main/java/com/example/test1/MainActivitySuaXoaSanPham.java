@@ -5,13 +5,18 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 
 import java.util.ArrayList;
 
@@ -25,11 +30,27 @@ public class MainActivitySuaXoaSanPham extends AppCompatActivity {
     Intent intent;
     private int indext = -1;
     public static   Button btnthem2, btnhuy2;
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                intent = new Intent(MainActivitySuaXoaSanPham.this, MainActivityThongTin.class);
+                startActivity(intent);
+                Animatoo.animateSlideRight(MainActivitySuaXoaSanPham.this);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_sua_xoa_san_pham);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         gridView = findViewById(R.id.danhsachsp);
         submit = findViewById(R.id.button);
       
