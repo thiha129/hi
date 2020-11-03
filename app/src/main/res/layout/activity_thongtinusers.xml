@@ -186,7 +186,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/icons8_favorite_cart_24" />
+                    android:src="@drawable/ic_baseline_date_range_24" />
 
                 <TextView
                     android:id="@+id/Usser_NGAYTAO"
@@ -227,7 +227,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/icons8_notification_24" />
+                    android:src="@drawable/ic_baseline_how_to_reg_24" />
 
                 <TextView
                     android:id="@+id/User_TENDANGNHAP"
@@ -261,13 +261,13 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/icons8_cancel_24" />
+                    android:src="@drawable/ic_baseline_arrow_back_24" />
 
                 <TextView
                     android:id="@+id/User_THOAT"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="THOÁT"
+                    android:text="TRỞ LẠI"
                     android:textAlignment="center"
                     android:textSize="16sp"
                     android:textStyle="bold" />

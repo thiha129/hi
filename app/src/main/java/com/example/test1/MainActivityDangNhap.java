@@ -17,7 +17,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.google.android.material.textfield.TextInputLayout;
+
+import java.util.ArrayList;
 
 public class MainActivityDangNhap extends AppCompatActivity {
     public static DatabaseLogin databaseLogin;
@@ -30,7 +33,9 @@ public class MainActivityDangNhap extends AppCompatActivity {
     boolean Ktra1, Ktra2;
     TextInputLayout layoutUser;
     TextInputLayout layoutPass;
-
+    public int indext = -1;
+    public static NguoidungAdapter adapter;
+    public static ArrayList<Nguoidung> nguoidungArrayList;
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
         return super.onCreateOptionsMenu(menu);
@@ -42,6 +47,7 @@ public class MainActivityDangNhap extends AppCompatActivity {
             case android.R.id.home:
                 intent = new Intent(MainActivityDangNhap.this, MainActivity.class);
                 startActivity(intent);
+                Animatoo.animateSlideRight(MainActivityDangNhap.this);
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -57,7 +63,6 @@ public class MainActivityDangNhap extends AppCompatActivity {
         AnhXa();
         batloi();
 
-
         txtDangKy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,11 +77,20 @@ public class MainActivityDangNhap extends AppCompatActivity {
 //        boolean abc = mysharedPreferences.getBoolean("checked", false);
         final CheckBox checkBox = findViewById(R.id.checkBox);
         checkBox.setChecked(mysharedPreferences.getBoolean("checked", true));
+         String admin = "admin123@gmail.com" ;
         String islogin = mysharedPreferences.getString("username", "");
+        nguoidungArrayList = new ArrayList<>();
 //        ----------------------------------------------------------------------------------------
         if (islogin != "") {
-            Intent i = new Intent(MainActivityDangNhap.this, MainActivityThongTin.class);
-            startActivity(i);
+            if (islogin.equals("admin123@gmail.com") ){
+              
+                Intent i2 = new Intent(MainActivityDangNhap.this, MainActivityThongTin.class);
+                startActivity(i2);
+            } else{
+                Intent i = new Intent(MainActivityDangNhap.this, MainActivityUser.class);
+                startActivity(i);
+            }
+
         }
         //        ----------------------------------------------------------------------------------------
 

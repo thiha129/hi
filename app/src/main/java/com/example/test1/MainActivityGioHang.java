@@ -130,7 +130,7 @@ public class MainActivityGioHang extends AppCompatActivity {
         Date_Tao.setText(dateTime);
 
         final LoadingDialog loadingDialog = new LoadingDialog(MainActivityGioHang.this);
-        Cursor cursor1 = databaseLogin.GetData("SELECT * FROM TaiKhoan6 ");
+        Cursor cursor1 = databaseLogin.GetData("SELECT * FROM TaiKhoan6 WHERE Ten LIKE '%"+mysharedPreferences.getString("username","")+"%'");
         while (cursor1.moveToNext()) {
             final int id = cursor1.getInt(0);
             cursor1.getString(3);

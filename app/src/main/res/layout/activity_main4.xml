@@ -5,12 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity4">
+
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:ignore="MissingConstraints">
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="79dp"
+        tools:layout_editor_absoluteY="-152dp">
 
     </ScrollView>
+
     <TimePicker
         android:id="@+id/timePicker"
         android:layout_width="wrap_content"
@@ -34,13 +39,16 @@
 
     <TextView
         android:id="@+id/txtview"
-        android:layout_marginTop="20dp"
-        android:text="textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timePicker"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:text="textview"
+
+        app:layout_constraintEnd_toStartOf="@+id/btnDungLai"
+        app:layout_constraintStart_toEndOf="@+id/btnHenGio"
+
+        app:layout_constraintTop_toBottomOf="@+id/btnDungLai"
         tools:ignore="MissingConstraints">
 
     </TextView>

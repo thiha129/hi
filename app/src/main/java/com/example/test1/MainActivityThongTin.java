@@ -50,12 +50,14 @@ public class MainActivityThongTin extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         databaseLogin = new DatabaseLogin(MainActivityThongTin.this, "mail.sqlite", null, 1);
         MainActivityThongTin.databaseLogin.UpData("CREATE TABLE IF NOT EXISTS TaiKhoan6 (Id INTEGER PRIMARY KEY AUTOINCREMENT, Ten COLLATE NOCASE, Pass VARCHAR(200), Hovaten COLLATE NOCASE, SoDienThoai VARCHAR(11),Ngay VARCHAR(20), diachi VARCHAR(200))");
-        ten = findViewById(R.id.tennguoidung);
+        mysharedPreferences = getSharedPreferences("mylogin", MODE_PRIVATE);
+        SharedPreferences.Editor myeditor = mysharedPreferences.edit();
 
-        Cursor cursor1 = databaseLogin.GetData("SELECT * FROM TaiKhoan6 ");
+        ten = findViewById(R.id.tennguoidung);
+        Cursor cursor1 = databaseLogin.GetData("SELECT * FROM TaiKhoan6 WHERE Ten LIKE '%"+mysharedPreferences.getString("username","")+"%' ");
         while (cursor1.moveToNext()){
             String tenmoi = cursor1.getString(3);
-            ten.setText("      "+tenmoi);
+            ten.setText(tenmoi);
         }
         btn = findViewById(R.id.btnDoiMatkhau);
          quanlytaikhoan = findViewById(R.id.btndanhsachnguoidung);

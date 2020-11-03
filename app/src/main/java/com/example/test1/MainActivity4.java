@@ -109,7 +109,7 @@ public class MainActivity4 extends AppCompatActivity {
 
                 pendingIntent = PendingIntent.getBroadcast(MainActivity4.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
                 alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
-                textViewHienThi.setText("Giờ bạn đạt là " + string_gio + ":" + string_phut);
+                textViewHienThi.setText("Thời gian bạn đạt để hiện Notification  là " + string_gio + ":" + string_phut);
 
                 databaseHelper.UpData("Insert into Noti Values(null,'" + tille.getText().toString() + "','" + message.getText().toString() + "')");
 
@@ -138,9 +138,7 @@ public class MainActivity4 extends AppCompatActivity {
                 String Nd = cursor.getString(2);
                 arrayNoti.add(new noti(null, Ten, Nd));
             }
-            listViewNoti.setAdapter(adapter);
             adapter.notifyDataSetChanged();
-
         } else {
 //            Toast.makeText(MainActivitySuaXoaSanPham.this, "NOT OK", Toast.LENGTH_SHORT).show();
         }

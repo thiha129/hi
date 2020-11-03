@@ -14,7 +14,6 @@
         android:layout_row="0"
         android:layout_rowWeight="1"
         android:layout_column="0"
-        android:background=""
         android:layout_columnWeight="1"
         android:layout_gravity="fill"
         android:layout_marginStart="8dp"

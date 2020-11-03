@@ -14,12 +14,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ThongtinusersActivity"></activity>
+        <activity android:name=".MainActivityThongBaoUser"></activity>
+        <activity android:name=".ThongtinusersActivity" />
         <activity android:name=".MainActivityThongKe" />
 
         <meta-data
             android:name="com.google.android.gms.ads.AD_MANAGER_APP"
             android:value="true" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
 
         <activity android:name=".MainActivityQuangCao" />
         <activity android:name=".DetalActivity" />

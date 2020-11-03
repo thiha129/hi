@@ -86,12 +86,12 @@ public class MainActivityQuanLyTaiKhoan extends AppCompatActivity {
             while (cursor.moveToNext()) {
                 int id = cursor.getInt(0);
                 String HovaTen = cursor.getString(1);
-                String TendangNhap = cursor.getString(2);
-                String MatKhau = cursor.getString(4);
-                String SoDienThoai = cursor.getString(3);
+                String MatKhau = cursor.getString(2);
+                String TendangNhap  = cursor.getString(3);
+                String SoDienThoai = cursor.getString(4);
                 String Ngaytao = cursor.getString(5);
                 String DiaChi = cursor.getString(6);
-                nguoidungArrayList.add(new Nguoidung(id, HovaTen, TendangNhap, MatKhau, SoDienThoai, Ngaytao, DiaChi));
+                nguoidungArrayList.add(new Nguoidung(id,TendangNhap ,MatKhau  ,HovaTen , SoDienThoai, Ngaytao, DiaChi));
             }
             listView.setAdapter(adapter);
         } else {

@@ -24,6 +24,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.google.android.material.navigation.NavigationView;
 
 import java.io.IOException;
@@ -160,6 +161,7 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_info:
                 startActivity(new Intent(MainActivity.this, MainActivityDangNhap.class));
+                Animatoo.animateSlideLeft(MainActivity.this);
                 break;
             case R.id.action_search:
 

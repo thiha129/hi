@@ -115,19 +115,27 @@ public class HomeFragment extends Fragment {
     private void abc04() {
         recyclerView_Web = view.findViewById(R.id.recyclerview_web);
         Integer[] langLogo = {
+                R.drawable.web1,
                 R.drawable.web2,
-                R.drawable.nike,
-                R.drawable.puma,
-                R.drawable.fila,
-                R.drawable.converse,
-                R.drawable.mn,
+                R.drawable.web4,
+                R.drawable.web5,
+                R.drawable.web6,
+                R.drawable.web3,
         };
         String[] langname = {
                 "Sự phát triển thần kì",
-                "Bag", "Bear", "Shoe", "Bag", "Bear"
+                "Lịch sử phát triển công",
+                "BẮT KỊP XU HƯỚNG VỚI",
+                "SNEAKER LÀ GÌ? LIỆT KÊ",
+                "GIÀY ADIDAS ALPHABOUNCE XENO",
+                "1000 ĐÔI GIÀY ADIDAS EQT"
         };
         String[] langlink = {"https://thethao247.vn/318-su-phat-trien-than-ki-cua-cong-nghe-nike-flyknit-d177599.html",
-                "Bag", "Bear", "Shoe", "Bag", "Bear"
+                "https://thethao247.vn/318-lich-su-phat-trien-cong-nghe-dem-nike-air-max-d177454.html",
+                "https://giayadidas.com.vn/cac-mau-giay-adidas-moi-nhat/",
+                "https://giayadidas.com.vn/giay-sneaker-la-gi/",
+                "https://giayadidas.com.vn/giay-adidas-alphabounce-xeno-mot-thiet-ke-khac-la/",
+                "https://giayadidas.com.vn/1000-doi-giay-adidas-eqt-adv-91-16-art-basel-ra-mat-dot-dau-tien/"
         };
         mainModel_webs = new ArrayList<>();
         for (int i = 0; i < langLogo.length; i++) {

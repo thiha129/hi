@@ -12,6 +12,7 @@
     tools:context=".ui.home.HomeFragment">
 
 <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_marginTop="5dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -22,6 +23,8 @@
         android:text="Các hãng giầy nổi bật"
         android:textSize="20sp"
         android:textStyle="bold"
+        ads:layout_constraintEnd_toEndOf="parent"
+        ads:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints">
 
     </TextView>
@@ -49,6 +52,8 @@
     </androidx.recyclerview.widget.RecyclerView>
 
     <TextView
+        android:textSize="20sp"
+        android:textStyle="bold"
         android:layout_gravity="center"
         android:text="Bản tin về các hãng giầy"
         android:layout_width="wrap_content"

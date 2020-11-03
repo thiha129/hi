@@ -122,23 +122,24 @@
             android:orientation="horizontal">
 
             <Button
-                android:textColor="#000"
+                android:textStyle="bold"
                 android:id="@+id/btnthoat1"
                 android:layout_width="122dp"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/logo"
                 android:layout_gravity="center"
                 android:background="@drawable/botron_button"
-                android:text="Thoát">
+                android:text="Thoát"
+                android:textColor="#000">
 
             </Button>
             <Button
+                android:textStyle="bold"
+                android:fontFamily="@font/poire"
                 android:textColor="#000"
                 android:layout_marginLeft="70dp"
                 android:id="@+id/btnlogin"
                 android:layout_width="122dp"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/logo"
                 android:layout_gravity="center"
                 android:background="@drawable/botron_button"
                 android:text="Đăng nhập"
