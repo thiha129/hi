@@ -14,15 +14,15 @@
 </ImageView>
     <TextView
         android:id="@+id/title_view"
-        android:layout_width="wrap_content"
-        android:layout_height="95dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:gravity="center"
         android:layout_gravity="center"
         android:text="Tên người dùng"
         android:textColor="#fff"
-        android:textSize="30sp"
+        android:textSize="40sp"
         android:textStyle="bold" />
 
     <GridLayout
