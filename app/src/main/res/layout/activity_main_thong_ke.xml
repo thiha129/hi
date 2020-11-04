@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:text="Thống kê theo ngày"
         android:textSize="34sp"
-        android:textColor="#fff"
+        android:textColor="#ff00"
         android:layout_marginTop="40dp"
         android:layout_gravity="center"
         android:textStyle="bold">
@@ -45,6 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="3"
             android:textSize="24sp"
+            android:layout_gravity="end"
             android:textColor="#ff00"
             android:textStyle="bold">
 
@@ -80,6 +81,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#ff00"
+            android:layout_gravity="end"
             android:layout_weight="3">
 
         </TextView>
@@ -96,13 +98,13 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="Tổng số lượng sản phậm bán được trong ngày        :"
             android:textSize="24sp"
+            android:textStyle="bold"
             android:textColor="#fff"
-            android:textStyle="bold">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Tổng số lượng sản phẩm \n trong ngày:">
 
         </TextView>
 
@@ -114,6 +116,7 @@
             android:padding="20dp"
             android:textColor="#ff00"
             android:textSize="24sp"
+            android:layout_gravity="end"
             android:textStyle="bold">
 
         </TextView>
