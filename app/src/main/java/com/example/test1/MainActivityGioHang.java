@@ -40,6 +40,7 @@ public class MainActivityGioHang extends AppCompatActivity {
     Intent intent;
     int i = -1;
     TextView Date_Tao;
+    Button Huy;
 
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
@@ -50,7 +51,7 @@ public class MainActivityGioHang extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-               intent = new Intent(MainActivityGioHang.this, MainActivityThongTinSanPham.class);
+               intent = new Intent(MainActivityGioHang.this, MainActivity.class);
                startActivity(intent);
                finish();
                 return true;
@@ -69,6 +70,7 @@ public class MainActivityGioHang extends AppCompatActivity {
         Pay = findViewById(R.id.pay);
         Thanks = findViewById(R.id.thank);
         phi = findViewById(R.id.phichuyen);
+        Huy = findViewById(R.id.Huy123);
         mysharedPreferences = getSharedPreferences("mylogin", MODE_PRIVATE);
 
         databaseHelper = new DatabaseHelper(MainActivityGioHang.this, "giaydep", null, 1);
@@ -78,7 +80,13 @@ public class MainActivityGioHang extends AppCompatActivity {
 
         arraygioHang = new ArrayList<>();
         Upload();
-
+        Huy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent = new Intent(MainActivityGioHang.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
         listViewGioHang.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
