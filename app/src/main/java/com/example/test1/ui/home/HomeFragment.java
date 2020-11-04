@@ -196,7 +196,7 @@ public class HomeFragment extends Fragment {
 
     private void abc02() {
         adapter = new GiayAchapter(getActivity(), R.layout.list_item_abc, arrayDoVat);
-        final Cursor cursor = databaseHelper.GetData("SELECT * FROM Sanpham3");
+        final Cursor cursor = databaseHelper.GetData("SELECT * FROM Sanpham3 ORDER BY Id DESC");
         if (cursor != null) {
             while (cursor.moveToNext()) {
                 int id = cursor.getInt(0);

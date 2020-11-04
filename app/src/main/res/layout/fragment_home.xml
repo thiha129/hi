@@ -73,7 +73,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Các sản phẩm nổi bật"
-        android:textSize="20sp"
+        android:textSize="25sp"
         android:textStyle="bold">
 
     </TextView>

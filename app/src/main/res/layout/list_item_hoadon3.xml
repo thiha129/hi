@@ -209,7 +209,6 @@
                     </TextView>
 
                     <TextView
-                        android:drawableLeft="@drawable/dola"
                         android:id="@+id/txt_Pay"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
